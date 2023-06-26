@@ -1,0 +1,14 @@
+<div class="max-w-5xl mx-auto px-8 sm:flex">
+  <form [formGroup]="productForm" (ngSubmit)="submit()"
+    class="flex flex-wrap flex-col bg-green-200
+    px-8 py-10 m-8
+    [&>input]:bg-[#5dcd91] rounded-3xl
+    gap-2 mx-auto sm:w-full
+    [&mat-form-field]:flex [&mat-form-field]:flex-wrap ">
+    <div><a routerLink="/dashboard/products">
+        <mat-icon class=" w-9">arrow_back</mat-icon>
+      </a>
+    </div>
+    <h1 class="text-3xl text-black mx-2 mt-8">Add New Product</h1>
+  </form>
+</div>

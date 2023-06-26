@@ -1,0 +1,67 @@
+
+<div class=" max-w-4xl flex flex-row mx-auto
+    justify-between
+    rounded-lg
+    border-2
+    border-black
+    mt-5">
+    <div class="flex flex-col gap-8 mx-auto">
+        <img class="h-[100px] w-[100px] self-center" src="../../assets/logo.png"
+            alt="">
+        <h1 class="text-3xl ">Login To Your Account
+        </h1>
+        <form [formGroup]="userForm" (ngSubmit)="submit()" class="flex w-[50%]
+            flex-wrap
+            flex-col
+            rounded-3xl sm:flex
+            gap-6
+            justify-center
+            mx-auto sm:w-full
+            [&mat-form-field]:mx-auto [&mat-form-field]:flex-wrap">
+
+            <div class="flex flex-col gap-2">
+                <span class="text-xl font-semibold">
+                    Username:
+                </span>
+                <input class="p-2 border border-blue-500 rounded-3xl "
+                    type="text" formControlName="username"
+                    name="username" placeholder="sunita" id="">
+            </div>
+
+            <div class="flex flex-col gap-2 ">
+                <span class="text-xl font-semibold">
+                    Password
+                </span>
+                <input class=" p-2 border border-blue-500 rounded-3xl "
+                    type="password" formControlName="password"
+                    placeholder="password" id="">
+            </div>
+            <button mat-raised-button [disabled]="!userForm.valid"
+                [class]="!userForm.valid ? 'bg-gray-400 text-black'
+                : 'bg-pink-300 text-white'"
+                class="rounded-3xl
+                text-center p-2 px-6
+                self-center
+                w-fit"
+                type="submit">
+                Sign In
+            </button>
+            <div class="flex flex-col ">
+                <span class="text-xl font-semibold mx-auto">
+                    New Here?
+                </span>
+
+                <button class="rounded-3xl text-center p-2 px-6 self-center
+                    bg-pink-300 w-fit"
+                    type="">
+                    <a routerLink='/signup'>Sign Up</a>
+
+                </button> </div>
+
+        </form>
+    </div>
+    <div class="w-[50%] ">
+        <img src="../../assets/lehenga8.jpg" class="">
+    </div>
+</div>
+<!-- <pre>{{userForm.value | json}}</pre> -->

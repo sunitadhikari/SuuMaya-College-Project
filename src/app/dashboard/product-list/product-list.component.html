@@ -1,0 +1,32 @@
+<div class="flex gap-5 mx-6 my-4">
+    <span class="font-poppins text-2xl mt-9 text-black">Product List</span>
+</div>
+<div class="flex justify-end pb-3 mr-5">
+    <a routerLink="../product/add">
+        <button class="bg-purple-500 text-white hover:bg-gray-300
+            focus:outline-none focus:bg-indigo-600 items-end font-poppins
+            text-2xl px-5 py-3 rounded-lg">Add Product</button>
+    </a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 m-6">
+    <div *ngFor="let product of products" class="bg-gray-500 p-4 shadow-md">
+        <img src="{{ product.image }}" alt="{{ product.name }}" class="
+            md:h-[300px] md:w-[500px] sm:h-[150px] sm:w-[100px] object-cover">
+        <h3 class="text-xl font-bold text-white">{{ product.name }}</h3>
+        <span class="text-lg font-bold text-white">{{product.price}}</span>
+        <p class="text-white">{{ product.details}}</p>
+        <div class="flex justify-between">
+            <button type="button" class="bg-black text-white hover:bg-blue-700
+                font-bold
+                py-1.5 rounded-md
+                px-3 mt-3">Rent Now</button>
+            <a [routerLink]="'../products/detail/'">
+                <button type="button" class="bg-red-400 hover:bg-green-500
+                    text-white
+                    font-bold
+                    py-1.5 rounded-md
+                    px-3 mt-3">View More</button>
+            </a>
+        </div>
+    </div>
+</div>
