@@ -10,13 +10,14 @@ export interface Product {
   createdTime?: string;
   updatedTime?: string;
   seller?: string;
-  small?: string;
-  medium?: string;
-  large?: string;
-  extraLarge?: string;
 }
 export interface Category {
   id?: number;
   name: string;
   parentCategory?: string;
+}
+export interface Feedback {
+  username: string;
+  // email: string;
+  message: string;
 }

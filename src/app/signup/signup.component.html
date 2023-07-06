@@ -44,6 +44,11 @@
                     class="text-red-500">
                     Email is required*
                 </mat-error>
+                <mat-error *ngIf="!newUserForm.get('email')?.pristine &&
+                    newUserForm.get('email')?.hasError('pattern')"
+                    class="text-red-500">
+                    Email is invalid*
+                </mat-error>
             </div>
             <div class="flex flex-col gap-2 ">
                 <span class="text-xl font-semibold">
@@ -88,7 +93,11 @@
                     class="text-red-600">PhoneNumber
                     is Required</mat-error>
                 <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
-                    newUserForm.get('phone')?.hasError('pattern')"
+                    newUserForm.get('phone')?.hasError('minlength')"
+                    class="text-red-600">PhoneNumber
+                    is invalid</mat-error>
+                <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
+                    newUserForm.get('phone')?.hasError('maxlength')"
                     class="text-red-600">PhoneNumber
                     is invalid</mat-error>
             </div>
@@ -96,21 +105,21 @@
             <div class="flex gap-2">
                 <input type="checkbox" formControlName="accepted" name="Terms
                     and
-                    conditions p-2 required ">
+                    conditions p-2 required">
                 <span class="text-sm text-black ">I accept terms
                     and conditions</span>
                 <mat-error *ngIf="!newUserForm.get('enabled')?.pristine &&
                     newUserForm.get('enabled')?.hasError('required')"
                     class="text-red-600">
-
                 </mat-error>
             </div>
-            <button class="rounded-3xl text-center p-2 px-6 self-center
-                bg-pink-300 w-fit"
-                type="submit">
+            <button [disabled]="!newUserForm.valid" [class]="
+                !newUserForm.valid
+                ?'bg-gray-400 text-black': 'bg-green-500 text-white' "
+                class="px-4 py-2 rounded-lg shadow-xl">
                 Sign Up
             </button>
         </form>
-        <pre>{{newUserForm.value | json}}</pre>
+        <!-- <pre>{{newUserForm.value | json}}</pre> -->
     </div>
 </div>

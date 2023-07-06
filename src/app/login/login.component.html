@@ -25,7 +25,7 @@
                 </span>
                 <input class="p-2 border border-blue-500 rounded-3xl "
                     type="text" formControlName="username"
-                    name="username" placeholder="sunita" id="">
+                    name="username" placeholder="sunita" id="" required="">
             </div>
 
             <div class="flex flex-col gap-2 ">
@@ -34,11 +34,11 @@
                 </span>
                 <input class=" p-2 border border-blue-500 rounded-3xl "
                     type="password" formControlName="password"
-                    placeholder="password" id="">
+                    placeholder="password" id="" required>
             </div>
             <button mat-raised-button [disabled]="!userForm.valid"
                 [class]="!userForm.valid ? 'bg-gray-400 text-black'
-                : 'bg-pink-300 text-white'"
+                : 'bg-green-500 text-white'"
                 class="rounded-3xl
                 text-center p-2 px-6
                 self-center
@@ -51,12 +51,13 @@
                     New Here?
                 </span>
 
-                <button class="rounded-3xl text-center p-2 px-6 self-center
-                    bg-pink-300 w-fit"
-                    type="">
-                    <a routerLink='/signup'>Sign Up</a>
+                <a routerLink='/signup'>
+                    <button class="rounded-3xl text-center p-2 px-6 self-center
+                        bg-pink-300 w-fit"
+                        type="button">
+                        Sign Up
 
-                </button> </div>
+                    </button> </a></div>
 
         </form>
     </div>

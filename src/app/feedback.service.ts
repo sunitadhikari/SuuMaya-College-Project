@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from './product.model';
+import { Feedback } from './product.model';
 import { environment } from 'src/environments/environmen';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
-  create(productAdd: Product) {
+export class FeedbackService {
+  create(feedback: Feedback) {
     return this.http.post<JsonResponse>(
-      `${environment.apiUrl}/products`,
-      productAdd
+      `${environment.apiUrl}/feedback`,
+      feedback
     );
   }
   constructor(private http: HttpClient) {}

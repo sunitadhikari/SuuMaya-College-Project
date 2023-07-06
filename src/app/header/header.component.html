@@ -1,56 +1,58 @@
 <div>
-    <nav class="flex flex-wrap bg-black px-2 py-2
-        mx-6">
-        <img src="../../assets/logo.png" class="h-14 w-14">
-        <span class="text-white text-xl my-auto text-[15px] mr-2 gap-0">SuuMaya<br><small
-                class="text-[10px]">Ethnic
+    <nav class="flex flex-wrap bg-white px-4 py-2
+        mx-3">
+        <img src="../../assets/logo.png" class="h-20 w-20">
+        <div class="flex flex-col justify-center items-center">
+            <span class="text-black text-xl text-[15px]
+                items-center font-semibold">SuuMaya</span>
+            <p
+                class="text-base">Ethnic
                 Wear
-                Rental Service</small></span>
-        <label for="menu-toggle" class="menu-icon">
-            <span>Home</span>
-            <span>Rent By Occasion</span>
-            <span>Rent By Type</span>
-        </label>
-        <ul class="flex flex-wrap space-x-4 m-auto justify-center gap-5"
+                Rental Service</p>
+        </div>
+        <button type="">
+
+        </button>
+        <ul class="flex flex-wrap space-x-4 m-auto justify-center items-center
+            gap-5"
             id="menu">
             <li>
                 <a routerLink="/home" routerLinkActive="!text-green-500
                     text-black
                     p-2 text-lg"
-                    class="text-white hover:text-orange-500
-                    text-lg ">Home</a>
+                    class=" hover:text-orange-500
+                    text-lg sm:text-2xl font-sans sm:font-semibold ">Home</a>
             </li>
             <li>
-                <a routerLink="/rent" class="text-white hover:text-orange-500
-                    text-lg">Rent
-                    By Occasion</a>
+                <a routerLink="/about" class="text-black
+                    hover:text-orange-500 text-lg sm:text-2xl font-sans
+                    sm:font-semibold
+                    ">Rent
+                    By Type</a>
             </li>
-            <a routerLink="/about" class="text-white text-lg
-                hover:text-orange-500
-                ">Rent
-                By Type</a>
-            <!-- <li>
-                <a routerLink="/" class="text-white text-lg
-                    hover:text-orange-500
-                    " routerLinkActive=" bg-green-500
-                    !text-red-500">Latest
-                    Arrivial</a>
-
-            </li> -->
             <li>
-                <a routerLink="/" class="text-white text-lg
-                    hover:text-orange-500
+                <a routerLink="/about" class="text-black text-lg
+                    hover:text-orange-500 sm:text-2xl font-sans
+                    sm:font-semibold
+                    ">About</a>
+            </li>
+            <li>
+                <a routerLink="/contact" class="text-black text-lg
+                    hover:text-orange-500 sm:text-2xl font-sans
+                    sm:font-semibold
                     ">Contact
-                    With Us</a>
+                    Us</a>
             </li>
-            <li class="items-end text-white my-auto text-lg mr-5"><a
-                    routerLink="/login" class="text-white text-lg
-                    hover:text-orange-500
+            <li class="items-end my-auto text-lg "><a
+                    routerLink="/login" class="text-black
+                    hover:text-orange-500 text-lg sm:text-2xl font-sans
+                    sm:font-semibold
                     ">Login</a>
             </li>
-            <li class="items-end text-white my-auto text-lg mr-5"><a
-                    routerLink="/signup" class="text-white text-lg
-                    hover:text-orange-500
+            <li class="items-end my-auto text-lg "><a
+                    routerLink="/signup" class="text-black
+                    hover:text-orange-500 text-lg sm:text-2xl font-sans
+                    sm:font-semibold
                     ">Sign Up</a>
             </li>
 

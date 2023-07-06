@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     ]),
     address: new FormControl(''),
     password: new FormControl(''),
-    accepted: new FormControl(''),
+    accepted: new FormControl('false'),
   });
   submit() {
     const signupValue = this.newUserForm.value;

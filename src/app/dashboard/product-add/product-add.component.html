@@ -1,14 +1,72 @@
-<div class="max-w-5xl mx-auto px-8 sm:flex">
-  <form [formGroup]="productForm" (ngSubmit)="submit()"
-    class="flex flex-wrap flex-col bg-green-200
-    px-8 py-10 m-8
-    [&>input]:bg-[#5dcd91] rounded-3xl
-    gap-2 mx-auto sm:w-full
-    [&mat-form-field]:flex [&mat-form-field]:flex-wrap ">
-    <div><a routerLink="/dashboard/products">
-        <mat-icon class=" w-9">arrow_back</mat-icon>
-      </a>
+
+<div class="container mx-auto max-w-4xl">
+    <div class="bg-red-400 rounded-lg shadow-2xl p-6 w-[700px] mx-auto
+        items-center justify-center gap-5 m-8">
+        <h2 class="text-2xl font-bold mb-6">Add Product</h2>
+        <form [formGroup]="productAddForm" (ngSubmit)="submit()" class=" mx-auto
+            items-center
+            justify-center [&>div>label]:text-xl
+            [&>div>label]:text-bold [&>div>input]:p-5 [&>div>input]:rounded-lg
+            ">
+            <div class="mb-6">
+                <label for="name" class="block mb-3 font-medium">Product
+                    Name:</label>
+                <input formControlName="name" type="text" placeholder="Lehenga"
+                    class="form-input
+                    w-full" required>
+            </div>
+            <div class="mb-6">
+                <label for="price" class="block mb-3 font-medium">Price:</label>
+                <input formControlName="price" type="text" placeholder="Rs.2000"
+                    class="form-input
+                    w-full" required>
+            </div>
+            <div class="mb-6">
+                <label class="block mb-3 font-medium">Date</label>
+                <input formControlName="date" type="date"
+                    placeholder="2058/10/34"
+                    class="form-input
+                    w-full" required>
+            </div>
+            <div class="mb-6">
+                <label for="size" class="block mb-3 font-medium">Category:</label>
+                <select formControlName="category" id="size" name="size"
+                    class="form-select w-full p-3
+                    rounded-lg
+                    bg-white" required>
+                    <option value="Lehenga">Lehenga</option>
+                    <option value="Gown">Gown</option>
+                    <option value="Sari">Sari</option>
+                    <option value="Kurtha">Kurtha</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="size" class="block mb-3 font-medium">Size:</label>
+                <select formControlName="size" id="size" name="size"
+                    class="form-select w-full p-3
+                    rounded-lg
+                    bg-white" required>
+                    <option value="s">Small</option>
+                    <option value="m">Medium</option>
+                    <option value="l">Large</option>
+                    <option value="xxl">Extra Large</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="detail" class="block mb-3 font-medium ">Detail:</label>
+                <textarea formControlName="detail" rows="3"
+                    class="form-textarea w-full rounded-lg p-4" required></textarea>
+            </div>
+            <div class="flex justify-end ">
+                <button
+                    [disabled]="!productAddForm.valid" type="submit"
+                    [class]="!productAddForm.valid ? 'bg-gray-400 text-black' :
+                    'bg-green-500 text-white'"
+                    class=" rounded-xl
+                    shadow-xl px-4 py-2">Add Product</button>
+            </div>
+        </form>
+        <!-- <pre>{{productAddForm.value | json}}</pre> -->
+
     </div>
-    <h1 class="text-3xl text-black mx-2 mt-8">Add New Product</h1>
-  </form>
 </div>

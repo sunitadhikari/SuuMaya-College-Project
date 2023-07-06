@@ -11,9 +11,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../auth.service';
 import {
+  Router,
   RouterLink,
   RouterLinkActive,
   RouterLinkWithHref,
+  RouterModule,
 } from '@angular/router';
 
 @Component({
@@ -29,12 +31,13 @@ import {
     ReactiveFormsModule,
     RouterLinkActive,
     RouterLink,
+    RouterModule,
     RouterLinkWithHref,
     HttpClientModule,
   ],
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   userForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -45,9 +48,8 @@ export class LoginComponent {
       username: loginValue.username ?? '',
       password: loginValue.password ?? '',
     };
-
     this.authService
       .login(user.username, user.password)
-      .subscribe((res) => alert(res.status));
+      .subscribe((res) => this.router.navigate(['/dashboard']));
   }
 }

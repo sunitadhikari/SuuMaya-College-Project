@@ -1,3 +1,4 @@
+import { ProductDetailComponent } from './../product-detail/product-detail.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { Routes } from '@angular/router';
@@ -9,6 +10,7 @@ import { SariComponent } from './sari/sari.component';
 import { ReturnListComponent } from './return-list/return-list.component';
 import { EditComponent } from './edit/edit.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +57,14 @@ export const routes: Routes = [
       {
         path: 'product/add',
         component: ProductAddComponent,
+      },
+      {
+        path: 'product/detail',
+        component: ProductDetailComponent,
+      },
+      {
+        path: 'product/edit',
+        component: ProductEditComponent,
       },
     ],
   },

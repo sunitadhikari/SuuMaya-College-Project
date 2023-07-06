@@ -3,60 +3,73 @@
         [disableClose]="(isNotHandSet$ | async)"
         [mode]="(isNotHandSet$ | async) ? 'side': 'over'" class="min-w-[15%]"
         [opened]="isNotHandSet$ | async">
-        <div class="flex flex-col bg-black h-full w-fit rounded-r-3xl
+        <div class="flex flex-col bg-[#f37489] h-full w-fit rounded-r-3xl
             pt-6 ">
-            <mat-list role="list" class="">
-                <mat-list-item>
-                    <a routerLink="/dashboard/product"
-                        routerLinkActive="active
-                        text-green-500"
-                        class="text-white text-2xl hover:text-blue-500
-                        py-2
-                        px-4 font-bold">
-                        Products
-                    </a>
+            <img src="..//../../assets/logo.png" class="h-28 w-28 mx-auto">
+            <mat-list role="list" class="flex flex-row mx-auto">
+                <div class="flex mx-auto ml-7">
+                    <mat-icon>inventory</mat-icon>
                     <mat-list-item>
-                        <ul class="list-disc color-white pl-8">
+                        <a routerLink="/dashboard/product"
+                            routerLinkActive="active
+                            text-yellow-500"
+                            class="text-white text-2xl hover:text-black
+                            yellow-500
+                            py-2
+                            font-bold">
+                            Products
+                        </a>
 
-                            <mat-list-item class="text-purple-800 text-xl
-                                hover:text-green-400">
-                                <a routerLink="/dashboard/lehenga">
-                                    Lehenga
-                                </a>
-                            </mat-list-item>
+                        <mat-list-item>
+                            <ul class="list-disc color-white mx-auto">
+                                <mat-list-item class="text-purple-800 text-xl
+                                    hover:text-green-400">
+                                    <a routerLink="/dashboard/lehenga">
+                                        Lehenga
+                                    </a>
+                                </mat-list-item>
 
-                            <mat-list-item class="text-purple-800 text-xl
-                                hover:text-green-400">
-                                <a routerLink="/dashboard/sari">
-                                    Sari
-                                </a>
-                            </mat-list-item>
-                            <mat-list-item class="text-purple-800 text-xl
-                                hover:text-green-400">
-                                <a routerLink="/dashboard/gown">
-                                    Gown
-                                </a>
-                            </mat-list-item>
-                            <mat-list-item class="text-purple-800 text-xl
-                                hover:text-green-400">
-                                <a routerLink="/dashboard/kurtha">
-                                    kurtha
-                                </a>
-                            </mat-list-item>
-                        </ul>
+                                <mat-list-item class="text-purple-800 text-xl
+                                    hover:text-green-400">
+                                    <a routerLink="/dashboard/sari">
+                                        Sari
+                                    </a>
+                                </mat-list-item>
+                                <mat-list-item class="text-purple-800 text-xl
+                                    hover:text-green-400">
+                                    <a routerLink="/dashboard/gown">
+                                        Gown
+                                    </a>
+                                </mat-list-item>
+                                <mat-list-item class="text-purple-800 text-xl
+                                    hover:text-green-400">
+                                    <a routerLink="/dashboard/kurtha">
+                                        kurtha
+                                    </a>
+                                </mat-list-item>
+                            </ul>
+                        </mat-list-item>
                     </mat-list-item>
+                </div>
+                <mat-list-item class="flex mx-auto ">
+                    <mat-icon class="">list</mat-icon>
                     <a routerLink="/dashboard/order"
                         routerLinkActive="active"
-                        class="text-white hover:text-blue-500 py-2
-                        px-4 text-2xl font-bold">
+                        class="text-white hover:text-black py-2
+                        text-2xl font-bold">
                         Order List
                     </a>
                 </mat-list-item>
-                <mat-list-item>
+
+                <mat-list-item class="flex mx-auto ">
+                    <!-- <mat-icon>local_shipping</mat-icon> -->
+                    <!-- <mat-icon>swap_horiz</mat-icon> -->
+                    <mat-icon>hourglass_empty</mat-icon>
+
                     <a routerLink="/dashboard/return"
                         routerLinkActive="active"
-                        class="text-white hover:text-blue-500 py-2
-                        px-4 text-2xl font-bold">
+                        class="text-white hover:text-black py-2
+                        text-2xl font-bold">
                         Return List
                     </a>
                 </mat-list-item>

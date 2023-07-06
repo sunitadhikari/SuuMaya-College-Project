@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import {
   ReactiveFormsModule,
@@ -47,39 +47,28 @@ import { CustomSnackbarService } from 'src/app/custom.snackbar.service';
   templateUrl: './product-add.component.html',
   styles: [],
 })
-export class ProductAddComponent {
-  category$ = ['Sari', 'lehenga', 'kurtha', 'Gown'];
-  categoryCtrl = new FormControl();
-  sizes = ['MEDIUM', 'LARGE'];
-
-  productForm = new FormGroup({
+export class ProductAddComponent implements OnInit, OnDestroy {
+  productAddForm = new FormGroup({
     name: new FormControl(''),
     price: new FormControl(''),
-    detail: new FormControl(''),
-    category: new FormControl(''),
     size: new FormControl(''),
+    detail: new FormControl(''),
     date: new FormControl(''),
+    category: new FormControl(''),
   });
-  constructor(
-    private productService: ProductService,
-    private categoryService: CategoryService,
-    private snackbar: CustomSnackbarService
-  ) {}
   submit() {
-    const productValue = this.productForm.value;
+    const productValue = this.productAddForm.value;
     const product: Product = {
       name: productValue.name ?? '',
-      detail: productValue.name ?? '',
-      price: productValue.name ?? '',
-      category: productValue.name ?? '',
-      size: productValue.name ?? '',
+      price: productValue.price ?? '',
+      detail: productValue.detail ?? '',
+      category: productValue.category ?? '',
+      size: productValue.size ?? '',
       date: productValue.date ?? '',
     };
-
-    // this.productService.create(product).subscribe((res: any) => {
-    //   if (this.snackbar) {
-    //     this.snackbar.success('Product added successfully');
-    //   }
-    // });
+    this.productService.create(product).subscribe((res) => alert(res.message));
   }
+  ngOnDestroy(): void {}
+  ngOnInit(): void {}
+  constructor(private productService: ProductService) {}
 }

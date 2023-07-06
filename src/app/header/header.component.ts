@@ -14,10 +14,14 @@ import {
   imports: [MatIconModule, RouterLinkActive, RouterLinkWithHref],
 })
 export class HeaderComponent {
-  toggleMenu(): void {
-    const menu = document.getElementById('menu');
-    if (menu) {
-      menu.classList.toggle('hidden');
-    }
+  // toggleMenu(): void {
+  //   const menu = document.getElementById('menu');
+  //   if (menu) {
+  //     menu.classList.toggle('hidden');
+  //   }
+  // }
+  isMenuOpen: boolean = false;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

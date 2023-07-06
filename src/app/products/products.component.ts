@@ -1,15 +1,39 @@
+import { ProductService } from 'src/app/product.service';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  MatPaginator,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, RouterLinkActive, RouterLink, RouterModule, NgFor],
+  imports: [
+    CommonModule,
+    RouterLinkActive,
+    RouterLink,
+    RouterModule,
+    MatPaginatorModule,
+  ],
   templateUrl: './products.component.html',
   styles: [],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
+  // @ViewChild(MatPaginator, { static: true }) paginator:
+  //   | MatPaginator
+  //   | undefined;
+  // totalElements= 100;
+  // pageSize=10;
+  // onPageChange(event : PageEvent):void{
+  //   this.pageSize = event.pageSize;
+  // }
+  // constructor() {}
+  ngOnInit(): void {
+    // const productNameChange$ = this.
+  }
   products = [
     {
       name: 'Lehenga',

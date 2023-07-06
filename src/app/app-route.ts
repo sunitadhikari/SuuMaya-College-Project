@@ -1,3 +1,5 @@
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
@@ -6,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { ProductsComponent } from './products/products.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
@@ -39,11 +42,21 @@ export const routes: Routes = [
     component: ProductsComponent,
   },
   {
+    path: 'about',
+    component: AboutComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+  },
+  {
     path: 'products/detail',
     component: ProductDetailComponent,
   },
   {
     path: 'dashboard',
+    canActivate: [authGuard],
+    canMatch: [authGuard],
     loadChildren: () =>
       import('./dashboard/dashboard.route').then((r) => r.routes),
   },
