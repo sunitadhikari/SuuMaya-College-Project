@@ -10,6 +10,7 @@ export interface Product {
   createdTime?: string;
   updatedTime?: string;
   seller?: string;
+  available?: boolean;
 }
 export interface Category {
   id?: number;
@@ -20,4 +21,9 @@ export interface Feedback {
   username: string;
   // email: string;
   message: string;
+}
+export interface FilterDTO {
+  pageNumber: number;
+  pageSize: number;
+  search?: string;
 }

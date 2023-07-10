@@ -8,22 +8,17 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
-import {
-  MatFormFieldControl,
-  MatFormFieldModule,
-} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLinkWithHref } from '@angular/router';
 // import { FilePickerModule } from 'ngx-awesome-uploader';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { Observable } from 'rxjs';
-import { Category, Product } from 'src/app/product.model';
+import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
-import { CategoryService } from 'src/app/category.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { CustomSnackbarService } from 'src/app/custom.snackbar.service';
+import { FilePickerModule } from 'ngx-awesome-uploader';
 
 @Component({
   selector: 'app-product-add',
@@ -40,6 +35,7 @@ import { CustomSnackbarService } from 'src/app/custom.snackbar.service';
     FormsModule,
     MatFormFieldModule,
     NgFor,
+    FilePickerModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
@@ -55,6 +51,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     detail: new FormControl(''),
     date: new FormControl(''),
     category: new FormControl(''),
+    available: new FormControl(true),
   });
   submit() {
     const productValue = this.productAddForm.value;
@@ -65,6 +62,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
       category: productValue.category ?? '',
       size: productValue.size ?? '',
       date: productValue.date ?? '',
+      available: productValue.available ?? true,
     };
     this.productService.create(product).subscribe((res) => alert(res.message));
   }

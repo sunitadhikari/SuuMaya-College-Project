@@ -1,72 +1,113 @@
+<h2 class="text-2xl font-bold mt-9 mx-8 text-[#ed5a5a] "> Product</h2>
 
-<div class="container mx-auto max-w-4xl">
-    <div class="bg-red-400 rounded-lg shadow-2xl p-6 w-[700px] mx-auto
+<div class="w-full flex flex-col sm:px-2 md:px-8 sm:flex
+    rounded-lgy">
+    <div class="bg-gray-200 rounded-lg shadow-xl p-6
         items-center justify-center gap-5 m-8">
-        <h2 class="text-2xl font-bold mb-6">Add Product</h2>
-        <form [formGroup]="productAddForm" (ngSubmit)="submit()" class=" mx-auto
-            items-center
-            justify-center [&>div>label]:text-xl
-            [&>div>label]:text-bold [&>div>input]:p-5 [&>div>input]:rounded-lg
+        <form [formGroup]="productAddForm" (ngSubmit)="submit()" class="
+            flex flex-col sm:flex-row w-full
+            [&>div>div>label]:text-xl [&>div>div>label]:text-[#ed5a5a]
+            [&>div>div>label]:text-bold [&>div>div>input]:p-5 [&>div>div>input]:rounded-lg
             ">
-            <div class="mb-6">
-                <label for="name" class="block mb-3 font-medium">Product
-                    Name:</label>
-                <input formControlName="name" type="text" placeholder="Lehenga"
-                    class="form-input
-                    w-full" required>
+
+            <div class=" flex flex-col flex-wrap gap-3 grow basis-[60%] ">
+                <span class="mx-auto
+                    text-[#C44055]
+                    text-center text-xl">Details</span>
+                <div class=" flex flex-wrap ">
+                    <div class="flex flex-col basis-[40%]">
+                        <div class="border-[#C44055] border-b basis-[50%]"></div>
+                        <div></div>
+                    </div>
+                    <div class="border border-5 bg-[#c44055] h-[13px]
+                        basis-[20%]
+                        rounded-xl"></div>
+                    <div class="flex flex-col basis-[40%]">
+                        <div class="border-[#C44055] border-b basis-[50%]"></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="">
+                    <label for="name" class="block mb-3 font-medium">Product
+                        Name:</label>
+                    <input formControlName="name" type="text"
+                        placeholder="Lehenga"
+                        class="form-input
+                        w-full" required>
+                </div>
+                <div class="">
+                    <label for="price" class="block mb-3 font-medium">Price:</label>
+                    <input formControlName="price" type="text"
+                        placeholder="Rs.2000"
+                        class="form-input
+                        w-full" required>
+                </div>
+                <div class="">
+                    <label class="block mb-3 font-medium">Date</label>
+                    <input formControlName="date" type="date"
+                        placeholder="2058/10/34"
+                        class="form-input
+                        w-full" required>
+                </div>
+                <div class="">
+                    <label for="size" class="block mb-3 font-medium">Category:</label>
+                    <select formControlName="category" id="size" name="size"
+                        class="form-select w-full p-3
+                        rounded-lg
+                        bg-white" required>
+                        <option value="Lehenga">Lehenga</option>
+                        <option value="Gown">Gown</option>
+                        <option value="Sari">Sari</option>
+                        <option value="Kurtha">Kurtha</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="size" class="block mb-3 font-medium">Size:</label>
+                    <select formControlName="size" id="size" name="size"
+                        class="form-select w-full p-3
+                        rounded-lg
+                        bg-white" required>
+                        <option value="s">Small</option>
+                        <option value="m">Medium</option>
+                        <option value="l">Large</option>
+                        <option value="xxl">Extra Large</option>
+                    </select>
+                </div>
+                <div class="">
+                    <label for="detail" class="block mb-3 font-medium ">Detail:</label>
+                    <textarea formControlName="detail" rows="3"
+                        class="form-textarea w-full rounded-lg p-4"
+                        required></textarea>
+                </div>
             </div>
-            <div class="mb-6">
-                <label for="price" class="block mb-3 font-medium">Price:</label>
-                <input formControlName="price" type="text" placeholder="Rs.2000"
-                    class="form-input
-                    w-full" required>
-            </div>
-            <div class="mb-6">
-                <label class="block mb-3 font-medium">Date</label>
-                <input formControlName="date" type="date"
-                    placeholder="2058/10/34"
-                    class="form-input
-                    w-full" required>
-            </div>
-            <div class="mb-6">
-                <label for="size" class="block mb-3 font-medium">Category:</label>
-                <select formControlName="category" id="size" name="size"
-                    class="form-select w-full p-3
-                    rounded-lg
-                    bg-white" required>
-                    <option value="Lehenga">Lehenga</option>
-                    <option value="Gown">Gown</option>
-                    <option value="Sari">Sari</option>
-                    <option value="Kurtha">Kurtha</option>
-                </select>
-            </div>
-            <div class="mb-6">
-                <label for="size" class="block mb-3 font-medium">Size:</label>
-                <select formControlName="size" id="size" name="size"
-                    class="form-select w-full p-3
-                    rounded-lg
-                    bg-white" required>
-                    <option value="s">Small</option>
-                    <option value="m">Medium</option>
-                    <option value="l">Large</option>
-                    <option value="xxl">Extra Large</option>
-                </select>
-            </div>
-            <div class="mb-6">
-                <label for="detail" class="block mb-3 font-medium ">Detail:</label>
-                <textarea formControlName="detail" rows="3"
-                    class="form-textarea w-full rounded-lg p-4" required></textarea>
-            </div>
-            <div class="flex justify-end ">
-                <button
-                    [disabled]="!productAddForm.valid" type="submit"
-                    [class]="!productAddForm.valid ? 'bg-gray-400 text-black' :
-                    'bg-green-500 text-white'"
-                    class=" rounded-xl
-                    shadow-xl px-4 py-2">Add Product</button>
+            <div class="mx-auto flex-col sm:gap-5 gap:2">
+                <div class="flex mx-auto basis-[30%] px-3 sm:m-9 py-2
+                    border-dotted border-4
+                    h-fit
+                    border-[#dd3737]">
+                    <!-- <mat-label>Profil Picture</mat-label> -->
+                    <ngx-awesome-uploader>
+                    </ngx-awesome-uploader>
+                </div>
+                <div class=" flex justify-center p-3">
+                    <mat-checkbox formControlName="available"
+                        class="rounded-md ">
+                        <span class="text-[#d35547] rounded-md px-2 py-1
+                            text-xl">Available</span>
+                    </mat-checkbox>
+                </div>
+                <div class="flex mx-auto justify-center">
+
+                    <button
+                        [disabled]="!productAddForm.valid" type="submit"
+                        [class]="!productAddForm.valid ? 'bg-gray-300
+                        text-black' :
+                        'bg-green-500 text-white'"
+                        class=" rounded-xl
+                        shadow-xl px-4 py-2 text-[#ce5050]">Add Product</button>
+                </div>
             </div>
         </form>
         <!-- <pre>{{productAddForm.value | json}}</pre> -->
-
     </div>
 </div>

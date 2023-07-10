@@ -50,7 +50,7 @@ export const routes: Routes = [
     component: ContactComponent,
   },
   {
-    path: 'products/detail',
+    path: 'products/detail:id',
     component: ProductDetailComponent,
   },
   {

@@ -1,28 +1,63 @@
 
 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 m-6">
     <div *ngFor="let product of products" class="bg-[#eb6c6c] p-4 shadow-lg ">
-        <img src="{{ product.image }}" alt="{{ product.name }}" class="
-            md:h-[250px] md:w-[300px] sm:h-[50px] sm:w-[80px] object-cover">
-        <h3 class="text-xl font-bold text-white">{{ product.name }}</h3>
-        <span class="text-lg font-bold text-white">{{product.price}}</span>
-        <p class="text-white">{{ product.details}}</p>
-        <div class="flex justify-between">
+        <!-- <div class="">
+            <div class="">
+                <div class="">
+                    <img src="{{ product.image }}" alt="{{ product.name }}"
+                        class="
+                        md:h-[250px] md:w-[300px] sm:h-[50px] sm:w-[80px]
+                        object-cover">
+                </div>
+                <div class="">
+                    <img src="{{ product.image }}" alt="{{ product.name }}"
+                        class="
+                        md:h-[250px] md:w-[300px] sm:h-[50px] sm:w-[80px]
+                        object-cover">
+                </div>
+                <div class="">
+                    <img src="{{ product.image }}" alt="{{ product.name }}"
+                        class="
+                        md:h-[250px] md:w-[300px] sm:h-[50px] sm:w-[80px]
+                        object-cover">
+                </div>
+                <div class="n-next"></div>
+                <div class="n-prev"></div>
+                 Add more  divs for additional images 
+            </div>
+        </div> -->
+        <img src="{{ product.image }}" alt="{{ product.name }}"
+            class="
+            md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
+            object-cover text-lg text-black">
+        <h3 class="sm:text-xl text-sm md:font-bold font-medium text-purple-700">{{
+            product.name }}</h3>
+        <span class="sm:text-lg text-sm md:font-medium font-light text-black">{{product.price}}</span><br>
+        <span class="sm:text-base text-sm md:font-medium font-light text-black">Size:
+            {{product.size}}</span>
+        <p class="text-black">{{ product.details}}</p>
+        <div class="flex flex-wrap justify-between mx-auto gap-2">
             <button type="button" class="bg-black text-white hover:bg-blue-700
-                font-bold
-                py-1.5 rounded-md
-                px-3 mt-3">Rent Now</button>
-            <a [routerLink]="'../products/detail/'">
-                <button type="button" class="bg-red-400 hover:bg-green-500
-                    text-white
-                    font-bold
-                    py-1.5 rounded-md
-                    px-3 mt-3">View More</button>
+                rounded-md text-xs py-[3px]
+                px-[8px] font-[20px] ">Rent Now</button>
+            <button type="button" class="bg-green-800 text-black
+                hover:bg-blue-700
+                text-xs py-[3px] rounded-md
+                px-[8px] font-[20px] ">Add to Cart</button>
+            <a [routerLink]="'../products/detail'">
+                <button type="button" class="bg-red-500 hover:bg-green-500
+                    text-black
+
+                    text-xs py-[3px] rounded-md
+                    px-[8px] font-[20px]">View More</button>
             </a>
         </div>
+
     </div>
-    <!-- <mat-paginator #paginator class="paginator" [pageSize]="10"
-        [length]="totalElements"
-        [pageSizeOptions]="[5, 10, 15, 25, 50, 100]"
-        (page)="onPageChange($event)">
-    </mat-paginator> -->
+    <div class="flex justify-center">
+        <mat-paginator [pageSizeOptions]="[10, 50, 100]"
+            [length]="totalProducts" [pageSize]="pageSize"
+            (page)="onPageChange($event)"></mat-paginator>
+    </div>
+
 </div>
