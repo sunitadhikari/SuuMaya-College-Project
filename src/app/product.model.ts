@@ -1,10 +1,10 @@
 export interface Product {
   id?: number;
-  // images: S3Object[];
+  image?: string;
   name: string;
   detail: string;
   price: string;
-  category: string;
+  category?: string;
   date?: string;
   size: string;
   createdTime?: string;
