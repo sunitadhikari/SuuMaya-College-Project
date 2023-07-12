@@ -11,7 +11,9 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 m-6">
     <div *ngFor="let product of products$ |async" class="bg-[#ee7777] p-4
         shadow-md">
-        <img src="{{ product.image }}" alt="{{ product.name }}" class="
+        <img src="{{ (product?.images | image)[0] }}" alt="{{ product.name
+            }}"
+            class="
             md:h-[250px] md:w-[300px] sm:h-[50px] sm:w-[80px] object-cover">
         <h3 class="text-xl font-bold text-white">{{ product.name }}</h3>
         <span class="text-lg font-bold text-white">{{product.price}}</span>
@@ -23,7 +25,7 @@
                     hover:bg-blue-700
                     font-bold
                     py-1.5 rounded-md
-                    px-3 mt-3">Edit</button>
+                    px-3 mt-3" (click)="edit(product.id)">Edit</button>
             </a>
             <a [routerLink]="'../product/detail'">
                 <button type="button" class="bg-red-400 hover:bg-green-500

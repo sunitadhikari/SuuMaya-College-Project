@@ -12,6 +12,7 @@ import { ProductService } from '../product.service';
 import { PageEvent } from '@angular/material/paginator';
 import { FilterDTO, Product } from '../product.model';
 import { Observable, map, merge, startWith, switchMap } from 'rxjs';
+import { ImagePipe } from '../image.pipe';
 
 @Component({
   selector: 'app-products',
@@ -23,6 +24,7 @@ import { Observable, map, merge, startWith, switchMap } from 'rxjs';
     RouterModule,
     MatPaginatorModule,
     HttpClientModule,
+    ImagePipe,
   ],
   templateUrl: './products.component.html',
   styles: [],

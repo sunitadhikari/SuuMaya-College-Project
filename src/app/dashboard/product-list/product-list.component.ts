@@ -16,6 +16,7 @@ import {
   MatPaginatorModule,
   PageEvent,
 } from '@angular/material/paginator';
+import { ImagePipe } from 'src/app/image.pipe';
 
 @Component({
   selector: 'app-product-list',
@@ -28,6 +29,7 @@ import {
     NgFor,
     MatPaginatorModule,
     HttpClientModule,
+    ImagePipe,
   ],
   templateUrl: './product-list.component.html',
   styles: [],
@@ -58,9 +60,10 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     );
   }
   productList: Product[] = [];
-  onPageChange(event: PageEvent): void {
-    // if(productId){
-    //   this.router.navigate(['/product/edit', productId])
-    // }
+  onPageChange(event: PageEvent): void {}
+  edit(productId?: number) {
+    if (productId) {
+      this.router.navigate(['/product/edit', productId]);
+    }
   }
 }

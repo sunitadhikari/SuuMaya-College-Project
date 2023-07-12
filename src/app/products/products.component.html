@@ -3,7 +3,7 @@
     <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] p-4
         shadow-lg ">
 
-        <img src="{{ product.image }}" alt="{{ product.name }}"
+        <img src="{{ (product?.images | image)[0] }}" alt="{{ product.name }}"
             class="
             md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
             object-cover text-lg text-black">
