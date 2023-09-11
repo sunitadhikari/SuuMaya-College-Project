@@ -1,36 +1,80 @@
-
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 m-6">
-    <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] p-4
-        shadow-lg ">
-
-        <img src="{{ (product?.images | image)[0] }}" alt="{{ product.name }}"
-            class="
-            md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
-            object-cover text-lg text-black">
-        <h3 class="sm:text-xl text-sm md:font-bold font-medium text-purple-700">{{
-            product.name }}</h3>
-        <span class="sm:text-lg text-sm md:font-medium font-light text-black">{{product.price}}</span><br>
-        <span class="sm:text-base text-sm md:font-medium font-light text-black">Size:
-            {{product.size}}</span>
-        <p class="text-black">{{ product.detail}}</p>
-        <div class="flex flex-wrap justify-between mx-auto gap-2">
-            <button type="button" class="bg-black text-white hover:bg-purple-600
-                rounded-md text-xs py-[3px]
-                px-[8px] font-[20px] ">Rent Now</button>
-            <button type="button" class="bg-green-800 text-black
-                hover:bg-blue-700
-                text-xs py-[3px] rounded-md
-                px-[8px] font-[20px] ">Add to Cart</button>
-            <!-- <a routerLink='../products/{{product.name}}'> -->
-
-            <button type="button" class="bg-red-700 hover:bg-green-500
-                text-xs text-white font-[20px] py-[3px] rounded-md px-[8px] "
-                (click)="viewMore(product.id)">View More</button>
+<div class="px-6 ">
+    <div class="py-4 relative mx-auto">
+        <div class="flex image-container mx-auto">
+            <img src="../../assets/aditit.jpg" class="md:w-[292px]
+                md:h-[400px]
+                w-[60px] h-[100px] sm:w-[200px] sm:h-[150px]
+                object-cover object-top ">
+            <img src="../../assets/gurungdress.jpg" class="md:w-[292px]
+                md:h-[400px]
+                w-[60px] h-[100px] sm:w-[200px] sm:h-[150px]
+                object-cover object-top">
+            <img src="../../assets/priyanakakarki.jpg" class="md:w-[292px]
+                md:h-[400px] sm:w-[200px] sm:h-[150px]
+                w-[60px] h-[100px]
+                object-cover object-top">
+            <img src="../../assets/alia.jpg" class="md:w-[292px] md:h-[400px]
+                w-[60px] h-[100px] sm:w-[200px] sm:h-[150px]
+                object-cover object-top">
+            <img src="../../assets/sari3.jpg" class="md:w-[292px]
+                md:h-[400px]
+                w-[60px] h-[100px] sm:w-[200px] sm:h-[150px]
+                object-cover object-top">
+        </div>
+        <div class="absolute text-center top-[70%] left-[55%] transform
+            -translate-x-1/2 -translate-y-1/2">
+            <h2 class="italic text-black sm:underline
+                text-decoration-thickness-5
+                text-underline-offset-8 md:font-bold
+                md:text-7xl text-center md:py-4 sm:underline-offset-4
+                font-medium text-xl underline md:underline-offset-8 ">Discover</h2>
+            <span class="italic text-center sm:text-xl sm:font-normal
+                md:font-semibold md:text-3xl text-[10px]
+                font-[10px] text-black">YOUR STYLE THIS WEDDING SEASON<br>WITH
+                SOME
+                TRENDY
+                LOOK!!</span>
         </div>
     </div>
-</div>
-<div class="">
-    <mat-paginator [pageSizeOptions]="[10, 50, 100]"
-        [length]="totalProducts" [pageSize]="pageSize"
-        (page)="onPageChange($event)"></mat-paginator>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 ">
+        <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] p-4
+            shadow-lg ">
+
+            <img src="{{ (product?.images | image)[0] }}" alt="{{ product.name
+                }}"
+                class="
+                md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
+                object-cover text-lg text-black">
+            <h3 class="sm:text-xl text-sm md:font-bold font-medium
+                text-purple-700">{{
+                product.name }}</h3>
+            <span class="sm:text-lg text-sm md:font-medium font-light
+                text-black">{{product.price}}</span><br>
+            <span class="sm:text-base text-sm md:font-medium font-light
+                text-black">Size:
+                {{product.size}}</span>
+            <p class="text-black">{{ product.detail}}</p>
+            <div class=" flex-wrap justify-between mx-auto gap-2">
+                <button type="button" class="bg-black text-white
+                    hover:bg-purple-600
+                    rounded-md text-xs py-[3px]
+                    px-[8px] font-[20px] ">Rent Now</button>
+                <button type="button" class="bg-green-800 text-black
+                    hover:bg-blue-700
+                    text-xs py-[3px] rounded-md
+                    px-[8px] font-[20px] ">Add to Cart</button>
+                <!-- <a routerLink='../products/{{product.name}}'> -->
+
+                <button type="button" class="bg-red-700 hover:bg-green-500
+                    text-xs text-white font-[20px] py-[3px] rounded-md px-[8px]
+                    "
+                    (click)="viewMore(product.id)">View More</button>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <mat-paginator [pageSizeOptions]="[10, 50, 100]"
+            [length]="totalProducts" [pageSize]="pageSize"
+            (page)="onPageChange($event)"></mat-paginator>
+    </div>
 </div>

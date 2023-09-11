@@ -23,18 +23,16 @@ import { Order, Return } from '../order.model';
     MatTableModule,
     MatPaginatorModule,
     RouterModule,
-    MatFormFieldModule,
     RouterModule,
     RouterLink,
     RouterLinkWithHref,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
   ],
   templateUrl: './return-list.component.html',
   styles: [],
 })
 export class ReturnListComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  products: MatTableDataSource<Return>;
   displayedColumns: string[] = [
     'id',
     'username',
@@ -43,130 +41,128 @@ export class ReturnListComponent implements OnInit, AfterViewInit {
     'address',
     'onTime',
   ];
-  dataSource = new MatTableDataSource<Order>();
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  totalProducts = 100;
+  pageSize = 10;
+  pageIndex = 0;
   constructor(private returnService: ReturnService) {}
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.products = new MatTableDataSource<Return>(this.getProducts());
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
   }
-
-  // ngOnInit() {
-  //   this.dataSource.data = this.ELEMENT_DATA;
-  // }
-
-  orderForm = new FormGroup({
-    username: new FormControl<string>(''),
-  });
-
-  ELEMENT_DATA: Return[] = [
-    {
-      id: 1,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 2,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 3,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 4,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 5,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 6,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 7,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 8,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 9,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 10,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 11,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 12,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-    {
-      id: 13,
-      username: 'Sunita',
-      productName: 'SARI',
-      date: '2023/10/21',
-      address: 'Pokhara',
-      onTime: true,
-    },
-  ];
+  onPageChange(event: any): void {
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex;
+  }
+  private getProducts(): Return[] {
+    return [
+      {
+        id: 1,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 2,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 3,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 4,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 5,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 6,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 7,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 8,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 9,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 10,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 11,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 12,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+      {
+        id: 13,
+        username: 'Sunita',
+        productName: 'SARI',
+        date: '2023/10/21',
+        address: 'Pokhara',
+        onTime: true,
+      },
+    ];
+  }
 }

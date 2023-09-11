@@ -17,12 +17,12 @@
             gap-5"
             id="menu">
             <li>
-                <a routerLink="/home" routerLinkActive="!text-green-500
-                    text-black
-                    p-2 text-lg"
+                <a routerLink="/home" routerLinkActive="active text-orange-500
+                    p-2 text-lg" [routerLinkActiveOptions]="{exact: true}"
                     class=" hover:text-orange-500
                     text-lg sm:text-2xl font-sans sm:font-semibold ">Home</a>
             </li>
+
             <li>
                 <a routerLink="/about" class="text-black
                     hover:text-orange-500 text-lg sm:text-2xl font-sans
@@ -55,7 +55,6 @@
                     sm:font-semibold
                     ">Sign Up</a>
             </li>
-
         </ul>
     </nav>
 </div>
