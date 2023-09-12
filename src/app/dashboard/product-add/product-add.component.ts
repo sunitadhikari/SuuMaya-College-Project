@@ -46,7 +46,7 @@ import { FilePickerModule } from 'ngx-awesome-uploader';
 export class ProductAddComponent implements OnInit, OnDestroy {
   productAddForm = new FormGroup({
     name: new FormControl(''),
-    price: new FormControl(''),
+    price: new FormControl(0),
     size: new FormControl(''),
     detail: new FormControl(''),
     date: new FormControl(''),
@@ -57,7 +57,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     const productValue = this.productAddForm.value;
     const product: Product = {
       name: productValue.name ?? '',
-      price: productValue.price ?? '',
+      price: productValue.price ?? 0,
       detail: productValue.detail ?? '',
       category: productValue.category ?? '',
       size: productValue.size ?? '',

@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import {
+  RouterLinkActive,
+  RouterLink,
+  RouterModule,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-sari',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLinkActive, RouterLink, RouterModule, NgFor],
   templateUrl: './sari.component.html',
   styles: [],
 })
 export class SariComponent implements OnInit {
   products: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
     this.fetchProducts();
@@ -27,5 +33,10 @@ export class SariComponent implements OnInit {
         console.error('Error fetching products:', error);
       }
     );
+  }
+  viewMore(productId: number) {
+    debugger;
+    this.router.navigate(['/products/detail', productId]);
+    debugger;
   }
 }

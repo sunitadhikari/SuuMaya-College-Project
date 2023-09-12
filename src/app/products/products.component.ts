@@ -31,7 +31,6 @@ import { ImagePipe } from '../image.pipe';
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   products$: Observable<Product[]>;
   pageSize = 10;
   totalProducts = 0;

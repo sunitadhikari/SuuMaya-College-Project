@@ -3,73 +3,63 @@
   py-5">
   <div class="bg-gray-200 w-full sm:py-10 sm:px-7 px-3
     py-5 rounded-md">
-    <h1 class="text-xl font-bold text-[rgb(229,91,114)] mx-8 mb-2">Product</h1>
-    <div class=" flex sm:flex-row flex-col gap-7 w-full">
-      <div class="bg-white w-[50%]">
-        <div *ngFor="let product of
-          products">
-          <img class="hover:cursor-zoom-out" src="{{ product.image }}" alt="{{
-            product.name
-            }}"
-            class="md:h-full md:w-[300px] sm:h-[50px]
-            sm:w-[80px] w-full justify-stretch">
-        </div>
-        <div>
-        </div>
+    <!-- <h1 class="text-xl font-bold text-[rgb(229,91,114)] mx-8 mb-2">Product</h1> -->
+    <div class=" flex sm:flex-row flex-col gap-5 w-full">
+      <!-- <div class="bg-white w-[50%]"> -->
+      <div *ngFor="let product of
+        products" class="w-[50%] bg-white px-7 py-4 gap-4">
+        <span class="font-bold text-2xl p-3 sm:p-6
+          md:p-9 text-[#ef4b4b]">{{product.name}}</span>
+        <img class="hover:cursor-zoom-out" src="{{ product.image }}"
+          alt="{{
+          product.name
+          }}"
+          class="md:h-fit md:w-full sm:h-[50px]
+          sm:w-[80px] w-full object-fit h-full justify-stretch p-2 sm:p-4
+          md:p-7">
+
       </div>
-      <div *ngFor="let product of products" class="flex flex-col w-[50%]
-        bg-white px-7 py-7 gap-4">
-        <h2 class="font-extrabold text-3xl text-[#ef4b4b]">{{product.name}}</h2>
-        <p class="font-medium text-base text black">{{product.detail}}</p>
-        <span class="font-semibold text-[#f65f5f] text-2xl">Size:
-          {{product.size}}</span>
-        <span class="font-semibold text-[#f65f5f] text-2xl">
-          {{product.price}}</span>
-      </div>
+      <!-- </div> -->
+      <form [formGroup]="detailForm" (ngSubmit)="submit()" class="w-[50%]">
+        <div *ngFor="let product of products" class="flex flex-col
+          bg-white px-7 py-4 gap-4">
+          <h2 class="font-extrabold text-xl text-[#ef4b4b]">Detail</h2>
+          <p class="font-medium text-base text black">{{product.detail}}</p>
+          <!-- {{product.sizes}} -->
+          <div class="text-black text-xs sm:gap-2 md:gap-3">
+            <div *ngFor="let size of sizes">
+              <input name="sizes" value="{{size}}"
+                formControlName="sizes" type="radio" required>
+              <label for="{{size}}">{{size}}</label><br>
+            </div>
+          </div>
+          <span class="font-semibold text-[#f65f5f] text-2xl">Quantity:<br>
+            <mat-form-field class="text-black font-[20px]">
+              <input matInput type="number" class="font-[15px]"
+                placeholder="Min
+                value"
+                formControlName="quantity">
+            </mat-form-field>
+          </span>
+          <span class="font-semibold text-[#f65f5f] text-2xl">
+            {{
+            (detailForm.get('quantity')?.value ?? 1) * (product.price)
+            }}</span>
+          <div class="flex justify-self-end">
+            <button [disabled]="!detailForm.valid"
+              [class]="!detailForm.valid?
+              'bg-gray-400 text-black' : 'bg-[#f65f5f] text-white'" class="
+              font-extrabold text-black
+              px-3 py-1.5
+              text-xl justify-self-end
+              rounded-md">Rent</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <!-- <div class="">
-          <img src="{{ product.image }}" alt="{{ product.name
-            }}"
-            class="md:h-[250px] md:w-[300px] sm:h-[50px]
-            sm:w-[80px] object-cover">
-        </div>
-        <div class="">
-          <img src="{{ product.image }}" alt="{{ product.name
-            }}"
-            class="md:h-[250px] md:w-[300px] sm:h-[50px]
-            sm:w-[80px] object-cover">
-        </div> -->
-  <!-- doen <div class="n-next"></div>
-          <div class="n-prev"></div>
-        </div>
-      </div>
-      <div class=" flex flex-col bg-white w-full px-7 py-5">
-        <div *ngFor="let product of products" class="flex flex-wrap
-          flex-col gap-5 ">
-          <span class="font-extrabold text-3xl text-[#f37777]">{{product.name}}</span>
-          <p class="font-medium text-base text black">{{product.detail}}</p>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- <div>
-    <swiper-container [options]="swipeOptions" [pager]="false" #homeSlide>
-      <swiper-slide>
-        <img src="https://source.unsplash.com/random/512x512">
-      </swiper-slide>
-      <swiper-slide> 
-        <img src="https://source.unsplash.com/random/512x512?nature">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://source.unsplash.com/random/512x512?portrait">
-      </swiper-slide>
-    </swiper-container>
-  </div> -->
-  <!-- </div> -->
-  <!-- <div *ngIf="productDetails" class="product-details">
-  <h2>{{ productDetails.name }}</h2>
-  <p>{{ productDetails.price }}</p>
-  <p>{{ productDetails.details }}</p> -->
-  <!-- Display other details as needed -->
-  <!-- </div> -->
+  <pre>
+
+  {{detailForm.value | json}}
+</pre>
+</div>

@@ -48,7 +48,7 @@ import { ProductService } from 'src/app/product.service';
 export class ProductEditComponent implements OnInit, OnDestroy {
   productEditForm = new FormGroup({
     name: new FormControl(''),
-    price: new FormControl(''),
+    price: new FormControl(0),
     size: new FormControl(''),
     detail: new FormControl(''),
     date: new FormControl(''),
@@ -62,7 +62,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     const productValue = this.productEditForm.value;
     const product: Product = {
       name: productValue.name ?? '',
-      price: productValue.price ?? '',
+      price: productValue.price ?? 0,
       detail: productValue.detail ?? '',
       category: productValue.category ?? '',
       size: productValue.size ?? '',

@@ -1,5 +1,4 @@
 import { HttpClientModule } from '@angular/common/http';
-import { JsonResponse } from './../../feedback.service';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import {
