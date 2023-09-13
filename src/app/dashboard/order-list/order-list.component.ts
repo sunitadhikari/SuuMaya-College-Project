@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {
   MatPaginator,
   MatPaginatorModule,
   PageEvent,
 } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { merge } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 import { Order } from '../order.model';
@@ -38,40 +38,46 @@ import { RouterModule, RouterLink, RouterLinkWithHref } from '@angular/router';
   templateUrl: './order-list.component.html',
   styles: [],
 })
-export class OrderListComponent implements OnInit {
-  displayedColumns$: Observable<string[]>;
+export class OrderListComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = [
+    'id',
+    'user_id',
+    'productName',
+    'date',
+    'address',
+    'price',
+    'boughtBy',
+    'paymentMethod',
+  ];
   dataSource = new MatTableDataSource<Order>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  pageSize = 12;
-  totalOrders = 0;
-  pageIndex = 0;
+
+  totalElements = 0;
 
   constructor(private orderService: OrderService) {}
-
-  ngOnInit() {
-    this.displayedColumns$ = this.orderService.displayedColumns$;
+  ngOnInit() {}
+  ngAfterViewInit(): void {
     this.updateOrders();
   }
-
   updateOrders(): void {
     merge(this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
-          const filter: FilterDTO = {
+          const username = localStorage.getItem('username');
+          console.log(username);
+          if (!username) return EMPTY;
+          const filter = {
             pageNumber: this.paginator.pageIndex + 1,
             pageSize: this.paginator.pageSize,
+            username: username,
           };
           return this.orderService.getOrders(filter);
         })
       )
       .subscribe((data) => {
-        this.dataSource.data = data;
+        this.dataSource.data = data.body as Order[];
+        this.totalElements = data.totalElements;
       });
-  }
-
-  onPageChange(event: PageEvent): void {
-    this.pageIndex = event.pageIndex;
-    this.updateOrders();
   }
 }

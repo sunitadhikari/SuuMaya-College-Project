@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Feedback } from './product.model';
 import { environment } from 'src/environments/environmen';
+import { JsonResponse } from './app.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,4 @@ export class FeedbackService {
     );
   }
   constructor(private http: HttpClient) {}
-}
-export interface JsonResponse {
-  message: string;
 }

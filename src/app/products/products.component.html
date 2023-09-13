@@ -36,7 +36,6 @@
                 LOOK!!</span>
         </div>
     </div>
-
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 ">
         <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-4
             sm:p-2 p-1.5
@@ -65,11 +64,14 @@
                     text-xs py-[3px] rounded-md
                     px-[8px] font-[20px] ">Add to Cart</button> -->
             <!-- <a routerLink='../products/{{product.name}}'> -->
-
-            <span class="bg-green-600 text-white px-2 py-1 rounded-sm"
-                *ngIf="product.available">Available</span>
-            <span class="bg-red-600 text-white px-2 py-1 rounded-sm"
-                *ngIf="!product.available"> Not Available</span>
+            <div class="p-2">
+                <span class="bg-green-600 text-white text-xs font-[15px] px-2
+                    py-1 rounded-md"
+                    *ngIf="product.available">Available</span>
+                <span class="bg-red-600 text-white px-2 py-1 text-xs font-[15px]
+                    rounded-md"
+                    *ngIf="!product.available"> Not Available</span>
+            </div>
             <div class="flex flex-wrap justify-end mx-auto gap-2 mt-2">
                 <button type="button" class="bg-black hover:bg-green-500
                     text-xs text-white font-[20px] py-[3px] rounded-md px-[8px]

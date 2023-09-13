@@ -7,22 +7,47 @@
     border border-gray-400 rounded-lg ">
     <div class="overflow-x-scroll md:overflow-x-scroll-hidden flex
       justify-evenly mx-auto items-center">
-      <table mat-table [dataSource]="dataSource" class="min-w-[768px] md:w-full
-        mat-elevation-z8 bg-gray-100 mx-auto items-center">
-        <ng-container *ngFor="let id of displayedColumns$ | async"
-          [matColumnDef]="id">
-          <th mat-header-cell *matHeaderCellDef>{{ id }}</th>
-          <td mat-cell *matCellDef="let element" class="dark-line">{{
-            element[id] }}</td>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns$ |async "
-          class="dark-line"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns$ | async"></tr>
+        <ng-container matColumnDef="user_id">
+          <th mat-header-cell *matHeaderCellDef> User ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef>Product Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+        <ng-container matColumnDef="boughtBy">
+          <th mat-header-cell *matHeaderCellDef> BoughtBy </th>
+          <td mat-cell *matCellDef="let element"> {{element.boughtBy}} </td>
+        </ng-container>
+        <ng-container matColumnDef="paymentMethod">
+          <th mat-header-cell *matHeaderCellDef> paymentMethod </th>
+          <td mat-cell *matCellDef="let element"> {{element.paymentMethod}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-      [length]="totalOrders" [pageSize]="pageSize"
-      (page)="onPageChange($event)">
+    <mat-paginator [pageSize]="10"
+      [length]="totalElements">
     </mat-paginator>
   </div>
 </div>

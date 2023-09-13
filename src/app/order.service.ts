@@ -3,27 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Order } from './dashboard/order.model';
 import { FilterDTO } from './product.model';
+import { environment } from 'src/environments/environmen';
+import { JsonResponse } from './app.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  displayedColumns$: Observable<string[]> = of([
-    'Username',
-    'ProductName',
-    'Date',
-    'Address',
-    'Price',
-    'PaymentMethod',
-    'OnTime',
-  ]);
-
   constructor(private httpClient: HttpClient) {}
-
-  getOrders(filter: FilterDTO): Observable<Order[]> {
-    return this.httpClient.post<Order[]>('/api/orders/filter', filter);
-  }
-  get() {
-    return this.httpClient.get<Order[]>('http://loclhost:3000/orders');
+  getOrders(
+    filter: FilterDTO & { username: string }
+  ): Observable<JsonResponse> {
+    return this.httpClient.post<JsonResponse>(
+      `${environment.apiUrl}/orders/filter`,
+      filter
+    );
   }
 }
