@@ -25,12 +25,12 @@ import { merge } from 'rxjs';
   styles: [],
 })
 export class ReturnListComponent implements OnInit, AfterViewInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   products: MatTableDataSource<Return>;
   displayedColumns: string[] = [
     'id',
     'user_id',
-    'username',
+    'boughtBy',
     'productName',
     'date',
     'address',
@@ -42,8 +42,9 @@ export class ReturnListComponent implements OnInit, AfterViewInit {
   pageIndex = 0;
   constructor(private returnService: ReturnService) {}
   ngOnInit(): void {}
-
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.updateReturn();
+  }
   updateReturn(): void {
     merge(this.paginator.page)
       .pipe(

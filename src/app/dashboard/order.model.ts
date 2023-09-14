@@ -10,7 +10,6 @@ export interface Order {
 export interface Return {
   id: number;
   user_id: number;
-  username: string;
   productName: string;
   date: string;
   address: string;

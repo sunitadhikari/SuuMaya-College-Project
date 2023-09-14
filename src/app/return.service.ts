@@ -9,11 +9,11 @@ import { environment } from 'src/environments/environmen';
   providedIn: 'root',
 })
 export class ReturnService {
-  constructor(private HttpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
   getReturn(
     filter: FilterDTO & { username: string }
   ): Observable<JsonResponse> {
-    return this.HttpClient.post<JsonResponse>(
+    return this.httpClient.post<JsonResponse>(
       `${environment.apiUrl}/return/filter`,
       filter
     );

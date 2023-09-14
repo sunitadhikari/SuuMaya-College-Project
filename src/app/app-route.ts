@@ -9,6 +9,7 @@ import { Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { ProductsComponent } from './products/products.component';
 import { authGuard } from './auth.guard';
+import { RentByTypeComponent } from './rent-by-type/rent-by-type.component';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,11 @@ export const routes: Routes = [
     path: 'products',
     component: ProductsComponent,
   },
+  {
+    path: 'rentByType',
+    component: RentByTypeComponent,
+  },
+
   {
     path: 'about',
     component: AboutComponent,
