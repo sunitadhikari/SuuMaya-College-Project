@@ -8,10 +8,11 @@ export interface Order {
   price: string;
 }
 export interface Return {
-  id: number;
-  user_id: number;
+  returnId: number;
+  returnedDate: Date;
   productName: string;
-  date: string;
+  boughtBy: string;
+  orderId: number;
   address: string;
   onTime: boolean;
 }

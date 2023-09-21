@@ -1,3 +1,5 @@
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
@@ -6,6 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, MatIconModule],
 })
 export class FooterComponent {}

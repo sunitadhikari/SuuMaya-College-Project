@@ -1,5 +1,28 @@
-<div class="flex gap-5 mx-6 my-4">
-    <span class="font-poppins text-2xl mt-9 text-[#f04a68]">Product List</span>
+<div class="flex flex-row gap-7 sm:gap-9 md:gap-16 mx-6 my-4">
+    <div>
+        <span class="font-bold text-2xl mt-12 text-[#f04a68]">Product List</span>
+    </div>
+    <div class="mt-12">
+        <label for="product"></label>
+        <select name="product" class="font-bold text-2xl text-[#f04a68]
+            px-3
+            py-1 rounded-md">
+            <option value="items" class="font-thin text-base text-[#f04a68]
+                ">
+                <a routerLink="/dashboard/product">Items </a></option>
+            <option value="lehenga" class="font-thin text-base text-[#f04a68]
+                "> <a routerLink="../lehenga">Lehenga</a></option>
+            <option value="kurtha" class="font-thin text-base text-[#f04a68]
+                "> <a routerLink="/dashboard/kurth"> Kurtha </a></option>
+            <option value="sari" class="font-thin text-base text-[#f04a68]
+                "> <a routerLink="/dashboard/sari"> Sari </a></option>
+            <option value="gown" class="font-thin text-base text-[#f04a68]
+                "> <a routerLink="/dashboard/gown"> Gown </a></option>
+            <option value="cultural_dress" class="font-thin text-base
+                text-[#f04a68]
+                "> <a routerLink="/dashboard/cultural_dress">Cultural Dress</a></option>
+        </select>
+    </div>
 </div>
 <div class="flex justify-end pb-3 mr-5">
     <a routerLink="../product/add">

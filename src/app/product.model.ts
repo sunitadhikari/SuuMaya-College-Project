@@ -11,6 +11,7 @@ export interface Product {
   updatedTime?: string;
   seller?: string;
   available?: boolean;
+  searchValue?: string;
 }
 export interface Category {
   id?: number;

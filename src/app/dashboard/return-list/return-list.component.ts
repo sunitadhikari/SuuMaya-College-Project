@@ -26,15 +26,13 @@ import { merge } from 'rxjs';
 })
 export class ReturnListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  products: MatTableDataSource<Return>;
   displayedColumns: string[] = [
-    'id',
-    'user_id',
+    'returnId',
     'boughtBy',
     'productName',
-    'date',
-    'address',
+    'returnedDate',
     'onTime',
+    'orderId',
   ];
   dataSource = new MatTableDataSource<Return>();
   totalElements = 0;
@@ -62,6 +60,7 @@ export class ReturnListComponent implements OnInit, AfterViewInit {
         })
       )
       .subscribe((data) => {
+        console.log(data);
         this.dataSource.data = data.body as Return[];
         this.totalElements = data.totalElements;
       });
