@@ -54,7 +54,7 @@ export class ReturnListComponent implements OnInit, AfterViewInit {
           const filter = {
             pageNumber: this.paginator.pageIndex + 1,
             pageSize: this.paginator.pageSize,
-            username: username,
+            username: username ?? '',
           };
           return this.returnService.getReturn(filter);
         })

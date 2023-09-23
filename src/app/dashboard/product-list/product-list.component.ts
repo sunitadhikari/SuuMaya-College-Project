@@ -16,6 +16,7 @@ import {
   PageEvent,
 } from '@angular/material/paginator';
 import { ImagePipe } from 'src/app/image.pipe';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
@@ -24,6 +25,8 @@ import { ImagePipe } from 'src/app/image.pipe';
     CommonModule,
     RouterLinkActive,
     RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     NgFor,
     MatPaginatorModule,
@@ -39,15 +42,21 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   pageSize = 10;
   totalProducts = 0;
   pageIndex = 0;
+  categoryCtrl = new FormControl('Saree');
+  categories = ['Saree', 'Kurtha', 'lehenga', 'gown', 'cultural Dress'];
   constructor(private productService: ProductService, private router: Router) {}
   ngOnInit(): void {}
   ngAfterViewInit(): void {
-    this.products$ = merge(this.paginator.page).pipe(
+    this.products$ = merge(
+      this.categoryCtrl.valueChanges,
+      this.paginator.page
+    ).pipe(
       startWith({}),
       switchMap(() => {
-        const filter: FilterDTO = {
+        const filter = {
           pageNumber: this.paginator.pageIndex + 1,
           pageSize: this.paginator.pageSize,
+          category: this.categoryCtrl.value ?? '',
         };
         return this.productService.getProducts(filter).pipe(
           map((jsonResponse) => {

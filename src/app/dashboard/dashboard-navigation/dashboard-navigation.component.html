@@ -1,104 +1,104 @@
  <mat-sidenav-container autosize>
-    <mat-sidenav mat-sidenav #drawer #sidenav fixedInViewport=""
-        [disableClose]="(isNotHandSet$ | async)"
-        [mode]="(isNotHandSet$ | async) ? 'side': 'over'" class="min-w-[15%]"
-        [opened]="isNotHandSet$ | async">
-        <div class="flex flex-col bg-gradient-to-t from-[#ceeade] to-[#ec516b]
-            h-full w-fit rounded-r-3xl
-            pt-6 ">
-            <img src="..//../../assets/logo.png" class="h-28 w-28 mx-auto">
-            <mat-list role="list" class="flex flex-row mx-auto">
-                <div class="flex mx-auto ml-7">
-                    <mat-icon>inventory</mat-icon>
-                    <mat-list-item>
-                        <a routerLink="/dashboard/product"
-                            routerLinkActive="active
-                            text-yellow-500"
-                            class="text-white text-2xl hover:text-black
-                            yellow-500
-                            py-2
-                            font-bold">
-                            Products
-                        </a>
+  <mat-sidenav mat-sidenav #drawer #sidenav fixedInViewport=""
+    [disableClose]="(isNotHandSet$ | async)"
+    [mode]="(isNotHandSet$ | async) ? 'side': 'over'" class="min-w-[15%]"
+    [opened]="isNotHandSet$ | async">
+    <div class="flex flex-col bg-gradient-to-t from-[#ceeade] to-[#ec516b]
+      h-full w-fit rounded-r-3xl
+      pt-6 ">
+      <img src="..//../../assets/logo.png" class="h-28 w-28 mx-auto">
+      <mat-list role="list" class="flex flex-row mx-auto">
+        <div class="flex mx-auto ml-7">
+          <mat-icon>inventory</mat-icon>
+          <mat-list-item>
+            <a routerLink="/dashboard/product"
+              routerLinkActive="active
+              text-yellow-500"
+              class="text-white text-2xl hover:text-black
+              yellow-500
+              py-2
+              font-bold">
+              Products
+            </a>
 
-                        <mat-list-item>
-                            <ul class="list-disc color-white mx-auto">
-                                <mat-list-item class="text-purple-800 text-xl
-                                    hover:text-green-400">
-                                    <a routerLink="/dashboard/lehenga">
-                                        Lehenga
-                                    </a>
-                                </mat-list-item>
-
-                                <mat-list-item class="text-purple-800 text-xl
-                                    hover:text-green-400">
-                                    <a routerLink="/dashboard/sari">
-                                        Sari
-                                    </a>
-                                </mat-list-item>
-                                <mat-list-item class="text-purple-800 text-xl
-                                    hover:text-green-400">
-                                    <a routerLink="/dashboard/gown">
-                                        Gown
-                                    </a>
-                                </mat-list-item>
-                                <mat-list-item class="text-purple-800 text-xl
-                                    hover:text-green-400">
-                                    <a routerLink="/dashboard/kurtha">
-                                        kurtha
-                                    </a>
-                                </mat-list-item>
-                            </ul>
-                        </mat-list-item>
-                    </mat-list-item>
-                </div>
-                <mat-list-item class="flex mx-auto ">
-                    <mat-icon class="">list</mat-icon>
-                    <a routerLink="/dashboard/order"
-                        routerLinkActive="active"
-                        class="text-white hover:text-black py-2
-                        text-2xl font-bold">
-                        Order List
-                    </a>
+            <mat-list-item>
+              <ul class="list-disc color-white mx-auto">
+                <mat-list-item class="text-purple-800 text-xl
+                  hover:text-green-400">
+                  <a routerLink="/dashboard/lehenga">
+                    Lehenga
+                  </a>
                 </mat-list-item>
 
-                <mat-list-item class="flex mx-auto ">
-                    <!-- <mat-icon>local_shipping</mat-icon> -->
-                    <!-- <mat-icon>swap_horiz</mat-icon> -->
-                    <mat-icon>hourglass_empty</mat-icon>
-
-                    <a routerLink="/dashboard/return"
-                        routerLinkActive="active"
-                        class="text-white hover:text-black py-2
-                        text-2xl font-bold">
-                        Return List
-                    </a>
+                <mat-list-item class="text-purple-800 text-xl
+                  hover:text-green-400">
+                  <a routerLink="/dashboard/sari">
+                    Saree
+                  </a>
                 </mat-list-item>
-                <mat-list-item>
-                    <a routerLink="/settings" routerLinkActive="active"
-                        class="text-white hover:text-blue-500 py-2
-                        px-4 text-2xl font-bold">
-                    </a>
+                <mat-list-item class="text-purple-800 text-xl
+                  hover:text-green-400">
+                  <a routerLink="/dashboard/gown">
+                    Gown
+                  </a>
                 </mat-list-item>
-
-            </mat-list>
+                <mat-list-item class="text-purple-800 text-xl
+                  hover:text-green-400">
+                  <a routerLink="/dashboard/kurtha">
+                    kurtha
+                  </a>
+                </mat-list-item>
+              </ul>
+            </mat-list-item>
+          </mat-list-item>
         </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div class="flex flex-col ">
+        <mat-list-item class="flex mx-auto ">
+          <mat-icon class="">list</mat-icon>
+          <a routerLink="/dashboard/order"
+            routerLinkActive="active"
+            class="text-white hover:text-black py-2
+            text-2xl font-bold">
+            Order List
+          </a>
+        </mat-list-item>
 
-            <mat-toolbar>
-                <button
-                    type="button"
-                    aria-label="Toggle sidenav"
-                    mat-icon-button
-                    (click)="drawer.toggle()"
-                    *ngIf="!(isNotHandSet$ | async)
-                    ">
-                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-                </button>
-            </mat-toolbar>
-            <router-outlet></router-outlet>
-        </div>
-    </mat-sidenav-content>
+        <mat-list-item class="flex mx-auto ">
+          <!-- <mat-icon>local_shipping</mat-icon> -->
+          <!-- <mat-icon>swap_horiz</mat-icon> -->
+          <mat-icon>hourglass_empty</mat-icon>
+
+          <a routerLink="/dashboard/return"
+            routerLinkActive="active"
+            class="text-white hover:text-black py-2
+            text-2xl font-bold">
+            Return List
+          </a>
+        </mat-list-item>
+        <mat-list-item>
+          <a routerLink="/settings" routerLinkActive="active"
+            class="text-white hover:text-blue-500 py-2
+            px-4 text-2xl font-bold">
+          </a>
+        </mat-list-item>
+
+      </mat-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="flex flex-col ">
+
+      <mat-toolbar>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="!(isNotHandSet$ | async)
+          ">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

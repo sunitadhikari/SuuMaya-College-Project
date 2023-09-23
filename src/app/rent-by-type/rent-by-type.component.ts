@@ -18,6 +18,7 @@ import { ImagePipe } from '../image.pipe';
 import { Observable, merge, startWith, switchMap, map } from 'rxjs';
 import { Product, FilterDTO } from '../product.model';
 import { ProductService } from '../product.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-rent-by-type',
@@ -42,14 +43,22 @@ export class RentByTypeComponent implements OnInit, AfterViewInit {
   pageSize = 10;
   totalProducts = 0;
   pageIndex = 0;
+  categoryCtrl = new FormControl('Sari');
   constructor(private productService: ProductService, private router: Router) {}
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
   ngAfterViewInit() {
-    this.products$ = merge(this.paginator.page).pipe(
+    this.products$ = merge(
+      this.categoryCtrl.valueChanges,
+      this.paginator.page
+    ).pipe(
       startWith({}),
       switchMap(() => {
-        const filter: FilterDTO = {
+        const filter: FilterDTO & { category: string } = {
           pageNumber: this.paginator.pageIndex + 1,
           pageSize: this.paginator.pageSize,
+          category: this.categoryCtrl.value ?? '',
         };
         return this.productService.getProducts(filter).pipe(
           map((jsonReponse) => {
@@ -61,15 +70,15 @@ export class RentByTypeComponent implements OnInit, AfterViewInit {
     );
   }
   productList: Product[] = [];
-  ngOnInit(): void {}
+  // ngOnInit(): void {}
 
-  updateProducts(): void {
-    const startIndex = this.pageIndex * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-  }
+  // updateProducts(): void {
+  //   const startIndex = this.pageIndex * this.pageSize;
+  //   const endIndex = startIndex + this.pageSize;
+  // }
   onPageChange(event: PageEvent): void {
-    this.pageIndex = event.pageIndex;
-    this.updateProducts();
+    // this.pageIndex = event.pageIndex;
+    // this.updateProducts();
   }
   viewMore(productId?: number) {
     if (productId) {

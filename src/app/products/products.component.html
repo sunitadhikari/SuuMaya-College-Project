@@ -36,6 +36,45 @@
                 LOOK!!</span>
         </div>
     </div>
+    <!-- <div class="flex flex-col sm:flex-row gap-6 sm:gap-9 md:gap-16 my-5">
+        <div class="flex flex-col my-12 sm:justify-start justify-end gap-3">
+            <label for="categories" class="md:font-bold md:text-xl sm:font-light
+                sm:text-lg text-[#eb6c6c]">Select your choice</label>
+            <select name="categories" id="categories"
+                [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
+                h-9">
+                <option *ngFor="let category of categories" value="{{category}}"
+                    class="font-thin text-base text-[#d90c32]">
+                    {{category}}
+                </option>
+            </select>
+        </div>
+        <div class="w-[80%] order-2 sm:order-1">
+            <img src="../../assets/dresses.png" alt="" class="md:w-[2100px]
+                md:h-[300px]">
+        </div>
+    </div> -->
+    <div class="flex flex-col sm:flex-row gap-6 sm:gap-9 md:gap-16 my-5">
+        <div class="flex flex-col my-12 sm:justify-start justify-end gap-3">
+            <label for="categories" class="md:font-bold md:text-xl sm:font-light
+                sm:text-lg text-[#eb6c6c]">Select your choice</label>
+            <select name="categories" id="categories"
+                [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
+                h-9">
+                <option *ngFor="let category of categories" value="{{category}}"
+                    class="font-thin text-base text-[#d90c32]">
+                    {{category}}
+                </option>
+            </select>
+        </div>
+        <div class="flex-grow order-2 sm:order-1"> <!-- Added flex-grow to take up remaining space -->
+            <img src="../../assets/dresses.png" alt="" class="w-full h-auto
+                "> <!-- Set image width to 100% and max width for responsiveness -->
+        </div>
+    </div>
+
+
+
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 ">
         <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-4
             sm:p-2 p-1.5
