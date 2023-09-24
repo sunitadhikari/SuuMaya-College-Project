@@ -2,7 +2,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
 import { Observable } from 'rxjs';
@@ -27,7 +32,8 @@ export class HeaderComponent implements OnInit {
   //     menu.classList.toggle('hidden');
   //   }
   // }
-
+  categoryCtrl = new FormControl('');
+  categories = ['Saree', 'Kurtha', 'lehenga', 'gown', 'cultural Dress'];
   searchValue = '';
   product: Product[] = [];
   searchForm = this.formBulider.group({

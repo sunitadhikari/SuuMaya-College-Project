@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { FilterDTO } from './product.model';
 import { environment } from 'src/environments/environmen';
 import { JsonResponse } from './app.model';
+import { Order } from './dashboard/order.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,12 @@ export class OrderService {
     return this.httpClient.post<JsonResponse>(
       `${environment.apiUrl}/orders/filter`,
       filter
+    );
+  }
+  create(order: Order) {
+    return this.httpClient.post<JsonResponse>(
+      `${environment.apiUrl}/order`,
+      order
     );
   }
 }

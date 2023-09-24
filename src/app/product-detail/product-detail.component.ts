@@ -29,6 +29,8 @@ import {
 } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { Order } from '../dashboard/order.model';
+import { OrderService } from '../order.service';
 
 // import { SwiperContainer, SwiperSlide } from './swiper.component';
 declare var Swiper: any;
@@ -55,6 +57,7 @@ export class ProductDetailComponent implements OnInit {
   productId: number;
   productDetails: any;
   sizes = ['XL', 'L', 'M', 'XXL'];
+  image = '';
 
   public swipeOptions = {
     spaceBetween: 0,
@@ -78,6 +81,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
+    private orderService: OrderService,
     private authService: AuthService,
     private fb: FormBuilder
   ) {}
@@ -85,36 +89,32 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((param) => {
+      this.productDetails = param;
+      this.image = param['image'];
       this.detailForm.get('productId')?.setValue(param['id']);
     });
+    // this.productId = 1;
+    // this.productService.getProductDetails(this.productId).subscribe((data) => {
+
+    // });
   }
 
-  products = [
-    {
-      image:
-        'https://cdn.vibecity.in/providers/637e5b551c6e900011dc8e0e/Screenshot20230106181949Chrome_c2eaa746-e1ec-49e3-be43-8428490c52ad-3X.webp',
-      name: 'lehenga',
-
-      detail:
-        'Renting wedding dresses has become a popular option for couples looking to save money or reduce waste. Renting allows you to wear a stunning wedding dress for your special day without the need to purchase it outright. Here is a description of renting wedding dresses: ',
-      price: 2000,
-    },
-  ];
+  products: Product[] = [];
   detailForm = this.fb.nonNullable.group({
     quantity: new FormControl(1, [
       Validators.required,
       Validators.min(1),
-      Validators.max(4),
+      Validators.max(3),
     ]),
     sizes: new FormControl('', Validators.required),
     productId: new FormControl(-1),
   });
   submit() {
     const detailValue = this.detailForm.value;
-    const detail = {
-      quantity: detailValue.quantity ?? '',
+    const detail: Order = {
+      quantity: detailValue.quantity ?? 0,
       size: detailValue.sizes ?? '',
     };
-    // this.authService.detail(detail).subscribe((res)=>alert(res.message));
+    this.orderService.create(detail).subscribe((res) => alert(res.message));
   }
 }

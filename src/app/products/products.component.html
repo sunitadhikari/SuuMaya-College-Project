@@ -16,7 +16,7 @@
             <img src="../../assets/alia.jpg" class="md:w-[292px] md:h-[400px]
                 w-[70px] h-[100px] sm:w-[200px] sm:h-[150px]
                 object-cover object-top">
-            <img src="../../assets/sari3.jpg" class="md:w-[292px]
+            <img src="../../assets/sari3.jpg" class="md:w-[300px]
                 md:h-[400px]
                 w-[70px] h-[100px] sm:w-[200px] sm:h-[150px]
                 object-cover object-top">
@@ -36,28 +36,11 @@
                 LOOK!!</span>
         </div>
     </div>
-    <!-- <div class="flex flex-col sm:flex-row gap-6 sm:gap-9 md:gap-16 my-5">
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-5 md:gap-7 my-5">
         <div class="flex flex-col my-12 sm:justify-start justify-end gap-3">
-            <label for="categories" class="md:font-bold md:text-xl sm:font-light
-                sm:text-lg text-[#eb6c6c]">Select your choice</label>
-            <select name="categories" id="categories"
-                [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
-                h-9">
-                <option *ngFor="let category of categories" value="{{category}}"
-                    class="font-thin text-base text-[#d90c32]">
-                    {{category}}
-                </option>
-            </select>
-        </div>
-        <div class="w-[80%] order-2 sm:order-1">
-            <img src="../../assets/dresses.png" alt="" class="md:w-[2100px]
-                md:h-[300px]">
-        </div>
-    </div> -->
-    <div class="flex flex-col sm:flex-row gap-6 sm:gap-9 md:gap-16 my-5">
-        <div class="flex flex-col my-12 sm:justify-start justify-end gap-3">
-            <label for="categories" class="md:font-bold md:text-xl sm:font-light
-                sm:text-lg text-[#eb6c6c]">Select your choice</label>
+            <label for="categories" class="md:font-semibold md:text-lg
+                sm:font-light
+                sm:text-lg text-[#120808]">Select your choice</label>
             <select name="categories" id="categories"
                 [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
                 h-9">
@@ -75,7 +58,8 @@
 
 
 
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 ">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6 sm:gap-4
+        gap-2 ">
         <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-4
             sm:p-2 p-1.5
             shadow-lg ">
@@ -85,7 +69,9 @@
                 class="
                 md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
                 object-cover text-lg text-black">
-            <div class="p-2">
+
+            <div class="p-1 flex justify-between">
+                <span class="md:font-semibold md:text-sm underline">{{product.name}}</span>
                 <span class="bg-green-600 text-white text-xs font-[15px] px-2
                     py-1 rounded-md"
                     *ngIf="product.available">Available</span>
@@ -95,9 +81,10 @@
             </div>
             <div class="flex flex-wrap justify-end mx-auto gap-2 mt-2">
                 <button type="button" class="bg-black hover:bg-green-500
-                    text-xs text-white font-[20px] py-[3px] rounded-md px-[8px]
-                    justify-end sm:font-thin sm:text-sm md:font-normal
-                    md:text-lg"
+                    text-[10px] text-white font-[20px] py-[3px] rounded-md
+                    px-[8px]
+                    justify-end sm:font-thin sm:text-[15px] md:font-[10px]
+                    md:text-sm"
                     (click)="viewMore(product.id)">View More</button>
             </div>
         </div>
