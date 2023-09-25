@@ -22,6 +22,7 @@ export interface JsonResponse {
   status?: string;
   message: string;
   body: unknown;
+  user?: User;
 }
 export interface User {
   username: string;
@@ -31,4 +32,5 @@ export interface User {
   address?: string;
   createdTime?: string;
   enabled?: boolean;
+  isAdmin: boolean;
 }

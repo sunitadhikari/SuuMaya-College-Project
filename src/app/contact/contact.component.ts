@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from '../header/header.component';
 import { Feedback } from '../product.model';
 import { MatInputModule } from '@angular/material/input';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-contact',
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
+    FooterComponent,
   ],
   templateUrl: './contact.component.html',
   styles: [],

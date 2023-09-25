@@ -8,6 +8,7 @@ import { RouterModule, RouterLink, RouterLinkWithHref } from '@angular/router';
 import { Return } from '../order.model';
 import { EMPTY, startWith, switchMap } from 'rxjs';
 import { merge } from 'rxjs';
+import { User } from 'src/app/auth.service';
 @Component({
   selector: 'app-return-list',
   standalone: true,
@@ -35,6 +36,8 @@ export class ReturnListComponent implements OnInit, AfterViewInit {
     'orderId',
   ];
   dataSource = new MatTableDataSource<Return>();
+  isAdmin = (JSON.parse(localStorage.getItem('user') ?? '') as User).isAdmin;
+  userNames = (JSON.parse(localStorage.getItem('user') ?? '') as User).username;
   totalElements = 0;
   pageSize = 10;
   pageIndex = 0;
@@ -50,11 +53,11 @@ export class ReturnListComponent implements OnInit, AfterViewInit {
         switchMap(() => {
           const username = localStorage.getItem('username');
           console.log(username);
-          if (!username) return EMPTY;
+          if (!this.userNames) return EMPTY;
           const filter = {
             pageNumber: this.paginator.pageIndex + 1,
             pageSize: this.paginator.pageSize,
-            username: username ?? '',
+            username: this.isAdmin ? null : this.userNames,
           };
           return this.returnService.getReturn(filter);
         })

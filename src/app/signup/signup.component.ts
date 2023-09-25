@@ -61,6 +61,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       address: signupValue.address ?? '',
       password: signupValue.password ?? '',
       enabled: false,
+      isAdmin: false,
     };
     this.authService.signup(userSignup).subscribe((res) => alert(res.message));
   }

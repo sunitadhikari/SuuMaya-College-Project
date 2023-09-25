@@ -43,22 +43,6 @@
                     Username is required*
                 </mat-error>
             </div>
-            <!-- <div class="flex flex-col mb-4">
-                <label for="email" class="text-xl">Email:</label>
-                <input formControlName="email" type="email" id="email"
-                    class="border rounded-lg px-2
-                    py-2 " placeholder="Your Name" required>
-                <mat-error *ngIf="!contactForm.get('email')?.pristine &&
-                    contactForm.get('email')?.hasError('required')"
-                    class="text-red-600">
-                    Email is required*
-                </mat-error>
-                <mat-error *ngIf="!contactForm.get('email')?.pristine &&
-                    contactForm.get('email')?.hasError('pattern')"
-                    class="text-red-600">
-                    Email is invalid*
-                </mat-error>
-            </div> -->
             <div class="flex flex-col mb-4">
                 <label for="message" class="text-xl">Feedback/Suggestion:</label>
                 <textarea formControlName="message" id="message" class="border
@@ -81,3 +65,4 @@
     </div>
 </div>
 <!-- SELECT f.Messsage, u.username, u.email FROM `feedback` f LEFT JOIN USER u ON f.user_id = u.id;   -->
+<app-footer></app-footer>

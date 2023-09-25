@@ -31,6 +31,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Order } from '../dashboard/order.model';
 import { OrderService } from '../order.service';
+import { FooterComponent } from '../footer/footer.component';
 
 // import { SwiperContainer, SwiperSlide } from './swiper.component';
 declare var Swiper: any;
@@ -49,6 +50,7 @@ declare var Swiper: any;
     MatCheckboxModule,
     HeaderComponent,
     SwiperModule,
+    FooterComponent,
   ],
 })
 export class ProductDetailComponent implements OnInit {

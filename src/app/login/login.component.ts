@@ -49,8 +49,10 @@ export class LoginComponent {
       username: loginValue.username ?? '',
       password: loginValue.password ?? '',
     };
-    this.authService
-      .login(user.username, user.password)
-      .subscribe((res) => this.router.navigate(['/dashboard']));
+    this.authService.login(user.username, user.password).subscribe((res) => {
+      console.log(res);
+      localStorage.setItem('user', JSON.stringify(res.user ?? ''));
+      this.router.navigate(['/dashboard']);
+    });
   }
 }

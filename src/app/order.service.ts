@@ -12,7 +12,7 @@ import { Order } from './dashboard/order.model';
 export class OrderService {
   constructor(private httpClient: HttpClient) {}
   getOrders(
-    filter: FilterDTO & { username: string }
+    filter: FilterDTO & { username: string | null }
   ): Observable<JsonResponse> {
     return this.httpClient.post<JsonResponse>(
       `${environment.apiUrl}/orders/filter`,

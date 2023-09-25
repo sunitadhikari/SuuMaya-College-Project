@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule, RouterLink, RouterLinkWithHref } from '@angular/router';
+import { User } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-order-list',
@@ -34,6 +35,8 @@ import { RouterModule, RouterLink, RouterLinkWithHref } from '@angular/router';
   styles: [],
 })
 export class OrderListComponent implements OnInit, AfterViewInit {
+  isAdmin = (JSON.parse(localStorage.getItem('user') ?? '') as User).isAdmin;
+  userNames = (JSON.parse(localStorage.getItem('user') ?? '') as User).username;
   displayedColumns: string[] = [
     'id',
     'user_id',
@@ -46,9 +49,7 @@ export class OrderListComponent implements OnInit, AfterViewInit {
   ];
   dataSource = new MatTableDataSource<Order>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
   totalElements = 0;
-
   constructor(private orderService: OrderService) {}
   ngOnInit() {}
   ngAfterViewInit(): void {
@@ -59,13 +60,12 @@ export class OrderListComponent implements OnInit, AfterViewInit {
       .pipe(
         startWith({}),
         switchMap(() => {
-          const username = localStorage.getItem('username');
-          console.log(username);
-          if (!username) return EMPTY;
+          console.log(this.userNames);
+          if (!this.userNames) return EMPTY;
           const filter = {
             pageNumber: this.paginator.pageIndex + 1,
             pageSize: this.paginator.pageSize,
-            username: username,
+            username: this.isAdmin ? null : this.userNames,
           };
           return this.orderService.getOrders(filter);
         })

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environmen';
 export class ReturnService {
   constructor(private httpClient: HttpClient) {}
   getReturn(
-    filter: FilterDTO & { username: string }
+    filter: FilterDTO & { username: string | null }
   ): Observable<JsonResponse> {
     return this.httpClient.post<JsonResponse>(
       `${environment.apiUrl}/return/filter`,
