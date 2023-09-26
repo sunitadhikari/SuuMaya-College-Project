@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Feedback } from './product.model';
+import { Feedback, FilterDTO } from './product.model';
 import { environment } from 'src/environments/environmen';
 import { JsonResponse } from './app.model';
+import { Observable, filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,5 +15,22 @@ export class FeedbackService {
       feedback
     );
   }
+  feedbackList: Feedback[] = [];
   constructor(private http: HttpClient) {}
+  getFeedbacks(filter: FilterDTO & { username: string | null }) {
+    return this.http.post<JsonResponse>(
+      `${environment.apiUrl}/feedback/filter`,
+      filter
+    );
+  }
+  getFeedback(name: string) {
+    let feedback: Feedback;
+    this.feedbackList.map((val) => {
+      if (val.name == name) feedback = val;
+      return feedback;
+    });
+  }
+  get() {
+    return this.http.get<Feedback[]>('http://localhost:3000/feedback');
+  }
 }

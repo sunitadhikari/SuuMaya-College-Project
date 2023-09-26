@@ -7,6 +7,7 @@ import { ReturnListComponent } from './return-list/return-list.component';
 import { EditComponent } from './edit/edit.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { DashFeedbackComponent } from './dash-feedback/dash-feedback.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,10 @@ export const routes: Routes = [
       {
         path: 'return',
         component: ReturnListComponent,
+      },
+      {
+        path: 'feedback',
+        component: DashFeedbackComponent,
       },
       {
         path: 'edit',

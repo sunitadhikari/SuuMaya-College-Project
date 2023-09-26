@@ -20,8 +20,11 @@ export interface Category {
   parentCategory?: string;
 }
 export interface Feedback {
+  name?: string;
+  user_id?: number;
   username: string;
   // email: string;
+  isAdmin?: boolean;
   message: string;
 }
 export interface FilterDTO {
