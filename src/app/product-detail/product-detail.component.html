@@ -1,13 +1,13 @@
 <app-header></app-header>
-<div class="flex flex-col flex-wrap mx-auto sm:flex w-full sm:py-10 sm:px-7 px-3
+<div *ngIf="productDetails$ | async as product" class="flex flex-col
+    flex-wrap mx-auto sm:flex w-full sm:py-10 sm:px-7 px-3
     py-5">
     <div class="bg-gray-200 w-full sm:py-10 sm:px-7 px-3
         py-5 rounded-md">
         <div class=" flex sm:flex-row flex-col gap-5 w-full">
-            <div *ngFor="let product of
-                products" class="w-[50%] bg-white px-7 py-4 gap-4">
-                <span class="font-bold text-2xl p-3 sm:p-6
-                    md:p-9 text-[#ef4b4b]">{{product.name}}</span>
+            <div class="w-[50%] bg-white px-7 py-4 gap-4">
+                <span class="font-bold text-2xl p-3
+                    text-[#ef4b4b]">{{product.name}}</span>
                 <img class="hover:cursor-zoom-out" src="{{ product.images }}"
                     alt="{{
                     product.name
@@ -19,11 +19,12 @@
             </div>
             <form [formGroup]="detailForm" (ngSubmit)="submit()"
                 class="w-[50%]">
-                <div *ngFor="let product of products" class="flex flex-col
-                    bg-white px-7 py-4 gap-4">
+                <div class="flex flex-col
+                    bg-white px-7 py-4 sm:gap-3 gap-2">
                     <h2 class="font-extrabold text-xl text-[#ef4b4b]">Detail</h2>
                     <p class="font-medium text-base text black">{{product.detail}}</p>
                     <div class="text-black text-xs sm:gap-2 md:gap-3">
+                        <span class="font-extrabold text-xl text-[#ef4b4b]">Size</span>
                         <div *ngFor="let size of sizes">
                             <input name="sizes" value="{{size}}"
                                 formControlName="sizes" type="radio" required>
@@ -38,11 +39,16 @@
                                 formControlName="quantity">
                         </mat-form-field>
                     </span>
-                    <span class="font-semibold text-[#f65f5f] text-2xl">
-                        {{
+                    <span class="font-semibold text-[#f65f5f] text-2xl">Price</span>
+                    <div> {{
                         (detailForm.get('quantity')?.value ?? 1) *
                         (product.price)
-                        }}</span>
+                        }}
+                    </div>
+                    <div class="flex">
+                        <span class="font-semibold text-[#f65f5f] md:text-2xl">Category:
+                            <div class=" text-xl
+                                text-black">{{product.category}}</div></span></div>
                     <div class="flex justify-self-end">
                         <button [disabled]="!detailForm.valid"
                             [class]="!detailForm.valid?

@@ -21,7 +21,7 @@ export class OrderService {
   }
   create(order: Order) {
     return this.httpClient.post<JsonResponse>(
-      `${environment.apiUrl}/order`,
+      `${environment.apiUrl}/product/id`,
       order
     );
   }

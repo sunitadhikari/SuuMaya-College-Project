@@ -34,4 +34,9 @@ export class ProductService {
   get() {
     return this.http.get<Product[]>('http://localhost:3000/products');
   }
+  getProductById(productId: number) {
+    return this.http.get<JsonResponse>(
+      'http://localhost:3000/products/' + productId
+    );
+  }
 }

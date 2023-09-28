@@ -1,11 +1,10 @@
 import { Product } from './../product.model';
 import { MatIconModule } from '@angular/material/icon';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
@@ -16,25 +15,12 @@ import { MatInputModule } from '@angular/material/input';
 import { HeaderComponent } from '../header/header.component';
 import { ProductService } from '../product.service';
 import { SwiperModule } from 'swiper/angular';
-import {
-  Observable,
-  ObservedValueOf,
-  Subject,
-  Subscription,
-  filter,
-  pluck,
-  switchMap,
-  takeUntil,
-  tap,
-} from 'rxjs';
+import { Observable, map, switchMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Order } from '../dashboard/order.model';
-import { OrderService } from '../order.service';
 import { FooterComponent } from '../footer/footer.component';
 
-// import { SwiperContainer, SwiperSlide } from './swiper.component';
-declare var Swiper: any;
 @Component({
   selector: 'app-product-detail',
   standalone: true,
@@ -53,53 +39,44 @@ declare var Swiper: any;
     FooterComponent,
   ],
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit {
   min = 0;
   name = 'Lehenga';
   productId: number;
-  productDetails: any;
+  productDetails$: Observable<Product>;
   sizes = ['XL', 'L', 'M', 'XXL'];
   image = '';
 
-  public swipeOptions = {
-    spaceBetween: 0,
-    loop: true,
-    speed: 1000,
-    centeredSlides: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  };
+  // public swipeOptions = {
+  //   spaceBetween: 0,
+  //   loop: true,
+  //   speed: 1000,
+  //   centeredSlides: true,
+  //   autoplay: {
+  //     delay: 2500,
+  //     disableOnInteraction: false,
+  //   },
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     clickable: true,
+  //   },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  // };
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private orderService: OrderService,
+    // private productIdService: ProductIdService,
     private authService: AuthService,
     private fb: FormBuilder
   ) {}
+
   goToNextPage() {}
 
-  ngOnInit() {
-    this.route.params.subscribe((param) => {
-      this.productDetails = param;
-      this.image = param['image'];
-      this.detailForm.get('productId')?.setValue(param['id']);
-    });
-    // this.productId = 1;
-    // this.productService.getProductDetails(this.productId).subscribe((data) => {
-
-    // });
-  }
+  ngOnInit() {}
 
   products: Product[] = [];
   detailForm = this.fb.nonNullable.group({
@@ -117,6 +94,19 @@ export class ProductDetailComponent implements OnInit {
       quantity: detailValue.quantity ?? 0,
       size: detailValue.sizes ?? '',
     };
-    this.orderService.create(detail).subscribe((res) => alert(res.message));
   }
+  ngAfterViewInit(): void {
+    this.productDetails$ = this.route.params.pipe(
+      map((param) => param['id']),
+      tap(console.log),
+      switchMap((id) => {
+        return this.productService.getProductById(id).pipe(
+          map((JsonResponse) => {
+            return JsonResponse.body as Product;
+          })
+        );
+      })
+    );
+  }
+  getProductId() {}
 }
