@@ -1,3 +1,4 @@
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { FooterComponent } from './../footer/footer.component';
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
@@ -15,6 +16,7 @@ import { ProductsComponent } from '../products/products.component';
     HeaderComponent,
     ProductsComponent,
     FooterComponent,
+    MatSidenavModule,
   ],
 })
 export class HomeComponent {}

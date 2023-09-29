@@ -23,7 +23,6 @@ import { User } from 'src/app/auth.service';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    NgIf,
   ],
   templateUrl: './dashboard-navigation.component.html',
   styles: [],

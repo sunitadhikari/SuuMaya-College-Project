@@ -1,7 +1,11 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatIconModule } from '@angular/material/icon';
-import { Component, OnInit } from '@angular/core';
-import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
-
+import { Component, OnInit, Pipe, ViewChild } from '@angular/core';
+import {
+  RouterLinkActive,
+  RouterLinkWithHref,
+  RouterModule,
+} from '@angular/router';
 import {
   FormBuilder,
   FormControl,
@@ -10,7 +14,11 @@ import {
 } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
-import { Observable } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +30,13 @@ import { Observable } from 'rxjs';
     RouterLinkActive,
     RouterLinkWithHref,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    NgIf,
+    RouterModule,
   ],
 })
 export class HeaderComponent implements OnInit {
@@ -32,6 +46,13 @@ export class HeaderComponent implements OnInit {
   //     menu.classList.toggle('hidden');
   //   }
   // }
+  disableClose: boolean;
+  isHandSet$: Observable<boolean>;
+  // isNotHandSet$: Observable<boolean>;
+  isNotHandSet$ = this.breakpointObserver.observe(['min-width:1100px']).pipe(
+    tap(console.log),
+    map((res) => res.matches)
+  );
   categoryCtrl = new FormControl('');
   categories = ['Saree', 'Kurtha', 'lehenga', 'gown', 'cultural Dress'];
   searchValue = '';
@@ -41,9 +62,25 @@ export class HeaderComponent implements OnInit {
   });
   constructor(
     private productService: ProductService,
-    private formBulider: FormBuilder
+    private formBulider: FormBuilder,
+    private breakpointObserver: BreakpointObserver
   ) {}
+  @ViewChild('drawer') drawer!: MatSidenav;
   ngOnInit(): void {
+    this.isHandSet$ = this.breakpointObserver
+      .observe('(max-width: 1100px)')
+      .pipe(
+        tap(console.log),
+        map((res) => res.matches)
+      );
+
+    this.isNotHandSet$ = this.breakpointObserver
+      .observe('(min-width: 1100px)')
+      .pipe(
+        tap(console.log),
+        map((res) => res.matches)
+      );
+
     this.fetchData();
   }
   fetchData(): void {
@@ -56,10 +93,16 @@ export class HeaderComponent implements OnInit {
   isMenuOpen: boolean = false;
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+    this.drawer.toggle();
   }
-
+  drawerToggle(opened: boolean) {}
   onSearchSubmit(): void {
     this.searchValue = this.searchForm.value.searchValue || '';
     this.fetchData();
+  }
+  onItemClick(): void {
+    if (this.isHandSet$) {
+      this.drawer.close();
+    }
   }
 }

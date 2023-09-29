@@ -1,37 +1,45 @@
-<div class="p-4">
-  <div class="px-4 py-4 sm:py-7">
+<div class="sm:p-4 px-2 py-2">
+  <div class="px-2 py-2 sm:px-4 sm:py-7">
     <span class="text-[#c44055] text-xl font-semibold font-poppins">Return</span>
   </div>
-  <div class="table-container">
-    <table mat-table [dataSource]="dataSource" class="table">
+  <div class="table-container bg-gray-200 rounded-md shadow-md shadow-black
+    overflow-x-scroll md:overflow-x-hidden">
+    <table mat-table [dataSource]="dataSource" class="table ">
       <ng-container matColumnDef="returnId">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <th mat-header-cell *matHeaderCellDef class="font-normal
+          sm:font-semibold text-sm sm:text-lg">ID</th>
         <td mat-cell *matCellDef="let product">{{ product.returnId }}</td>
       </ng-container>
       <ng-container matColumnDef="returnedDate">
-        <th mat-header-cell *matHeaderCellDef>Return Date</th>
+        <th mat-header-cell *matHeaderCellDef class="font-normal
+          sm:font-semibold text-sm sm:text-lg">Return Date</th>
         <td mat-cell *matCellDef="let product">{{ product.returnedDate }}</td>
       </ng-container>
       <ng-container matColumnDef="productName">
-        <th mat-header-cell *matHeaderCellDef>Product Name</th>
+        <th mat-header-cell *matHeaderCellDef class="font-normal
+          sm:font-semibold text-sm sm:text-lg">Product Name</th>
         <td mat-cell *matCellDef="let product">{{ product.productName }}</td>
       </ng-container>
       <ng-container matColumnDef="boughtBy">
-        <th mat-header-cell *matHeaderCellDef> Buyer</th>
+        <th mat-header-cell *matHeaderCellDef class="font-normal
+          sm:font-semibold text-sm sm:text-lg"> Buyer</th>
         <td mat-cell *matCellDef="let element"> {{element.boughtBy}} </td>
       </ng-container>
       <ng-container matColumnDef="orderId">
-        <th mat-header-cell *matHeaderCellDef>Order Id</th>
+        <th mat-header-cell *matHeaderCellDef class="font-normal
+          sm:font-semibold text-sm sm:text-lg">Order Id</th>
         <td mat-cell *matCellDef="let product">{{ product.orderId }}</td>
       </ng-container>
       <ng-container matColumnDef="onTime">
-        <th mat-header-cell *matHeaderCellDef>On Time</th>
-        <td mat-cell *matCellDef="let product">{{ product.onTime}}</td>
+        <th mat-header-cell *matHeaderCellDef class="font-normal
+          sm:font-semibold text-sm sm:text-lg">On Time</th>
+        <td mat-cell *matCellDef="let product">{{ product.onTime?'yes':'no'}}</td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator [pageSize]="10"
-      [length]="totalElements"></mat-paginator>
+      [length]="totalElements" class="text-sm font-light sm:text-lg
+      sm:font-medium mb-2 sm:mb-4"></mat-paginator>
   </div>
 </div>

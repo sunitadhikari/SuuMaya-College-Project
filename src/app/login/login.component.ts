@@ -37,6 +37,7 @@ import {
   ],
 })
 export class LoginComponent {
+  showImage = false;
   constructor(private authService: AuthService, private router: Router) {}
   userForm = new FormGroup({
     username: new FormControl(''),
@@ -54,5 +55,8 @@ export class LoginComponent {
       localStorage.setItem('user', JSON.stringify(res.user ?? ''));
       this.router.navigate(['/dashboard']);
     });
+  }
+  toggleImage() {
+    this.showImage = !this.showImage;
   }
 }

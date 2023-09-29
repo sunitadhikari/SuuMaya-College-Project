@@ -1,6 +1,10 @@
-<div>
-    <nav class="flex flex-wrap bg-white px-4 py-2
-        mx-3">
+<!-- <div autosize>
+    <mat-sidenav #drawer fixedInViewport="" [disableClose]="(isHandSet$ |
+        async)"
+        [mode]="(isNotHandSet$ | async)? 'side':'over'"
+        class="flex flex-wrap bg-white px-4
+        py-2
+        mx-3" [opened]="isNotHandSet$ | async">
         <img src="../../assets/logo.png" class="h-20 w-20">
         <div class="flex flex-col justify-center items-center">
             <span class="text-black text-xl text-[15px]
@@ -60,5 +64,22 @@
                 <i class="fas fa-search absolute top-3 left-3 text-white"></i>
             </form>
         </div>
-    </nav>
-</div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="flex flex-col ">
+            <mat-toolbar>
+                <button (click)="drawer.toggle()">Toggle Sidenav</button>
+                <button
+                    type="button"
+                    aria-label="Toggle nav"
+                    mat-icon-button
+                    (click)="drawer.toggle()"
+                    *ngIf="!(isNotHandSet$ | async)
+                    ">
+                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+                </button>
+            </mat-toolbar>
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</div> -->

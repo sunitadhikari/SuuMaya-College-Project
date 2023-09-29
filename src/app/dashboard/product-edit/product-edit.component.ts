@@ -1,5 +1,6 @@
+import { JsonResponse } from './../../auth.service';
 import { MatIconModule } from '@angular/material/icon';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import { RouterLink, RouterLinkWithHref, RouterModule } from '@angular/router';
 import {
@@ -8,6 +9,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -18,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FilePickerModule } from 'ngx-awesome-uploader';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
+import { map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-product-edit',
@@ -45,7 +48,8 @@ import { ProductService } from 'src/app/product.service';
   templateUrl: './product-edit.component.html',
   styles: [],
 })
-export class ProductEditComponent implements OnInit, OnDestroy {
+export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
+  products: Product[] = [];
   productEditForm = new FormGroup({
     name: new FormControl(''),
     price: new FormControl(0),
@@ -55,9 +59,15 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     category: new FormControl(''),
     available: new FormControl(true),
   });
-  constructor(private productService: ProductService) {}
+
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit(): void {}
   ngOnDestroy(): void {}
+
+  getProductId() {}
   submit() {
     const productValue = this.productEditForm.value;
     const product: Product = {
@@ -69,5 +79,18 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       date: productValue.date ?? '',
       available: productValue.available ?? true,
     };
+  }
+  ngAfterViewInit(): void {
+    this.productEditForm = this.route.params.pipe(
+      map((param) => param['id']),
+      tap(console.log),
+      switchMap((id) => {
+        return this.productService.getProductById(id).pipe(
+          map((JsonResponse) => {
+            return JsonResponse.body as Product;
+          })
+        );
+      })
+    );
   }
 }

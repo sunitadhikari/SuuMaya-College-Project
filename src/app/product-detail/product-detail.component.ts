@@ -47,29 +47,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   sizes = ['XL', 'L', 'M', 'XXL'];
   image = '';
 
-  // public swipeOptions = {
-  //   spaceBetween: 0,
-  //   loop: true,
-  //   speed: 1000,
-  //   centeredSlides: true,
-  //   autoplay: {
-  //     delay: 2500,
-  //     disableOnInteraction: false,
-  //   },
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //     clickable: true,
-  //   },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  // };
-
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    // private productIdService: ProductIdService,
     private authService: AuthService,
     private fb: FormBuilder
   ) {}

@@ -1,44 +1,53 @@
-<div class="p-4">
-  <div class="px-4 py-4 sm:py-7">
+<div class="sm:p-4 px-2 py-2">
+  <div class="px-2 sm:px-4 py-2 sm:py-7">
     <span class="text-[#c44055] text-xl font-semibold font-poppins">Orders</span>
   </div>
-  <div class=" shadow-black
+  <div class="shadow-md shadow-black
     bg-gray-100
     border border-gray-400 rounded-lg ">
-    <div class="overflow-x-scroll md:overflow-x-scroll-hidden flex
+    <div class="table-container overflow-x-scroll md:overflow-x-scroll-hidden
+      flex
       justify-evenly mx-auto items-center">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> ID</th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> ID</th>
           <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
         <ng-container matColumnDef="user_id">
-          <th mat-header-cell *matHeaderCellDef> User ID</th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> User ID</th>
           <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
         </ng-container>
         <ng-container matColumnDef="productName">
-          <th mat-header-cell *matHeaderCellDef>Product Name </th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg">Product Name </th>
           <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
         </ng-container>
         <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> Address </th>
           <td mat-cell *matCellDef="let element"> {{element.address}} </td>
         </ng-container>
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> price </th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> price </th>
           <td mat-cell *matCellDef="let element"> {{element.price}} </td>
         </ng-container>
         <ng-container matColumnDef="boughtBy">
-          <th mat-header-cell *matHeaderCellDef> BoughtBy </th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> BoughtBy </th>
           <td mat-cell *matCellDef="let element"> {{element.boughtBy}} </td>
         </ng-container>
         <ng-container matColumnDef="paymentMethod">
-          <th mat-header-cell *matHeaderCellDef> paymentMethod </th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> paymentMethod </th>
           <td mat-cell *matCellDef="let element"> {{element.paymentMethod}}
           </td>
         </ng-container>
         <ng-container matColumnDef="date">
-          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <th mat-header-cell *matHeaderCellDef class="font-normal
+            sm:font-semibold text-sm sm:text-lg"> Date </th>
           <td mat-cell *matCellDef="let element"> {{element.date}} </td>
         </ng-container>
 

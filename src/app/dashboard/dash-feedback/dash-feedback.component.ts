@@ -35,7 +35,7 @@ export class DashFeedbackComponent implements OnInit, AfterViewInit {
     message: new FormControl(''),
   });
 
-  displayedColumns: string[] = ['id', 'user_id', 'name', 'message', 'date'];
+  displayedColumns: string[] = ['id', 'name', 'message', 'date'];
   dataSource = new MatTableDataSource<Feedback>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

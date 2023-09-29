@@ -1,53 +1,56 @@
-
-<div class=" max-w-4xl flex flex-row mx-auto
+<div class=" sm:max-w-4xl flex flex-row sm:mx-auto
     justify-between
     rounded-lg
     border-2
     border-black
-    mt-5">
-    <div class="flex flex-col gap-8 mx-auto">
-        <img class="h-[100px] w-[100px] self-center" src="../../assets/logo.png"
+    sm:mt-5 mt-2 mx-2">
+    <div class="flex flex-col sm:gap-8 gap-3 mx-auto">
+        <img class="sm:h-[100px] sm:w-[100px] h-[70px] w-[70px] self-center "
+            src="../../assets/logo.png"
             alt="">
-        <h1 class="text-3xl ">Login To Your Account
+        <h1 class="sm:text-3xl text-lg font-[15px] px-2">Login To Your Account
         </h1>
         <form [formGroup]="userForm" (ngSubmit)="submit()" class="flex w-[50%]
             flex-wrap
             flex-col
             rounded-3xl sm:flex
-            gap-6
-            justify-center
-            mx-auto sm:w-full
-            [&mat-form-field]:mx-auto [&mat-form-field]:flex-wrap">
+            sm:gap-6 gap-3 px-2
+            sm:justify-center
+            sm:mx-auto sm:w-full
+            sm:[&mat-form-field]:mx-auto [&mat-form-field]:flex-wrap py-2">
 
             <div class="flex flex-col gap-2">
-                <span class="text-xl font-semibold">
+                <span class="sm:text-xl text-base sm:font-semibold">
                     Username:
                 </span>
-                <input class="p-2 border border-blue-500 rounded-3xl "
+                <input class="sm:p-2 p-1 text-sm sm:text-lg border
+                    border-blue-500 sm:rounded-3xl
+                    rounded-lg "
                     type="text" formControlName="username"
-                    name="username" placeholder="sunita" id="" required="">
+                    name="username" placeholder="John" id="" required="">
             </div>
-
             <div class="flex flex-col gap-2 ">
-                <span class="text-xl font-semibold">
-                    Password
+                <span class="sm:text-xl text-base sm:font-semibold">
+                    Password:
                 </span>
-                <input class=" p-2 border border-blue-500 rounded-3xl "
+                <input class="sm:p-2 p-1 text-sm sm:text-lg border
+                    border-blue-500 sm:rounded-3xl
+                    rounded-lg "
                     type="password" formControlName="password"
-                    placeholder="password" id="" required>
+                    placeholder="abc@A...." id="" required>
             </div>
-            <button mat-raised-button [disabled]="!userForm.valid"
-                [class]="!userForm.valid ? 'bg-gray-800 text-black'
-                : 'bg-green-500 text-purple-500'"
-                class="rounded-3xl
-                text-center p-2 px-6
-                self-center
-                w-fit"
-                type="submit">
-                Sign In
-            </button>
-            <div class="flex flex-col items-center gap-2">
-                <span class="text-xl font-semibold mx-auto">
+            <div>
+                <button mat-raised-button [disabled]="!userForm.valid"
+                    [class]="!userForm.valid ? 'bg-gray-800 text-black'
+                    : 'bg-green-500 text-purple-500'"
+                    class="sm:rounded-3xl rounded-lg sm:text-center
+                    sm:p-2 sm:px-6 px-1 py-0.5"
+                    type="submit">
+                    Sign In
+                </button></div>
+            <div class="flex flex-col sm:items-center sm:gap-2 gap-1 px-1">
+                <span class="sm:text-xl text-base sm:font-semibold font-medium
+                    sm:mx-auto ">
                     New Here?
                 </span>
                 <a routerLink='/signup'>
@@ -57,7 +60,8 @@
                         type="button">
                         Sign Up
                     </button>-->
-                    <button class="rounded-3xl text-center p-2 px-6
+                    <button class="sm:rounded-3xl rounded-lg sm:text-center
+                        sm:p-2 sm:px-6 px-1 py-0.5
                         bg-pink-400" type="button">
                         Sign Up
                     </button>
@@ -65,8 +69,9 @@
                 </a></div>
         </form>
     </div>
-    <div class="w-[50%] ">
-        <img src="../../assets/lehenga8.jpg" class="">
+    <div class="w-[50%] hidden sm:block">
+        <img src="../../assets/lehenga8.jpg" class="" [ngClass]="{'hide-image':
+            showImage}">
     </div>
 </div>
 <!-- <pre>{{userForm.value | json}}</pre> -->
