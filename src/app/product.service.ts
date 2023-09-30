@@ -16,7 +16,6 @@ export class ProductService {
   }
   productList: Product[] = [];
   constructor(private http: HttpClient) {}
-
   getProducts(filter: FilterDTO & { category: string | null }) {
     return this.http.post<JsonResponse>(
       `${environment.apiUrl}/products/filter`,

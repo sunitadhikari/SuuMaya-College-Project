@@ -7,9 +7,8 @@
             <label for="categories"></label>
 
             <select name="categories" id="categories" class="sm:font-normal
-                font-light text-xl text-black
-                px-2 py-1 rounded-md"
-
+                font-light sm:text-xl text-sm text-black
+                sm:px-2 sm:py-1 px-1 py-0.5 rounded-md"
                 [formControl]="categoryCtrl">
                 <option *ngFor="let category of categories"
                     value="{{category}}">
@@ -27,7 +26,7 @@
                 sm:text-2xl sm:px-5 sm:py-3 rounded-lg">Add Product</button>
         </a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:gap-6 gap-2
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 gap-2
         sm:m-6">
         <div *ngFor="let product of products$ |async" class="bg-[#ee7777]
             sm:p-4 p-2
@@ -36,19 +35,20 @@
                 product.name
                 }}"
                 class="
-                md:h-[250px] md:w-[300px] sm:h-[50px] sm:w-[80px]
-                object-cover">
-            <h3 class="text-xl font-bold text-white">{{ product.name }}</h3>
-            <span class="text-lg font-bold text-white">{{product.price}}</span>
+                md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
+                object-cover text-sm text-black pb-1 sm:pb-3">
+            <h3 class="sm:font-semibold sm:text-sm underline text-[12px]">{{
+                product.name }}</h3>
+            <span class="sm:font-semibold sm:text-sm text-white text-[16px]">{{product.price}}</span>
             <!-- <span class="text-lg font-bold text-white">Size:{{product.size}}</span> -->
             <p class="text-white">{{ product.detail}}</p>
             <div class="flex justify-between">
                 <a [routerLink]="'../product/edit'">
                     <button type="button" class="bg-black text-white
                         hover:bg-blue-700
-                        sm:font-bold font-normal
-                        sm:py-1.5 rounded-md
-                        sm:px-3 sm:mt-3 py-1 px-2" (click)="edit(product.id)">Edit</button>
+                        sm:font-bold sm:py-1.5 rounded-md
+                        sm:px-3 sm:mt-3 py-0.5 px-1 text-sm font-[14px]"
+                        (click)="edit(product.id)">Edit</button>
                 </a>
 
             </div>

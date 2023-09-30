@@ -28,7 +28,7 @@
         </div>
         <div class="absolute text-center top-[70%] left-[50%]
             sm:left-[45%] transform
-            -translate-x-1/2 -translate-y-1/2 sm:gap-[2px] w-full">
+            -translate-x-1/2 -translate-y-1/2 sm:gap-10 w-full">
             <h2 class="italic text-black sm:underline
                 sm:text-decoration-thickness-5
                 text-underline-offset-8 md:font-bold
@@ -71,13 +71,11 @@
         <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-4
             sm:p-2 p-1
             shadow-lg ">
-
             <img src="{{ (product?.images | image)[0] }}" alt="{{ product.name
                 }}"
                 class="
                 md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
-                object-cover text-sm text-black pb-1 sm:pb-3 ">
-
+                object-cover text-sm text-black pb-1 sm:pb-3">
             <div class="pb-1 flex justify-between">
                 <span class="sm:font-semibold sm:text-sm underline text-[12px]">{{product.name}}</span>
                 <span class="bg-green-600 text-white text-[10px] sm:text-sm

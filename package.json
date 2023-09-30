@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "khalti-checkout-web": "^2.2.0",
     "mat-ngx-wig": "^7.0.0",
     "material-icons": "^1.13.8",
     "ngx-awesome-uploader": "^15.0.0",

@@ -5,9 +5,11 @@ export interface Order {
   date?: string;
   address?: string;
   paymentMethod?: string;
-  price?: string;
+  price?: number;
   quantity?: number;
+  userId: number;
   size?: string;
+  productId: number;
 }
 export interface Return {
   returnId: number;

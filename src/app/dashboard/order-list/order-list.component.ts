@@ -13,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule, RouterLink, RouterLinkWithHref } from '@angular/router';
 import { User } from 'src/app/auth.service';
-
 @Component({
   selector: 'app-order-list',
   standalone: true,
@@ -45,7 +44,7 @@ export class OrderListComponent implements OnInit, AfterViewInit {
     'address',
     'price',
     'boughtBy',
-    'paymentMethod',
+    'size',
   ];
   dataSource = new MatTableDataSource<Order>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
