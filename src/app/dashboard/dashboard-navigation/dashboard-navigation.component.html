@@ -7,9 +7,9 @@
             h-full w-fit rounded-r-3xl
             pt-6 ">
             <img src="..//../../assets/logo.png" class="h-28 w-28 mx-auto">
-            <mat-list role="list" class="flex flex-row mx-auto">
+            <mat-list role="list" class="flex flex-row ">
                 <div *ngIf="isAdmin" class="flex mx-auto ml-7">
-                    <mat-icon>inventory</mat-icon>
+                    <mat-icon>add_shopping_cart</mat-icon>
                     <mat-list-item>
                         <a routerLink="/dashboard/product"
                             routerLinkActive="active
@@ -22,34 +22,39 @@
                         </a>
                     </mat-list-item>
                 </div>
-                <mat-list-item class="flex mx-auto ">
+                <div class="flex mx-auto ml-7">
                     <mat-icon class="">list</mat-icon>
-                    <a routerLink="/dashboard/order"
-                        routerLinkActive="active text-green-600"
-                        class="text-white hover:text-black py-2
-                        text-2xl font-bold">
-                        Order List
-                    </a>
-                </mat-list-item>
-
-                <mat-list-item class="flex mx-auto ">
+                    <mat-list-item class=" ">
+                        <a routerLink="/dashboard/order"
+                            routerLinkActive="active text-green-600"
+                            class="text-white hover:text-black py-2
+                            text-2xl font-bold">
+                            Order List
+                        </a>
+                    </mat-list-item>
+                </div>
+                <div class="flex mx-auto ml-7">
                     <mat-icon>hourglass_empty</mat-icon>
-                    <a routerLink="/dashboard/return"
-                        routerLinkActive="active text-green-600"
-                        class="text-white hover:text-black py-2
-                        text-2xl font-bold">
-                        Return List
-                    </a>
-                </mat-list-item>
-                <mat-list-item class="flex mx-auto ">
+                    <mat-list-item class=" ">
+                        <a routerLink="/dashboard/return"
+                            routerLinkActive="active text-green-600"
+                            class="text-white hover:text-black py-2
+                            text-2xl font-bold">
+                            Return List
+                        </a>
+                    </mat-list-item>
+                </div>
+                <div class="flex mx-auto ml-7">
                     <mat-icon>book</mat-icon>
-                    <a routerLink="/dashboard/feedback"
-                        routerLinkActive="active text-green-600"
-                        class="text-white hover:text-black py-2
-                        text-2xl font-bold">
-                        Feedback
-                    </a>
-                </mat-list-item>
+                    <mat-list-item class=" ">
+                        <a routerLink="/dashboard/feedback"
+                            routerLinkActive="active text-green-600"
+                            class="text-white hover:text-black py-2
+                            text-2xl font-bold">
+                            Feedback
+                        </a>
+                    </mat-list-item>
+                </div>
             </mat-list>
         </div>
     </mat-sidenav>

@@ -68,10 +68,17 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     );
   }
   productList: Product[] = [];
-  onPageChange(event: PageEvent): void {}
+  updateProducts(): void {
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+  }
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.updateProducts();
+  }
   edit(productId?: number) {
     if (productId) {
-      this.router.navigate(['/product/edit', productId]);
+      this.router.navigate(['/dashboard/product/edit', productId]);
     }
   }
 }

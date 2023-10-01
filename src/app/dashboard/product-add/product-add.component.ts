@@ -48,7 +48,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     name: new FormControl(''),
     price: new FormControl(0),
     size: new FormControl(''),
-    detail: new FormControl(''),
+    details: new FormControl(''),
     date: new FormControl(''),
     category: new FormControl(''),
     available: new FormControl(true),
@@ -58,7 +58,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     const product: Product = {
       name: productValue.name ?? '',
       price: productValue.price ?? 0,
-      detail: productValue.detail ?? '',
+      details: productValue.details ?? '',
       category: productValue.category ?? '',
       size: productValue.size ?? '',
       date: productValue.date ?? '',

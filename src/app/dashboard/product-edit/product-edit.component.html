@@ -2,73 +2,75 @@
     <a routerLink="/dashboard/product">
         <mat-icon class="text-[#cc5755]">arrow_back</mat-icon>
     </a>
-    <h2 class="text-[#cc5755] text-xl font-semibold">Edit your Product</h2>
+    <h2 class="text-[#cc5755] sm:text-xl sm:font-semibold font-medium text-lg">Edit
+        your Product</h2>
 </div>
-<div class="px-3 py-4">
+<div *ngIf="productEdit$ | async as product" class="px-3 py-4">
     <form [formGroup]="productEditForm" (ngSubmit)="submit()" class="flex
         flex-col sm:flex-row
         mx-auto w-full
         bg-gray-200 rounded-md
         shadow-md [&>div>div>label]:text-xl [&>div>div>label]:text-[#ed5a5a]
-        [&>div>div>label]:text-bold [&>div>div>input]:p-5 [&>div>div>input]:rounded-lg
+        [&>div>div>label]:sm:text-bold [&>div>div>label]:sm:text-lg [&>div>div>input]:p-3
+        [&>div>div>input]:rounded-lg
         ">
         <div class=" flex flex-col flex-wrap gap-3 grow basis-[60%] px-5 py-4">
             <div class="">
-                <label for="name" class="block mb-3 font-medium">Product
+                <label for="name" class="block mb:1 sm:mb-3 font-medium">Product
                     Name:</label>
                 <input formControlName="name" type="text"
-                    placeholder="Lehenga"
+
                     class="form-input
                     w-full" required>
             </div>
             <div class="">
-                <label for="price" class="block mb-3 font-medium">Price:</label>
+                <label for="price" class="block mb-1 sm:mb-3 font-medium">Price:</label>
                 <input formControlName="price" type="text"
                     placeholder="Rs.2000"
                     class="form-input
                     w-full" required>
             </div>
             <div class="">
-                <label class="block mb-3 font-medium">Date</label>
+                <label class="block mb-1 sm:mb-3 font-medium">Date</label>
                 <input formControlName="date" type="date"
                     placeholder="2058/10/34"
                     class="form-input
-                    w-full" required>
+                    w-full">
             </div>
             <div class="">
-                <label for="size" class="block mb-3 font-medium">Category:</label>
+                <label for="size" class="block mb-1 sm:mb-3 font-medium">Category:</label>
                 <select formControlName="category" id="size" name="size"
                     class="form-select w-full p-3
                     rounded-lg
                     bg-white" required>
-                    <option value="Lehenga">Lehenga</option>
-                    <option value="Gown">Gown</option>
-                    <option value="Sari">Sari</option>
-                    <option value="Kurtha">Kurtha</option>
+                    <option value="lehenga">Lehenga</option>
+                    <option value="gown">Gown</option>
+                    <option value="saree">Saree</option>
+                    <option value="kurtha">Kurtha</option>
+                    <option value="culterl dress">Cultural Dress</option>
                 </select>
             </div>
             <div class="">
-                <label for="size" class="block mb-3 font-medium">Size:</label>
+                <label for="size" class="block mb-1 sm:mb-3 font-medium">Size:</label>
                 <select formControlName="size" id="size" name="size"
                     class="form-select w-full p-3
                     rounded-lg
                     bg-white" required>
-                    <option value="s">Small</option>
-                    <option value="m">Medium</option>
-                    <option value="l">Large</option>
-                    <option value="xxl">Extra Large</option>
+                    <option value="s">S</option>
+                    <option value="m">M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XXL</option>
+                    <option value="xxl">XXL</option>
+
                 </select>
             </div>
             <div class="">
-                <label for="detail" class="block mb-3 font-medium ">Detail:</label>
-                <textarea formControlName="detail" rows="3"
+                <label for="details" class="block mb-1 sm:mb-3 font-medium ">Detail:</label>
+                <textarea formControlName="details" rows="3"
                     class="form-textarea w-full rounded-lg p-4"
                     required></textarea>
             </div>
-
-
         </div>
-
         <div class="mx-auto flex-col sm:gap-5 gap:2">
             <div class="flex mx-auto basis-[30%] px-3 sm:m-9 py-2
                 border-dotted border-4
@@ -96,7 +98,6 @@
                     shadow-xl px-4 py-2 text-[#ed5a5a]">Add Product</button>
             </div>
         </div>
-
     </form>
     <!-- <pre>{{productEditForm.value | json}}</pre> -->
 

@@ -4,6 +4,7 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common';
 import { RouterLink, RouterLinkWithHref, RouterModule } from '@angular/router';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
@@ -20,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FilePickerModule } from 'ngx-awesome-uploader';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
-import { map, switchMap, tap } from 'rxjs';
+import { Observable, map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-product-edit',
@@ -49,12 +50,16 @@ import { map, switchMap, tap } from 'rxjs';
   styles: [],
 })
 export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
-  products: Product[] = [];
-  productEditForm = new FormGroup({
+  productId: number;
+  // image = '';
+  // sizes = [''];
+  productEdit$: Observable<Product>;
+  product: Product;
+  productEditForm = this.fb.nonNullable.group({
     name: new FormControl(''),
     price: new FormControl(0),
     size: new FormControl(''),
-    detail: new FormControl(''),
+    details: new FormControl(''),
     date: new FormControl(''),
     category: new FormControl(''),
     available: new FormControl(true),
@@ -62,9 +67,11 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) {}
   ngOnInit(): void {}
+
   ngOnDestroy(): void {}
 
   getProductId() {}
@@ -73,21 +80,25 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
     const product: Product = {
       name: productValue.name ?? '',
       price: productValue.price ?? 0,
-      detail: productValue.detail ?? '',
+      details: productValue.details ?? '',
       category: productValue.category ?? '',
       size: productValue.size ?? '',
       date: productValue.date ?? '',
       available: productValue.available ?? true,
     };
+    this.productService.update(product).subscribe((res) => alert(res.message));
   }
   ngAfterViewInit(): void {
-    this.productEditForm = this.route.params.pipe(
+    this.productEdit$ = this.route.params.pipe(
       map((param) => param['id']),
       tap(console.log),
       switchMap((id) => {
         return this.productService.getProductById(id).pipe(
           map((JsonResponse) => {
-            return JsonResponse.body as Product;
+            const product = JsonResponse.body as Product;
+            this.product = product;
+            this.productEditForm.patchValue(product);
+            return product;
           })
         );
       })

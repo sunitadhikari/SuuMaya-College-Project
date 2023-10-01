@@ -41,14 +41,13 @@
                 product.name }}</h3>
             <span class="sm:font-semibold sm:text-sm text-white text-[16px]">{{product.price}}</span>
             <!-- <span class="text-lg font-bold text-white">Size:{{product.size}}</span> -->
-            <p class="text-white">{{ product.detail}}</p>
+            <p class="text-white">{{ product.details}}</p>
             <div class="flex justify-between">
-                <a [routerLink]="'../product/edit'">
+                <a routerLink="/dashboard/product/edit/{{product.id}}">
                     <button type="button" class="bg-black text-white
                         hover:bg-blue-700
                         sm:font-bold sm:py-1.5 rounded-md
-                        sm:px-3 sm:mt-3 py-0.5 px-1 text-sm font-[14px]"
-                        (click)="edit(product.id)">Edit</button>
+                        sm:px-3 sm:mt-3 py-0.5 px-1 text-sm font-[14px]">Edit</button>
                 </a>
 
             </div>

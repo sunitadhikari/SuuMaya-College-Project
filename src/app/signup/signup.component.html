@@ -101,7 +101,6 @@
                     sm:text-lg"
                     type="tel" required=""
                     placeholder="Phone Number" id="">
-
                 <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
                     newUserForm.get('phone')?.hasError('required')"
                     class="text-red-600">PhoneNumber

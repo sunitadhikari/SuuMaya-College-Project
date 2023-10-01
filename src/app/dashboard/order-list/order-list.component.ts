@@ -39,11 +39,12 @@ export class OrderListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'id',
     'user_id',
-    'productName',
     'date',
     'address',
+    'product_id',
     'price',
     'boughtBy',
+    'transaction_id',
     'size',
   ];
   dataSource = new MatTableDataSource<Order>();

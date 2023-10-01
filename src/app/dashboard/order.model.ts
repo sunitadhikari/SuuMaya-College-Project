@@ -10,6 +10,7 @@ export interface Order {
   userId: number;
   size?: string;
   productId: number;
+  transactionId: string;
 }
 export interface Return {
   returnId: number;

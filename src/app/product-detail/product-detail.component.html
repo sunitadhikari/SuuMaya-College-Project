@@ -6,7 +6,8 @@
     py-5 rounded-md">
     <div class=" flex sm:flex-row flex-col gap-5 w-full">
       <div class="w-[50%] bg-white sm:px-6 sm:py-4 px-1 py-1.5 gap-4">
-        <span class="sm:font-bold font-medium sm:text-2xl text-base sm:p-2 p-1
+        <span class="sm:font-bold font-medium sm:text-2xl text-base
+          sm:p-2 p-1
           text-[#ef4b4b]">{{product.name}}</span>
         <img class="hover:cursor-zoom-out" src="{{ product.images }}"
           alt="{{
@@ -17,19 +18,20 @@
           sm:p-4
           md:p-7">
       </div>
-      <form [formGroup]="detailForm" (ngSubmit)="submit()"
+      <form [formGroup]="detailForm"
         class="sm:w-[50%] ">
         <div class="flex flex-col
           bg-white sm:px-6 sm:py-4 px-2 py-2 sm:gap-3 gap-1">
           <h2 class="sm:font-bold font-semibold sm:text-xl text-sm
             text-[#ef4b4b]">Detail:</h2>
-          <p class="sm:font-medium font-light text-base text black">{{product.detail}}</p>
+          <p class="sm:font-medium font-light text-base text black">{{product.details}}</p>
           <div class="text-black text-xs gap-1 sm:gap-3">
-            <span class="sm:font-bold font-semibold sm:text-xl text-sm
+            <span class="sm:font-bold font-semibold sm:text-xl
+              text-sm
               text-[#ef4b4b]">Size</span>
             <div *ngFor="let size of sizes">
-              <input name="sizes" value="{{size}}"
-                formControlName="sizes" type="radio" required>
+              <input name="size" value="{{size}}"
+                formControlName="size" type="radio" required>
               <label for="{{size}}">{{size}}</label><br>
             </div>
           </div>
@@ -50,27 +52,29 @@
             }}
           </div>
           <div class="flex flex-col ">
-            <span class="sm:font-bold font-semibold sm:text-xl text-sm
+            <span class="sm:font-bold font-semibold sm:text-xl
+              text-sm
               text-[#ef4b4b]
               ">Category:</span>
             <div class=" ">{{product.category}}</div>
           </div>
-          <div class="flex justify-between ">
-            <button (click)="makePayment()" class=" bg-green-400
-              sm:font-extrabold text-black
-              sm:px-3 sm:py-1.5 px-1.5 py-0.5 text-base font-medium
-              sm:text-xl bg-green
-              rounded-md">Khalti</button>
-            <button [disabled]="!detailForm.valid"
+          <div class="flex flex-col justify-end items-end gap-2">
+            <!-- <button class="bg-green-400
+              sm:font-bold text-black
+              sm:px-3 sm:py-1.5 px-1.5 py-0.5 text-sm
+              font-normal
+              sm:text-lg bg-green
+              rounded-md w-fit self-end">Pay Here</button> -->
+            <button (click)="makePayment()"[disabled]="!detailForm.valid"
               [class]="!detailForm.valid?
               'bg-gray-400 text-black' : 'bg-[#f65f5f]
-              text-white'" class="
-              sm:font-extrabold text-black
-              sm:px-3 sm:py-1.5 px-1.5 py-0.5 text-base font-medium
+              text-white'" class="sm:font-extrabold text-black w-fit
+              sm:px-3 sm:py-1.5 px-1.5 py-0.5 text-base
+              font-medium
               sm:text-xl
-              rounded-md">Rent</button>
-
+              rounded-md self-end">Rent</button>
           </div>
+
         </div>
       </form>
     </div>

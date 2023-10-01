@@ -47,7 +47,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   name = 'Lehenga';
   productId: number;
   productDetails$: Observable<Product>;
-  sizes = ['XL', 'L', 'M', 'XXL'];
+  sizes = ['s', 'M', 'l', 'xl', 'XXL'];
   image = '';
 
   constructor(
@@ -67,18 +67,21 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       Validators.min(1),
       Validators.max(3),
     ]),
-    sizes: new FormControl('', Validators.required),
+    size: new FormControl('', Validators.required),
   });
 
-  submit() {
+  submit(transactionId: string) {
     const detailValue = this.detailForm.value;
     const detail: Order = {
       quantity: detailValue.quantity ?? 0,
-      size: detailValue.sizes ?? '',
+      size: detailValue.size ?? '',
+      // address:
+      //   (JSON.parse(localStorage.getItem('user') ?? '') as User).address ?? '',
       userId: (JSON.parse(localStorage.getItem('user') ?? '') as User).id ?? 0,
       date: new Date().toISOString(),
       price: detailValue.quantity ?? 0 * this.product.price ?? 0,
       productId: this.product.id ?? 0,
+      transactionId: transactionId,
     };
     this.orderService.create(detail).subscribe((res) => alert(res.message));
   }
@@ -99,22 +102,23 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   }
   getProductId() {}
   makePayment() {
+    const that = this;
     let config = {
       // replace this key with yours
       publicKey: 'test_public_key_0275cc5e2bae42fb890536aae01e9e73',
-      productIdentity: '1234567890',
-      productName: 'Drogon',
+      productIdentity: this.product.id,
+      productName: this.product.name,
       productUrl: 'http://gameofthrones.com/buy/Dragons',
       eventHandler: {
         onSuccess(payload: any) {
           // hit merchant api for initiating verfication
-          console.log(payload);
-          debugger;
+          that.submit(payload['idx']);
+          console.log('paylaod', payload);
         },
         // onError handler is optional
         onError(error: any) {
           // handle errors
-          console.log(error);
+          console.log('error', error);
         },
         onClose() {
           console.log('widget is closing');
@@ -130,7 +134,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     };
 
     let checkout = new KhaltiCheckout(config);
-    // minimum transaction amount must be 10, i.e 1000 in paisa.
-    checkout.show({ amount: 1000 });
+    // minimum transaction amount must be 10, i.e 1000 inpaisa.
+    const quantity = this.detailForm.get('quantity')?.value ?? 1;
+    checkout.show({ amount: this.product.price * quantity * 100 });
   }
 }

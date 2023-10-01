@@ -45,26 +45,28 @@
                 TRENDY LOOK!!</span>
         </div>
     </div>
-    <div class="flex flex-col sm:flex-row gap-1 sm:gap-4 md:gap-7 sm:my-5">
-        <div class="flex flex-col sm:my-12 my-5 sm:justify-start justify-end
-            sm:gap-3
-            ">
-            <label for="categories" class="md:font-semibold md:text-lg
-                sm:font-medium font-normal text-sm
-                sm:text-lg text-[#120808]">Select your choice</label>
-            <select name="categories" id="categories"
-                [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
-                sm:h-9 h-5 w-[25%] sm:w-full">
-                <option *ngFor="let category of categories" value="{{category}}"
-                    class="font-thin text-base text-[#d90c32]">
-                    {{category}}
-                </option>
-            </select>
-        </div>
+    <div class=" gap-1 sm:gap-3 md:gap-5 sm:my-4">
+
         <div class="flex-grow order-2 sm:order-1 mb-3">
             <img src="../../assets/dresses.png" alt="" class="w-full h-auto
                 ">
         </div>
+    </div>
+    <div class="flex flex-col sm:my-10 my-4 items-end
+        w-fit justify-items-end
+        sm:gap-3 gap-1
+        ">
+        <label for="categories" class="md:font-semibold md:text-lg
+            sm:font-medium font-normal text-sm
+            sm:text-lg text-[#120808] slef-end">Select your choice</label>
+        <select name="categories" id="categories"
+            [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
+            sm:h-9 h-5 w-full self-end">
+            <option *ngFor="let category of categories" value="{{category}}"
+                class="font-thin text-base text-[#d90c32] slef-end">
+                {{category}}
+            </option>
+        </select>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6 sm:gap-4
         gap-2 ">

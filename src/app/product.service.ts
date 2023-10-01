@@ -14,6 +14,12 @@ export class ProductService {
       productAdd
     );
   }
+  update(productUpdate: Product) {
+    return this.http.post<JsonResponse>(
+      `${environment.apiUrl}/products`,
+      productUpdate
+    );
+  }
   productList: Product[] = [];
   constructor(private http: HttpClient) {}
   getProducts(filter: FilterDTO & { category: string | null }) {
