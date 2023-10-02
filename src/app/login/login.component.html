@@ -18,7 +18,6 @@
             sm:justify-center
             sm:mx-auto sm:w-full
             sm:[&mat-form-field]:mx-auto [&mat-form-field]:flex-wrap py-2">
-
             <div class="flex flex-col gap-2">
                 <span class="sm:text-xl text-base sm:font-semibold">
                     Username:
@@ -39,7 +38,7 @@
                     type="password" formControlName="password"
                     placeholder="abc@A...." id="" required>
             </div>
-            <div>
+            <div class="flex justify-center">
                 <button mat-raised-button [disabled]="!userForm.valid"
                     [class]="!userForm.valid ? 'bg-gray-800 text-black'
                     : 'bg-green-500 text-purple-500'"
@@ -65,7 +64,6 @@
                         bg-pink-400" type="button">
                         Sign Up
                     </button>
-
                 </a></div>
         </form>
     </div>

@@ -44,7 +44,7 @@ export class ContactComponent implements OnInit, OnDestroy {
       username: contactFormValue.username ?? '',
       // email: contactFormValue.email ?? '',
       message: contactFormValue.message ?? '',
-      name: '',
+      // name: '',
     };
     this.feedbackService
       .create(contactForm)

@@ -45,6 +45,7 @@ export class OrderListComponent implements OnInit, AfterViewInit {
     'price',
     'boughtBy',
     'transaction_id',
+    'quantity',
     'size',
   ];
   dataSource = new MatTableDataSource<Order>();

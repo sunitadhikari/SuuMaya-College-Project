@@ -15,13 +15,13 @@ export class OrderService {
     filter: FilterDTO & { username: string | null }
   ): Observable<JsonResponse> {
     return this.httpClient.post<JsonResponse>(
-      `${environment.apiUrl}/orders/filter`,
+      `${environment.apiUrl}orders/filter`,
       filter
     );
   }
   create(order: Order) {
     return this.httpClient.post<JsonResponse>(
-      `${environment.apiUrl}/orders`,
+      `${environment.apiUrl}orders`,
       order
     );
   }

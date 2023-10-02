@@ -14,7 +14,7 @@ export class ReturnService {
     filter: FilterDTO & { username: string | null }
   ): Observable<JsonResponse> {
     return this.httpClient.post<JsonResponse>(
-      `${environment.apiUrl}/return/filter`,
+      `${environment.apiUrl}return/filter`,
       filter
     );
   }

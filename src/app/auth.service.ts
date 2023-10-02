@@ -9,13 +9,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
-    return this.http.post<JsonResponse>(`${environment.apiUrl}/login`, {
+    return this.http.post<JsonResponse>(`${environment.apiUrl}login`, {
       username: username,
       password: password,
     });
   }
   signup(user: User) {
-    return this.http.post<JsonResponse>(`${environment.apiUrl}/register`, user);
+    return this.http.post<JsonResponse>(`${environment.apiUrl}register`, user);
   }
 }
 export interface JsonResponse {

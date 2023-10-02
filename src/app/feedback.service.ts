@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Feedback, FilterDTO } from './product.model';
 import { environment } from 'src/environments/environmen';
 import { JsonResponse } from './app.model';
-import { Observable, filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,7 @@ import { Observable, filter } from 'rxjs';
 export class FeedbackService {
   create(feedback: Feedback) {
     return this.http.post<JsonResponse>(
-      `${environment.apiUrl}/feedback`,
+      `${environment.apiUrl}feedback`,
       feedback
     );
   }
@@ -19,7 +18,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) {}
   getFeedbacks(filter: FilterDTO & { username: string | null }) {
     return this.http.post<JsonResponse>(
-      `${environment.apiUrl}/feedback/filter`,
+      `${environment.apiUrl}feedback/filter`,
       filter
     );
   }
@@ -31,6 +30,6 @@ export class FeedbackService {
     });
   }
   get() {
-    return this.http.get<Feedback[]>('http://localhost:3000/feedback');
+    return this.http.get<Feedback[]>(`${environment.apiUrl}feedback`);
   }
 }

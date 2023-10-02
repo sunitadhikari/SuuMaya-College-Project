@@ -19,6 +19,7 @@ import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FilePickerModule } from 'ngx-awesome-uploader';
+import { S3Service } from 'src/app/s3.service';
 
 @Component({
   selector: 'app-product-add',
@@ -44,6 +45,7 @@ import { FilePickerModule } from 'ngx-awesome-uploader';
   styles: [],
 })
 export class ProductAddComponent implements OnInit, OnDestroy {
+  selectedFile: File | null;
   productAddForm = new FormGroup({
     name: new FormControl(''),
     price: new FormControl(0),
@@ -51,9 +53,13 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     details: new FormControl(''),
     date: new FormControl(''),
     category: new FormControl(''),
-    available: new FormControl(true),
+    available: new FormControl(false),
   });
   submit() {
+    if (!this.selectedFile) {
+      alert('please select one image');
+      return;
+    }
     const productValue = this.productAddForm.value;
     const product: Product = {
       name: productValue.name ?? '',
@@ -62,11 +68,23 @@ export class ProductAddComponent implements OnInit, OnDestroy {
       category: productValue.category ?? '',
       size: productValue.size ?? '',
       date: productValue.date ?? '',
-      available: productValue.available ?? true,
+      available: productValue.available ?? false,
+      image: this.selectedFile.name,
     };
+    this.s3Service.uploadFile(this.selectedFile, this.selectedFile.name);
     this.productService.create(product).subscribe((res) => alert(res.message));
   }
   ngOnDestroy(): void {}
   ngOnInit(): void {}
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private s3Service: S3Service
+  ) {}
+  onFileUpload(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const files = inputElement.files; // This gives you access to the selected file(s)    if (files && files.length > 0) {
+    // You can now work with the selected file(s)
+    this.selectedFile = files?.[0] ?? null;
+  }
+  // this.file = event.target.files[0];
 }

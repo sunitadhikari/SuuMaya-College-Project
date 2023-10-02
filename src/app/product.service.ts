@@ -10,13 +10,13 @@ import { JsonResponse } from './app.model';
 export class ProductService {
   create(productAdd: Product) {
     return this.http.post<JsonResponse>(
-      `${environment.apiUrl}/products`,
+      `${environment.apiUrl}products`,
       productAdd
     );
   }
-  update(productUpdate: Product) {
-    return this.http.post<JsonResponse>(
-      `${environment.apiUrl}/products`,
+  update(productUpdate: Product, id: number) {
+    return this.http.put<JsonResponse>(
+      `${environment.apiUrl}products/${id}`,
       productUpdate
     );
   }
@@ -24,7 +24,7 @@ export class ProductService {
   constructor(private http: HttpClient) {}
   getProducts(filter: FilterDTO & { category: string | null }) {
     return this.http.post<JsonResponse>(
-      `${environment.apiUrl}/products/filter`,
+      `${environment.apiUrl}products/filter`,
       filter
     );
   }
@@ -35,13 +35,13 @@ export class ProductService {
       return product;
     });
   }
-
   get() {
-    return this.http.get<Product[]>('http://localhost:3000/products');
+    return this.http.get<Product[]>(`${environment.apiUrl}products`);
   }
   getProductById(productId: number) {
     return this.http.get<JsonResponse>(
-      'http://localhost:3000/products/' + productId
+      `${environment.apiUrl}products/${productId}`
+      // productId
     );
   }
 }

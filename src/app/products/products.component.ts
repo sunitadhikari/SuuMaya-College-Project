@@ -14,6 +14,7 @@ import { FilterDTO, Product } from '../product.model';
 import { Observable, map, merge, startWith, switchMap } from 'rxjs';
 import { ImagePipe } from '../image.pipe';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppendS3Pipe } from '../append-s3.pipe';
 
 @Component({
   selector: 'app-products',
@@ -29,12 +30,14 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ImagePipe,
     NgFor,
+    AppendS3Pipe,
   ],
   templateUrl: './products.component.html',
   styles: [],
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  available = true;
   products$: Observable<Product[]>;
   pageSize = 10;
   totalProducts = 0;
@@ -54,6 +57,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
           pageSize: this.paginator.pageSize,
           category: this.categoryCtrl.value ?? '',
         };
+
         return this.productService.getProducts(filter).pipe(
           map((jsonReponse) => {
             this.totalProducts = jsonReponse.totalElements;

@@ -1,6 +1,6 @@
 export interface Product {
   id?: number;
-  images?: string;
+  image: string | null;
   name?: string;
   details: string;
   price: number;
@@ -22,7 +22,7 @@ export interface Category {
 export interface Feedback {
   name?: string;
   user_id?: number;
-  username: string;
+  username?: string;
   // email: string;
   isAdmin?: boolean;
   message: string;

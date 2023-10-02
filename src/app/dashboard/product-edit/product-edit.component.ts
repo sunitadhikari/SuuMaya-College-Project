@@ -22,6 +22,8 @@ import { FilePickerModule } from 'ngx-awesome-uploader';
 import { Product } from 'src/app/product.model';
 import { ProductService } from 'src/app/product.service';
 import { Observable, map, switchMap, tap } from 'rxjs';
+import { ImagePipe } from 'src/app/image.pipe';
+import { S3Service } from 'src/app/s3.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -45,14 +47,16 @@ import { Observable, map, switchMap, tap } from 'rxjs';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    ImagePipe,
   ],
   templateUrl: './product-edit.component.html',
   styles: [],
 })
 export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
   productId: number;
+  selectedFile: File | null = null;
   // image = '';
-  // sizes = [''];
+  // sizeks = [''];
   productEdit$: Observable<Product>;
   product: Product;
   productEditForm = this.fb.nonNullable.group({
@@ -68,7 +72,8 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private s3Service: S3Service
   ) {}
   ngOnInit(): void {}
 
@@ -76,8 +81,13 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getProductId() {}
   submit() {
+    let img = this.product.image;
+    if (this.selectedFile) {
+      img = this.selectedFile.name;
+      this.s3Service.uploadFile(this.selectedFile, this.selectedFile.name);
+    }
     const productValue = this.productEditForm.value;
-    const product: Product = {
+    const productF: Product = {
       name: productValue.name ?? '',
       price: productValue.price ?? 0,
       details: productValue.details ?? '',
@@ -85,8 +95,12 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
       size: productValue.size ?? '',
       date: productValue.date ?? '',
       available: productValue.available ?? true,
+      image: img,
     };
-    this.productService.update(product).subscribe((res) => alert(res.message));
+    // this.s3Service.uploadFile(this.selectedFile);
+    this.productService
+      .update(productF, this.product.id ?? -1)
+      .subscribe((res) => alert(res.message));
   }
   ngAfterViewInit(): void {
     this.productEdit$ = this.route.params.pipe(
@@ -103,5 +117,11 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
         );
       })
     );
+  }
+  onFileUpload(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const files = inputElement.files; // This gives you access to the selected file(s)    if (files && files.length > 0) {
+    // You can now work with the selected file(s)
+    this.selectedFile = files?.[0] ?? null;
   }
 }

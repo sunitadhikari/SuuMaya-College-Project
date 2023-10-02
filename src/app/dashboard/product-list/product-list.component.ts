@@ -17,6 +17,7 @@ import {
 } from '@angular/material/paginator';
 import { ImagePipe } from 'src/app/image.pipe';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppendS3Pipe } from 'src/app/append-s3.pipe';
 
 @Component({
   selector: 'app-product-list',
@@ -32,6 +33,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     HttpClientModule,
     ImagePipe,
+    AppendS3Pipe,
   ],
   templateUrl: './product-list.component.html',
   styles: [],

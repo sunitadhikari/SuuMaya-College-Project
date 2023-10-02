@@ -23,6 +23,7 @@ import { AuthService, User } from '../auth.service';
 import { Order } from '../dashboard/order.model';
 import { FooterComponent } from '../footer/footer.component';
 import { HttpClient } from '@angular/common/http';
+import { AppendS3Pipe } from '../append-s3.pipe';
 
 @Component({
   selector: 'app-product-detail',
@@ -40,14 +41,16 @@ import { HttpClient } from '@angular/common/http';
     HeaderComponent,
     SwiperModule,
     FooterComponent,
+    AppendS3Pipe,
   ],
 })
 export class ProductDetailComponent implements OnInit, AfterViewInit {
+  isProductAvailable: boolean = true;
   min = 0;
   name = 'Lehenga';
   productId: number;
   productDetails$: Observable<Product>;
-  sizes = ['s', 'M', 'l', 'xl', 'XXL'];
+  size = ['s', 'M', 'l', 'xl', 'XXL'];
   image = '';
 
   constructor(
@@ -67,6 +70,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       Validators.min(1),
       Validators.max(3),
     ]),
+    available: new FormControl(),
     size: new FormControl('', Validators.required),
   });
 
@@ -79,7 +83,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       //   (JSON.parse(localStorage.getItem('user') ?? '') as User).address ?? '',
       userId: (JSON.parse(localStorage.getItem('user') ?? '') as User).id ?? 0,
       date: new Date().toISOString(),
-      price: detailValue.quantity ?? 0 * this.product.price ?? 0,
+      price: (detailValue.quantity ?? 0) * (this.product.price ?? 0),
       productId: this.product.id ?? 0,
       transactionId: transactionId,
     };

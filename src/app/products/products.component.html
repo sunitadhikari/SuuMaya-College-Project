@@ -1,50 +1,5 @@
 <div class="sm:mx-6 mx-2 ">
-    <div class="sm:py-4 relative mx-auto">
-        <div class="flex image-container mx-auto">
-            <img src="../../assets/aditit.jpg" class="flex-grow order-2
-                md:order-2 sm:order-1 md:w-[292px]
-                md:h-[400px]
-                w-[70px] h-[100px] sm:w-[100px] sm:h-[80px]
-                object-cover object-top ">
-            <img src="../../assets/gurungdress.jpg" class="flex-grow order-2
-                sm:order-1 md:w-[292px]
-                md:h-[400px]
-                w-[70px] h-[100px] sm:w-[200px] sm:h-[150px]
-                object-cover object-top">
-            <img src="../../assets/priyanakakarki.jpg" class="flex-grow order-2
-                sm:order-1 md:w-[292px]
-                md:h-[400px] sm:w-[200px] sm:h-[150px]
-                w-[70px] h-[100px]
-                object-cover object-top">
-            <img src="../../assets/alia.jpg" class="flex-grow order-2 sm:order-1
-                md:w-[292px] md:h-[400px]
-                w-[70px] h-[100px] sm:w-[200px] sm:h-[150px]
-                object-cover object-top">
-            <img src="../../assets/sari3.jpg" class=" flex-grow order-2
-                sm:order-1 md:w-[300px]
-                md:h-[400px]
-                w-[70px] h-[100px] sm:w-[200px] sm:h-[150px]
-                object-cover object-top">
-        </div>
-        <div class="absolute text-center top-[70%] left-[50%]
-            sm:left-[45%] transform
-            -translate-x-1/2 -translate-y-1/2 sm:gap-10 w-full">
-            <h2 class="italic text-black sm:underline
-                sm:text-decoration-thickness-5
-                text-underline-offset-8 md:font-bold
-                md:text-7xl text-center md:py-2
-                sm:underline-offset-4
-                font-semibold text-xl underline md:underline-offset-8 ">Discover</h2>
-            <span class="italic sm:text-xl sm:font-normal
-                md:font-semibold text-center md:text-3xl text-[10px]
-                font-[8px] text-black bg-slate-200 px-2 rounded-md ">YOUR
-                STYLE
-                THIS
-                WEDDING
-                SEASON WITH SOME
-                TRENDY LOOK!!</span>
-        </div>
-    </div>
+
     <div class=" gap-1 sm:gap-3 md:gap-5 sm:my-4">
 
         <div class="flex-grow order-2 sm:order-1 mb-3">
@@ -52,33 +7,34 @@
                 ">
         </div>
     </div>
-    <div class="flex flex-col sm:my-10 my-4 items-end
-        w-fit justify-items-end
-        sm:gap-3 gap-1
-        ">
+    <div class="flex flex-col sm:my-10 my-4 items-end self-end
+        justify-items-end
+        sm:gap-3 gap-1">
         <label for="categories" class="md:font-semibold md:text-lg
             sm:font-medium font-normal text-sm
-            sm:text-lg text-[#120808] slef-end">Select your choice</label>
+            sm:text-lg text-[#120808] self-end">Select your choice</label>
         <select name="categories" id="categories"
             [formControl]="categoryCtrl" class="bg-orange-300 rounded-md
-            sm:h-9 h-5 w-full self-end">
+            sm:h-9 h-5 md:w-36 sm:w-28 self-end">
             <option *ngFor="let category of categories" value="{{category}}"
-                class="font-thin text-base text-[#d90c32] slef-end">
+                class="font-thin text-base text-[#d90c32] self-end">
                 {{category}}
             </option>
         </select>
     </div>
+
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6 sm:gap-4
         gap-2 ">
         <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-4
             sm:p-2 p-1
             shadow-lg ">
-            <img src="{{ (product?.images | image)[0] }}" alt="{{ product.name
+            <img src="{{ product.image | appendS3 }}" alt="{{ product.name
                 }}"
                 class="
                 md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
                 object-cover text-sm text-black pb-1 sm:pb-3">
-            <div class="pb-1 flex justify-between">
+            <div class="pb-1 flex
+                justify-between">
                 <span class="sm:font-semibold sm:text-sm underline text-[12px]">{{product.name}}</span>
                 <span class="bg-green-600 text-white text-[10px] sm:text-sm
                     font-[8px] px-1

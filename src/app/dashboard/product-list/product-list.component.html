@@ -31,17 +31,11 @@
         <div *ngFor="let product of products$ |async" class="bg-[#ee7777]
             sm:p-4 p-2
             shadow-md">
-            <img src="{{ (product?.images | image)[0] }}" alt="{{
-                product.name
-                }}"
-                class="
-                md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
-                object-cover text-sm text-black pb-1 sm:pb-3">
-            <h3 class="sm:font-semibold sm:text-sm underline text-[12px]">{{
+            <<h3 class="sm:font-semibold sm:text-sm underline text-[12px]">{{
                 product.name }}</h3>
             <span class="sm:font-semibold sm:text-sm text-white text-[16px]">{{product.price}}</span>
             <!-- <span class="text-lg font-bold text-white">Size:{{product.size}}</span> -->
-            <p class="text-white">{{ product.details}}</p>
+            <p class="text-white line-clamp-1">{{ product.details}}</p>
             <div class="flex justify-between">
                 <a routerLink="/dashboard/product/edit/{{product.id}}">
                     <button type="button" class="bg-black text-white

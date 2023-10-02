@@ -54,10 +54,12 @@ h<h2 class="text-2xl font-bold mt-9 mx-8 text-[#ed5a5a] "> Product</h2>
             class="form-select w-full p-3
             rounded-lg
             bg-white" required>
-            <option value="Lehenga">Lehenga</option>
-            <option value="Gown">Gown</option>
-            <option value="Saree">Saree</option>
-            <option value="Kurtha">Kurtha</option>
+            <option value="lehenga">Lehenga</option>
+            <option value="gown">Gown</option>
+            <option value="saree">Saree</option>
+            <option value="kurtha">Kurtha</option>
+            <option value="cultural dress">Cultural Dress</option>
+
           </select>
         </div>
         <div class="">
@@ -66,15 +68,16 @@ h<h2 class="text-2xl font-bold mt-9 mx-8 text-[#ed5a5a] "> Product</h2>
             class="form-select w-full p-3
             rounded-lg
             bg-white" required>
-            <option value="s">Small</option>
-            <option value="m">Medium</option>
-            <option value="l">Large</option>
-            <option value="xxl">Extra Large</option>
+            <option value="s">s</option>
+            <option value="m">m</option>
+            <option value="l">L</option>
+            <option value="xl">xl</option>
+            <option value="xxl">xxl</option>
           </select>
         </div>
         <div class="">
           <label for="detail" class="block mb-3 font-medium ">Detail:</label>
-          <textarea formControlName="detail" rows="3"
+          <textarea formControlName="details" rows="3"
             class="form-textarea w-full rounded-lg p-4"
             required></textarea>
         </div>
@@ -84,9 +87,9 @@ h<h2 class="text-2xl font-bold mt-9 mx-8 text-[#ed5a5a] "> Product</h2>
           border-dotted border-4
           h-fit
           border-[#dd3737]">
-          <!-- <mat-label>Profil Picture</mat-label> -->
-          <ngx-awesome-uploader>
-          </ngx-awesome-uploader>
+          <input #uploadFile type="file" class="hidden" accept="png,jpeg"
+            (change)="onFileUpload($event)" />
+          <button (click)="uploadFile.click()" type="button">Upload File</button>
         </div>
         <div class="flex justify-center p-3">
           <mat-checkbox formControlName="available"

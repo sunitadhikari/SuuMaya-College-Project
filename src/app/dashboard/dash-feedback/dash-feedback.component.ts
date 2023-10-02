@@ -34,7 +34,6 @@ export class DashFeedbackComponent implements OnInit, AfterViewInit {
     name: new FormControl(''),
     message: new FormControl(''),
   });
-
   displayedColumns: string[] = ['id', 'name', 'message', 'date'];
   dataSource = new MatTableDataSource<Feedback>();
 
