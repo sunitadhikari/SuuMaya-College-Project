@@ -16,7 +16,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { HeaderComponent } from '../header/header.component';
 import { ProductService } from '../product.service';
-import { SwiperModule } from 'swiper/angular';
 import { Observable, map, switchMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService, User } from '../auth.service';
@@ -39,7 +38,6 @@ import { AppendS3Pipe } from '../append-s3.pipe';
     ReactiveFormsModule,
     MatCheckboxModule,
     HeaderComponent,
-    SwiperModule,
     FooterComponent,
     AppendS3Pipe,
   ],

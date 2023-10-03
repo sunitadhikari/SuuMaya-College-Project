@@ -49,7 +49,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
   productAddForm = new FormGroup({
     name: new FormControl(''),
     price: new FormControl(0),
-    size: new FormControl(''),
+    // size: new FormControl(''),
     details: new FormControl(''),
     date: new FormControl(''),
     category: new FormControl(''),
@@ -66,13 +66,17 @@ export class ProductAddComponent implements OnInit, OnDestroy {
       price: productValue.price ?? 0,
       details: productValue.details ?? '',
       category: productValue.category ?? '',
-      size: productValue.size ?? '',
+      // size: productValue.size ?? '',
       date: productValue.date ?? '',
       available: productValue.available ?? false,
       image: this.selectedFile.name,
     };
     this.s3Service.uploadFile(this.selectedFile, this.selectedFile.name);
-    this.productService.create(product).subscribe((res) => alert(res.message));
+    this.productService.create(product).subscribe((res) => {
+      alert(res.message);
+      this.productAddForm.reset();
+      this.selectedFile = null;
+    });
   }
   ngOnDestroy(): void {}
   ngOnInit(): void {}

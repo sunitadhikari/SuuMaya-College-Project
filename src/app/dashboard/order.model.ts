@@ -1,4 +1,5 @@
 export interface Order {
+  element?: string[];
   id?: number;
   username?: string;
   productName?: string;
@@ -7,10 +8,11 @@ export interface Order {
   paymentMethod?: string;
   price?: number;
   quantity?: number;
-  userId: number;
+  userId?: number;
   size?: string;
-  productId: number;
-  transactionId: string;
+  orderId?: number;
+  productId?: number;
+  transactionId?: string;
 }
 export interface Return {
   returnId: number;

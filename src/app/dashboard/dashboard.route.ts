@@ -6,6 +6,7 @@ import { ReturnListComponent } from './return-list/return-list.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { DashFeedbackComponent } from './dash-feedback/dash-feedback.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
   {

@@ -1,4 +1,3 @@
-import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
@@ -19,10 +18,10 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-  // {
-  //   path: 'header',
-  //   component: HeaderComponent,
-  // },
+  {
+    path: 'header',
+    component: HeaderComponent,
+  },
   {
     path: 'footer',
     component: FooterComponent,
@@ -44,10 +43,7 @@ export const routes: Routes = [
     path: 'about',
     component: AboutComponent,
   },
-  {
-    path: 'contact',
-    component: ContactComponent,
-  },
+
   {
     path: 'products/detail/:id',
     component: ProductDetailComponent,

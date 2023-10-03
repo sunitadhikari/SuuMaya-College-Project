@@ -3,7 +3,7 @@
         [disableClose]="(isNotHandSet$ | async)"
         [mode]="(isNotHandSet$ | async) ? 'side': 'over'" class="min-w-[15%]"
         [opened]="isNotHandSet$ | async">
-        <div class="flex flex-col bg-gradient-to-t from-[#ceeade] to-[#ec516b]
+        <div class="flex flex-col bg-gradient-to-t from-[#222423] to-[#ec516b]
             h-full w-fit rounded-r-3xl
             pt-6 ">
             <img src="..//../../assets/logo.png" class="h-28 w-28 mx-auto">
@@ -52,6 +52,17 @@
                             class="text-white hover:text-black py-2
                             text-2xl font-bold">
                             Feedback
+                        </a>
+                    </mat-list-item>
+                </div>
+                <div class="flex mx-auto ml-7">
+                    <mat-icon>book</mat-icon>
+                    <mat-list-item (click)="removeItem()" class=" ">
+                        <a routerLink="/dashboard/feedback"
+                            routerLinkActive="active text-green-600"
+                            class="text-white hover:text-black py-2
+                            text-2xl font-bold">
+                            Log Out
                         </a>
                     </mat-list-item>
                 </div>

@@ -3,9 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @import "~ngx-wig/styles/wig.css"; */
-@import "~swiper/swiper-bundle.min.css";
-
 .container {
   display: flex;
   justify-content: center;
@@ -22,3 +19,6 @@ mat-sidenav {
 a[mat-button] {
   @apply px-4 py-2 text-gray-800 hover:bg-gray-200;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

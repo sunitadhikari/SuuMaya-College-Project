@@ -62,7 +62,7 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
   productEditForm = this.fb.nonNullable.group({
     name: new FormControl(''),
     price: new FormControl(0),
-    size: new FormControl(''),
+    // size: new FormControl(''),
     details: new FormControl(''),
     date: new FormControl(''),
     category: new FormControl(''),
@@ -92,7 +92,7 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
       price: productValue.price ?? 0,
       details: productValue.details ?? '',
       category: productValue.category ?? '',
-      size: productValue.size ?? '',
+      // size: productValue.size ?? '',
       date: productValue.date ?? '',
       available: productValue.available ?? true,
       image: img,

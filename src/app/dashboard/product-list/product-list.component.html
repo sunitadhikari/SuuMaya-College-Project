@@ -31,7 +31,8 @@
         <div *ngFor="let product of products$ |async" class="bg-[#ee7777]
             sm:p-4 p-2
             shadow-md">
-            <<h3 class="sm:font-semibold sm:text-sm underline text-[12px]">{{
+            <img src="{{product.image | appendS3}}" alt="imaghe" />
+            <h3 class="sm:font-semibold sm:text-sm underline text-[12px]">{{
                 product.name }}</h3>
             <span class="sm:font-semibold sm:text-sm text-white text-[16px]">{{product.price}}</span>
             <!-- <span class="text-lg font-bold text-white">Size:{{product.size}}</span> -->

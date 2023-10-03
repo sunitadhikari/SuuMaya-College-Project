@@ -2,7 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterModule, RouterLinkActive } from '@angular/router';
+import {
+  RouterLink,
+  RouterModule,
+  RouterLinkActive,
+  Route,
+  Router,
+} from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,5 +39,12 @@ export class DashboardNavigationComponent {
     tap(console.log),
     map((res) => res.matches)
   );
-  constructor(private BreakpointObserver: BreakpointObserver) {}
+  constructor(
+    private BreakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
+  removeItem() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/home']);
+  }
 }

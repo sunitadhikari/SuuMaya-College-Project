@@ -7,7 +7,7 @@ export interface Product {
   address?: string;
   category?: string;
   date?: string;
-  size: string;
+  size?: string;
   createdTime?: string;
   updatedTime?: string;
   seller?: string;
@@ -21,11 +21,13 @@ export interface Category {
 }
 export interface Feedback {
   name?: string;
-  user_id?: number;
+  userId?: number;
   username?: string;
   // email: string;
   isAdmin?: boolean;
   message: string;
+  orderId?: number;
+  date?: string;
 }
 export interface FilterDTO {
   pageNumber: number;

@@ -46,9 +46,9 @@ export class HeaderComponent implements OnInit {
   //     menu.classList.toggle('hidden');
   //   }
   // }
+  hideSidebar = false;
   disableClose: boolean;
   isHandSet$: Observable<boolean>;
-  // isNotHandSet$: Observable<boolean>;
   isNotHandSet$ = this.breakpointObserver.observe(['min-width:1100px']).pipe(
     tap(console.log),
     map((res) => res.matches)
@@ -80,7 +80,6 @@ export class HeaderComponent implements OnInit {
         tap(console.log),
         map((res) => res.matches)
       );
-
     this.fetchData();
   }
   fetchData(): void {
@@ -91,15 +90,15 @@ export class HeaderComponent implements OnInit {
     //   });
   }
   isMenuOpen: boolean = false;
-  toggleMenu() {
+  toggle() {
     this.isMenuOpen = !this.isMenuOpen;
     this.drawer.toggle();
   }
   drawerToggle(opened: boolean) {}
-  onSearchSubmit(): void {
-    this.searchValue = this.searchForm.value.searchValue || '';
-    this.fetchData();
-  }
+  // onSearchSubmit(): void {
+  //   this.searchValue = this.searchForm.value.searchValue || '';
+  //   this.fetchData();
+  // }
   onItemClick(): void {
     if (this.isHandSet$) {
       this.drawer.close();
