@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { CommonModule, NgFor } from '@angular/common';
 import { ProductsComponent } from '../products/products.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { ProductsComponent } from '../products/products.component';
     ProductsComponent,
     FooterComponent,
     MatSidenavModule,
+    MatIconModule,
   ],
 })
 export class HomeComponent {}

@@ -1,23 +1,11 @@
-<mat-sidenav-container class="sidenav-container bg-green-300" autosize>
-    <mat-sidenav #drawer fixedInViewport [mode]="(isNotHandSet$ | async)?
-        'side':'over'"
-        [disableClose]="(isHandSet$
-        |
-        async)"
 
-        class="flex flex-wrap
-        bg-blue-400
-        ">
-        <div class="bg-blue-400">
+<mat-sidenav-container class="sidenav-container " autosize>
+    <mat-sidenav #drawer fixedInViewport [mode]="(isNotHandSet$ | async)?
+        'side':'over'" [disableClose]="(isHandSet$
+        | async)" class="flex flex-wrap w-fit">
+        <div class="w-fit bg-gradient-to-t from-[#f34c40]
+            to-[#7abcf6] h-full px-6 rounded-r-2xl">
             <img src="../../assets/logo.png" class="h-20 w-20 mx-auto">
-            <!-- <div class="flex flex-col justify-center items-center">
-            <span class="text-black text-xl text-[15px]
-                items-center font-semibold">SuuMaya</span>
-            <p
-                class="text-base">Ethnic
-                Wear
-                Rental Service</p>
-        </div> -->
             <ul class="flex flex-col space-x-4 m-auto justify-center
                 items-center
                 gap-5"
@@ -25,55 +13,46 @@
                 <li>
                     <a routerLink="/home" routerLinkActive="active
                         text-orange-500
-                        p-2 text-lg" [routerLinkActiveOptions]="{exact: true}"
-                        class=" hover:text-orange-500
+                        p-2 text-lg" [routerLinkActiveOptions]="{exact:
+                        true}"
+                        class=" hover:text-white
                         text-lg sm:text-2xl font-sans sm:font-semibold ">Home</a>
                 </li>
                 <li>
                     <a routerLink="/about" class="text-black text-lg
-                        hover:text-orange-500 sm:text-2xl font-sans
+                        hover:text-white sm:text-2xl font-sans
                         sm:font-semibold
                         ">About</a>
                 </li>
-                <li>
-                    <a routerLink="/contact" class="text-black text-lg
-                        hover:text-orange-500 sm:text-2xl font-sans
-                        sm:font-semibold
-                        ">Contact
-                        Us</a>
-                </li>
                 <li class="items-end my-auto text-lg "><a
                         routerLink="/login" class="text-black
-                        hover:text-orange-500 text-lg sm:text-2xl font-sans
+                        hover:text-white text-lg sm:text-2xl font-sans
                         sm:font-semibold
                         ">Login</a>
                 </li>
                 <li class="items-end my-auto text-lg "><a
                         routerLink="/signup" class="text-black
-                        hover:text-orange-500 text-lg sm:text-2xl font-sans
+                        hover:text-white text-lg sm:text-2xl font-sans
                         sm:font-semibold
                         ">Sign Up</a>
                 </li>
             </ul>
         </div>
-        <!-- <div class="m-6">
-            <form [formGroup]="searchForm" name="searchBar"
-                (ngSubmit)="onSearchSubmit()">
-                <input
-                    type="text"
-                    class="bg-pink-300 text-white rounded-full py-2 px-4 pl-10
-                    focus:outline-none focus:shadow-outline placeholder-white"
-                    placeholder="Search..."
-                    formControlName="searchValue" />
-                <i class="fas fa-search absolute top-3 left-3 text-white"></i>
-            </form>
-        </div> -->
     </mat-sidenav>
-    <div class="bg-blue"></div>
-    <mat-sidenav-content class="bg-green-400">
-        <div class="flex flex-col bg-blue-500">
-            <mat-toolbar>
-                <button (click)="drawer.toggle()">Toggle Sidenav</button>
+    <mat-sidenav-content class="m-0 p-0">
+        <div class="flex flex-col md:mx-6 sm:mx-4 mx-2 bg-blue-400">
+            <mat-toolbar class="">
+                <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+                <div class="m-auto flex gap-2 sm:gap-2 h-fit">
+                    <span class=" sm:font-bold font-medium md:text-5xl
+                        sm:text-3xl
+                        text-lg my-auto text-[#e83e85]">SuuMaya
+                    </span>
+                    <p class="italic font-medium pt-9 text-xs sm:text-sm">
+                        Rental Attire
+                    </p>
+                </div>
+
                 <button
                     type="button"
                     aria-label="Toggle nav"

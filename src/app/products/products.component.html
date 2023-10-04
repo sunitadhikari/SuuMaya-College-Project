@@ -1,20 +1,7 @@
 <div class="sm:mx-6 mx-2 ">
-    <div class=" gap-1 sm:gap-3 md:gap-5 sm:mt-3 md:mt-4 mt-1.5 ">
-
+    <div class=" gap-1 sm:gap-3 md:gap-5 sm:mt-3 md:mt-4 ">
         <div class="flex-grow order-2 sm:order-1">
-            <span class="absolute font-normal sm:font-bold md:font-extrabold
-                sm:text-2xl md:text-5xl text-lg md:left-[42%] md:top-[25%]
-                sm:left-[43%] sm:top-[10%] top-[5%] left-[30%]
-                italic underline">STYLE IS
-                A
-                CHOICE</span>
-            <span class="absolute md:left-[50%] md:top-[33%] sm:left-[50%]
-                sm:top-[15%] top-[8%] left-[35%] text-lg sm:text-xl
-                md:text-3xl font-medium sm:font-semibold md:font-bold">Make
-                Yours</span>
-            <img src="../../assets/dresses.png" alt="" class=" w-full relativve
-                h-auto
-                ">
+            <img src="../../assets/dresses.png" alt="" class=" w-full h-auto">
         </div>
     </div>
     <div class="flex flex-col md:my-4 sm:my-2 my-1.5 items-end self-end
@@ -35,35 +22,42 @@
 
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6 sm:gap-4
         gap-2 ">
-        <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-4
-            sm:p-2 p-1
+        <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-2
+            p-1
             shadow-lg ">
             <img src="{{ product.image | appendS3 }}" alt="{{ product.name
                 }}"
-                class="
-                md:h-[250px] md:w-[300px] sm:h-[70px] sm:w-[90px]
+                class=" object-top
+                md:h-[275px] md:w-[310px] sm:h-[70px] sm:w-[90px]
                 object-cover text-sm text-black pb-1 sm:pb-3">
-            <div class="pb-1 flex
+            <div class="
                 justify-between">
-                <span class="sm:font-semibold sm:text-sm underline text-[12px]">{{product.name}}</span>
-                <span class="bg-green-600 text-white text-[10px] sm:text-sm
-                    font-[8px] px-1
-                    py-1 rounded-md"
-                    *ngIf="product.available">Available</span>
-                <span class="bg-red-600 text-white text-[8px] sm:text-sm
-                    font-[10px]
-                    sm:font-medium px-1
-                    py-1 rounded-md"
-                    *ngIf="!product.available"> Not Available</span>
+                <span class="sm:font-semibold sm:text-sm underline
+                    text-[12px] mb-2">{{product.name}}</span>
             </div>
-            <div class="flex flex-wrap justify-end mx-auto sm:gap-2 sm:mt-2">
-                <button type="button" class="bg-black hover:bg-green-500
-                    text-[10px]
-                    sm:px-[8px] text-white font-[8px]
-                    px-1 py-1 rounded-md
-                    justify-end sm:font-thin sm:text-[15px] md:font-[10px]
-                    md:text-sm"
-                    (click)="viewMore(product.id)">View More</button>
+            <div class="flex justify-between w-full object-cover">
+                <div class="flex ">
+                    <span class="bg-green-600 text-white text-[8px]
+                        sm:text-[12px]
+                        font-[8px] px-1 h-fit sm:font-[7px]
+                        py-0.5 rounded-md mt-2"
+                        *ngIf="product.available">Available</span>
+                    <span class="bg-red-600 text-white text-[5px] sm:text-[10px]
+                        font-[6px] h-fit mt-2
+                        sm:font-thin px-1
+                        py-0.5 rounded-md"
+                        *ngIf="!product.available"> Not Available</span>
+                </div>
+                <div class="flex sm:gap-2
+                    sm:mt-2 ">
+                    <button type="button" class="bg-black hover:bg-green-500
+                        text-[7px]
+                        sm:px-[4px] text-white font-[5px]
+                        px-1 py-0.5 rounded-md
+                        sm:font-thin sm:text-[8px] md:font-[10px]
+                        md:text-[11px]"
+                        (click)="viewMore(product.id)">View More</button>
+                </div>
             </div>
         </div>
     </div>
