@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HeaderComponent } from '../header/header.component';
 import { ProductService } from '../product.service';
 import { Observable, map, switchMap, tap } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, User } from '../auth.service';
 import { Order } from '../dashboard/order.model';
 import { FooterComponent } from '../footer/footer.component';
@@ -48,13 +48,14 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   name = 'Lehenga';
   productId: number;
   productDetails$: Observable<Product>;
-  size = ['s', 'M', 'l', 'xl', 'XXL'];
+  size = ['S', 'M', 'L', 'xL', 'XXL'];
   image = '';
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
     private authService: AuthService,
+    private router: Router,
     private fb: FormBuilder,
     private orderService: OrderService,
     private http: HttpClient
@@ -85,7 +86,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       productId: this.product.id ?? 0,
       transactionId: transactionId,
     };
-    this.orderService.create(detail).subscribe((res) => alert(res.message));
+    this.orderService.create(detail).subscribe((res) => {
+      alert(res.message);
+    });
   }
   ngAfterViewInit(): void {
     this.productDetails$ = this.route.params.pipe(
@@ -116,6 +119,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
           // hit merchant api for initiating verfication
           that.submit(payload['idx']);
           console.log('paylaod', payload);
+          that.router.navigate(['/dashboard/order']);
         },
         // onError handler is optional
         onError(error: any) {

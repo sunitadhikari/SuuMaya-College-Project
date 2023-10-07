@@ -97,13 +97,14 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
       available: productValue.available ?? true,
       image: img,
     };
+    // debugger;
     // this.s3Service.uploadFile(this.selectedFile);
     this.productService
       .update(productF, this.product.id ?? -1)
       .subscribe((res) => {
         alert(res.message);
-        this.productEditForm.reset();
         this.selectedFile = null;
+        this.productEditForm.reset();
       });
   }
   ngAfterViewInit(): void {

@@ -10,7 +10,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { ProductService } from '../product.service';
 import { PageEvent } from '@angular/material/paginator';
-import { FilterDTO, Product } from '../product.model';
+import { Product } from '../product.model';
 import { Observable, map, merge, startWith, switchMap } from 'rxjs';
 import { ImagePipe } from '../image.pipe';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +35,8 @@ import { AppendS3Pipe } from '../append-s3.pipe';
   templateUrl: './products.component.html',
   styles: [],
 })
+
+// ClassName functionName
 export class ProductsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   available = true;

@@ -45,7 +45,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   totalProducts = 0;
   pageIndex = 0;
   categoryCtrl = new FormControl('Saree');
-  categories = ['Saree', 'Kurtha', 'lehenga', 'gown', 'cultural Dress'];
+  categories = ['Saree', 'Kurtha', 'Lehenga', 'Gown', 'Cultural Dress'];
   constructor(private productService: ProductService, private router: Router) {}
   ngOnInit(): void {}
   ngAfterViewInit(): void {

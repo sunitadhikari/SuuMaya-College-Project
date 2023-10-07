@@ -58,5 +58,6 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.feedbackService
       .create(contactForm)
       .subscribe((res) => alert(res.message));
+    this.contactForm.reset();
   }
 }

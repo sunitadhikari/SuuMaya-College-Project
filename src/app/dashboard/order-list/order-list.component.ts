@@ -17,7 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { RouterModule, RouterLink, RouterLinkWithHref } from '@angular/router';
+import {
+  RouterModule,
+  RouterLink,
+  RouterLinkWithHref,
+  Router,
+} from '@angular/router';
 import { User } from 'src/app/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -65,7 +70,11 @@ export class OrderListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Order>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   totalElements = 0;
-  constructor(private orderService: OrderService, public dialog: MatDialog) {}
+  constructor(
+    private orderService: OrderService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {}
   ngAfterViewInit(): void {

@@ -9,7 +9,7 @@
             <img src="..//../../assets/logo.png" class="h-28 w-28 mx-auto">
             <mat-list role="list" class="flex flex-row ">
                 <div *ngIf="isAdmin" class="flex mx-auto ml-7">
-                    <mat-icon>add_shopping_cart</mat-icon>
+                    <mat-icon class="m-auto">add_shopping_cart</mat-icon>
                     <mat-list-item>
                         <a routerLink="/dashboard/product"
                             routerLinkActive="active
@@ -23,7 +23,7 @@
                     </mat-list-item>
                 </div>
                 <div class="flex mx-auto ml-7">
-                    <mat-icon class="">list</mat-icon>
+                    <mat-icon class="m-auto">list</mat-icon>
                     <mat-list-item class=" ">
                         <a routerLink="/dashboard/order"
                             routerLinkActive="active text-green-600"
@@ -34,7 +34,7 @@
                     </mat-list-item>
                 </div>
                 <div class="flex mx-auto ml-7">
-                    <mat-icon>hourglass_empty</mat-icon>
+                    <mat-icon class="m-auto">hourglass_empty</mat-icon>
                     <mat-list-item class=" ">
                         <a routerLink="/dashboard/return"
                             routerLinkActive="active text-green-600"
@@ -45,7 +45,7 @@
                     </mat-list-item>
                 </div>
                 <div class="flex mx-auto ml-7">
-                    <mat-icon>book</mat-icon>
+                    <mat-icon class="m-auto">book</mat-icon>
                     <mat-list-item class=" ">
                         <a routerLink="/dashboard/feedback"
                             routerLinkActive="active text-green-600"
@@ -56,7 +56,7 @@
                     </mat-list-item>
                 </div>
                 <div class="flex mx-auto ml-7">
-                    <mat-icon>book</mat-icon>
+                    <mat-icon class="m-auto">book</mat-icon>
                     <mat-list-item (click)="removeItem()" class=" ">
                         <a routerLink="/dashboard/feedback"
                             routerLinkActive="active text-green-600"

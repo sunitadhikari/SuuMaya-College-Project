@@ -19,6 +19,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule, NgIf } from '@angular/common';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -63,7 +64,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private formBulider: FormBuilder,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
   ) {}
   @ViewChild('drawer') drawer!: MatSidenav;
   ngOnInit(): void {
@@ -103,5 +105,8 @@ export class HeaderComponent implements OnInit {
     if (this.isHandSet$) {
       this.drawer.close();
     }
+  }
+  submit() {
+    this.productService.navigate(['/dashboard/order']);
   }
 }

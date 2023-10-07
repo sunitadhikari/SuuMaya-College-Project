@@ -1,140 +1,151 @@
-<div class=" sm:max-w-2xl flex flex-row sm:mx-auto
-    sm:justify-between
-    rounded-lg
-    border-2
-    border-black bg-green-200
-    sm:mt-5 mt-2 p-2 mx-2">
-    <div class="flex flex-col sm:gap-6 gap-3 justify-center sm:mx-auto sm:mt-6
-        mt-4 w-full">
-        <img class="sm:h-[100px] sm:w-[100px] h-20 w-29 mx-auto"
-            src="../../assets/logo.png"
-            alt="">
-        <h1 class="sm:text-3xl text-center text-xl font-semibold">Signup To
-            SuuMaya</h1>
-        <form [formGroup]="newUserForm" (ngSubmit)="submit()" class="flex
-            flex-wrap
-            flex-col
-            sm:mb-6
-            rounded-3xl sm:flex
-            sm:gap-6
-            gap-3
-            sm:mx-auto sm:w-full">
-            <div class="flex flex-col gap-2 w-full">
-                <span class="sm:text-xl sm:font-semibold font-medium text-base
-                    ">
-                    Username:
-                </span>
-                <input formControlName="username" class="sm:px-2 sm:py-1 px-1.5
-                    py-0.5 border
-                    border-blue-500 rounded-3xl w-30 text-base
-                    sm:text-lg"
-                    type="text"
-                    name="username" placeholder="Username" required>
-                <mat-error *ngIf="!newUserForm.get('username')?.pristine &&
-                    newUserForm.get('username')?.hasError('required')"
-                    class="text-red-600">
-                    Username is required*
-                </mat-error>
-            </div>
-            <div class="flex flex-col gap-2">
-                <span class="sm:text-xl sm:font-semibold font-medium text-base">
-                    Email:
-                </span>
-                <input formControlName="email" class="sm:px-2 sm:py-1 px-1.5
-                    py-0.5 border
-                    border-blue-500 rounded-3xl w-30 text-base
-                    sm:text-lg "
-                    type="text"
-                    name="email" placeholder="email" required>
-                <mat-error *ngIf="!newUserForm.get('email')?.pristine &&
-                    newUserForm.get('email')?.hasError('required')"
-                    class="text-red-500">
-                    Email is required*
-                </mat-error>
-                <mat-error *ngIf="!newUserForm.get('email')?.pristine &&
-                    newUserForm.get('email')?.hasError('pattern')"
-                    class="text-red-500">
-                    Email is invalid*
-                </mat-error>
-            </div>
-            <div class="flex flex-col gap-2 ">
-                <span class="sm:text-xl sm:font-semibold font-medium text-base">
-                    password:
-                </span>
-                <input class=" sm:px-2 sm:py-1 px-1.5
-                    py-0.5 border
-                    border-blue-500 rounded-3xl w-30 text-base
-                    sm:text-lg
-                    "
-                    type="password"
-                    required
-                    formControlName="password" placeholder="abc@123...." id="">
-                <mat-error *ngIf="!newUserForm.get('password')?.pristine &&
-                    newUserForm.get('password')?.hasError('required')"
-                    class="text-red-600">
-                    Password is required*
-                </mat-error>
-            </div>
-            <div class="flex flex-col gap-2">
-                <span class="sm:text-xl sm:font-semibold font-medium text-base">
-                    Address:
-                </span>
-                <input formControlName="address" class="sm:px-2 sm:py-1 px-1.5
-                    py-0.5 border
-                    border-blue-500 rounded-3xl w-30 text-base
-                    sm:text-lg"
-                    type="text"
-                    name="address" placeholder="address" id="" required>
-                <mat-error *ngIf="!newUserForm.get('address')?.pristine &&
-                    newUserForm.get('address')?.hasError('required')"
-                    class="text-red-600">
-                    Address is required*
-                </mat-error>
-            </div>
-            <div class="flex flex-col gap-2">
-                <span class="sm:text-xl sm:font-semibold font-medium text-base">
-                    Phone Number:
-                </span>
-                <input formControlName="phone" class="sm:px-2 sm:py-1 px-1.5
-                    py-0.5 border
-                    border-blue-500 rounded-3xl w-30 text-base
-                    sm:text-lg"
-                    type="tel" required=""
-                    placeholder="Phone Number" id="">
-                <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
-                    newUserForm.get('phone')?.hasError('required')"
-                    class="text-red-600">PhoneNumber
-                    is Required</mat-error>
-                <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
-                    newUserForm.get('phone')?.hasError('minlength')"
-                    class="text-red-600">PhoneNumber
-                    is invalid</mat-error>
-                <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
-                    newUserForm.get('phone')?.hasError('maxlength')"
-                    class="text-red-600">PhoneNumber
-                    is invalid</mat-error>
-            </div>
+<div class="bg-gray-200 w-full md:py-6 sm:py-4 py-2">
+    <div class=" sm:max-w-2xl flex flex-row sm:mx-auto
+        sm:justify-between
+        rounded-lg
+        border-2
+        border-white bg-sky-200
+        sm:mt-5 mt-2 p-2 mx-2">
+        <div class="flex flex-col sm:gap-6 gap-3 justify-center sm:mx-auto
+            sm:mt-6
+            mt-4 w-full">
+            <img class="sm:h-[100px] sm:w-[100px] h-20 w-29 mx-auto"
+                src="../../assets/logo.png"
+                alt="">
+            <h1 class="sm:text-3xl text-center text-xl font-semibold">Signup To
+                SuuMaya</h1>
+            <form [formGroup]="newUserForm" (ngSubmit)="submit()" class="flex
+                flex-wrap
+                flex-col
+                sm:mb-6
+                rounded-3xl sm:flex
+                sm:gap-6
+                gap-3
+                sm:mx-auto sm:w-full">
+                <div class="flex flex-col gap-2 w-full">
+                    <span class="sm:text-xl sm:font-semibold font-medium
+                        text-base
+                        ">
+                        Username:
+                    </span>
+                    <input formControlName="username" class="sm:px-2 sm:py-1
+                        px-1.5
+                        py-0.5 border
+                        border-blue-500 rounded-3xl w-30 text-base
+                        sm:text-lg"
+                        type="text"
+                        name="username" placeholder="Username" required>
+                    <mat-error *ngIf="!newUserForm.get('username')?.pristine &&
+                        newUserForm.get('username')?.hasError('required')"
+                        class="text-red-600">
+                        Username is required*
+                    </mat-error>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="sm:text-xl sm:font-semibold font-medium
+                        text-base">
+                        Email:
+                    </span>
+                    <input formControlName="email" class="sm:px-2 sm:py-1 px-1.5
+                        py-0.5 border
+                        border-blue-500 rounded-3xl w-30 text-base
+                        sm:text-lg "
+                        type="text"
+                        name="email" placeholder="email" required>
+                    <mat-error *ngIf="!newUserForm.get('email')?.pristine &&
+                        newUserForm.get('email')?.hasError('required')"
+                        class="text-red-500">
+                        Email is required*
+                    </mat-error>
+                    <mat-error *ngIf="!newUserForm.get('email')?.pristine &&
+                        newUserForm.get('email')?.hasError('pattern')"
+                        class="text-red-500">
+                        Email is invalid*
+                    </mat-error>
+                </div>
+                <div class="flex flex-col gap-2 ">
+                    <span class="sm:text-xl sm:font-semibold font-medium
+                        text-base">
+                        password:
+                    </span>
+                    <input class=" sm:px-2 sm:py-1 px-1.5
+                        py-0.5 border
+                        border-blue-500 rounded-3xl w-30 text-base
+                        sm:text-lg
+                        "
+                        type="password"
+                        required
+                        formControlName="password" placeholder="abc@123...."
+                        id="">
+                    <mat-error *ngIf="!newUserForm.get('password')?.pristine &&
+                        newUserForm.get('password')?.hasError('required')"
+                        class="text-red-600">
+                        Password is required*
+                    </mat-error>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="sm:text-xl sm:font-semibold font-medium
+                        text-base">
+                        Address:
+                    </span>
+                    <input formControlName="address" class="sm:px-2 sm:py-1
+                        px-1.5
+                        py-0.5 border
+                        border-blue-500 rounded-3xl w-30 text-base
+                        sm:text-lg"
+                        type="text"
+                        name="address" placeholder="address" id="" required>
+                    <mat-error *ngIf="!newUserForm.get('address')?.pristine &&
+                        newUserForm.get('address')?.hasError('required')"
+                        class="text-red-600">
+                        Address is required*
+                    </mat-error>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <span class="sm:text-xl sm:font-semibold font-medium
+                        text-base">
+                        Phone Number:
+                    </span>
+                    <input formControlName="phone" class="sm:px-2 sm:py-1 px-1.5
+                        py-0.5 border
+                        border-blue-500 rounded-3xl w-30 text-base
+                        sm:text-lg"
+                        type="tel" required=""
+                        placeholder="Phone Number" id="">
+                    <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
+                        newUserForm.get('phone')?.hasError('required')"
+                        class="text-red-600">PhoneNumber
+                        is Required</mat-error>
+                    <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
+                        newUserForm.get('phone')?.hasError('minlength')"
+                        class="text-red-600">PhoneNumber
+                        is invalid</mat-error>
+                    <mat-error *ngIf="!newUserForm.get('phone')?.pristine &&
+                        newUserForm.get('phone')?.hasError('maxlength')"
+                        class="text-red-600">PhoneNumber
+                        is invalid</mat-error>
+                </div>
 
-            <div class="flex gap-2">
-                <input type="checkbox" formControlName="accepted" name="Terms
-                    and
-                    conditions p-2 required">
-                <span class="text-sm text-black ">I accept terms
-                    and conditions</span>
-                <mat-error *ngIf="!newUserForm.get('enabled')?.pristine &&
-                    newUserForm.get('enabled')?.hasError('required')"
-                    class="text-red-600">
-                </mat-error>
-            </div>
-
-            <button [disabled]="!newUserForm.valid" [class]="
-                !newUserForm.valid
-                ?'bg-gray-400 text-black': 'bg-green-500 text-white' "
-                class="sm:px-4 w-fit sm:py-2 px-2 py-1 rounded-lg shadow-xl
-                sm:text-lg text-sm self-center">
-                Sign Up
-            </button>
-        </form>
-        <!-- <pre>{{newUserForm.value | json}}</pre> -->
+                <div class="flex gap-2">
+                    <input type="checkbox" formControlName="accepted"
+                        name="Terms
+                        and
+                        conditions p-2 required">
+                    <span class="text-sm text-black ">I accept terms
+                        and conditions</span>
+                    <mat-error *ngIf="!newUserForm.get('enabled')?.pristine &&
+                        newUserForm.get('enabled')?.hasError('required')"
+                        class="text-red-600">
+                    </mat-error>
+                </div>
+                <button [disabled]="!newUserForm.valid" [class]="
+                    !newUserForm.valid
+                    ?'bg-gray-400 text-black': 'bg-green-500 text-white' "
+                    class="sm:px-4 w-fit sm:py-2 px-2 py-1 rounded-lg shadow-xl
+                    sm:text-lg text-sm self-center">
+                    Sign Up
+                </button>
+            </form>
+            <!-- <pre>{{newUserForm.value | json}}</pre> -->
+        </div>
     </div>
 </div>

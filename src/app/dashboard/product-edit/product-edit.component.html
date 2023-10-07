@@ -2,19 +2,19 @@
   <a routerLink="/dashboard/product">
     <mat-icon class="text-[#cc5755]">arrow_back</mat-icon>
   </a>
-  <h2 class="text-[#cc5755] sm:text-xl sm:font-semibold font-medium text-lg">Edit
+  <h2 class="text-black sm:text-xl text-center sm:font-semibold
+    md:font-[100px] md:text-4xl font-medium text-lg">Edit
     your Product</h2>
 </div>
-<div *ngIf="productEdit$ | async as product" class="px-3 py-4">
+<div *ngIf="productEdit$ | async as product" class="px-3 py-4 ">
   <form [formGroup]="productEditForm" (ngSubmit)="submit()" class="flex
     flex-col sm:flex-row
-    mx-auto w-full
-    bg-gray-200 rounded-md
+    rounded-md bg-gray-300
     shadow-md [&>div>div>label]:text-xl [&>div>div>label]:text-[#ed5a5a]
     [&>div>div>label]:sm:text-bold [&>div>div>label]:sm:text-lg [&>div>div>input]:p-3
     [&>div>div>input]:rounded-lg
     ">
-    <div class=" flex flex-col flex-wrap gap-3 grow basis-[60%] px-5 py-4">
+    <div class=" flex flex-col flex-wrap gap-3 grow basis-[60%] px-5 sm:m-5">
       <div class="">
         <label for="name" class="block mb:1 sm:mb-3 font-medium">Product
           Name:</label>
@@ -59,7 +59,7 @@
     </div>
     <div class="mx-auto flex-col sm:gap-5 gap:2">
 
-      <div class=" flex justify-center p-3">
+      <div class=" flex justify-center m-3">
         <mat-checkbox formControlName="available"
           class="rounded-md ">
           <span class="text-[#e45848] rounded-md px-2 py-1
@@ -67,7 +67,7 @@
         </mat-checkbox>
       </div>
       <div class="flex flex-col mx-auto justify-center">
-        <div class="flex mx-auto basis-[30%] px-3 sm:m-9 py-2
+        <div class="flex mx-auto basis-[30%] px-3 sm:m-9 py-2 m-3
           border-dotted border-4
           h-fit
           border-[#dd3737]">

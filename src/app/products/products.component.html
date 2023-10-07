@@ -22,14 +22,15 @@
 
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 md:gap-6 sm:gap-4
         gap-2 ">
-        <div *ngFor="let product of products$ |async" class="bg-[#eb6c6c] md:p-2
-            p-1
+        <div *ngFor="let product of products$ |async" class="bg-[#c8c6c6] md:p-2
+            p-1 rounded-md
             shadow-lg ">
             <img src="{{ product.image | appendS3 }}" alt="{{ product.name
                 }}"
                 class=" object-top
-                md:h-[275px] md:w-[310px] sm:h-[70px] sm:w-[90px]
-                object-cover text-sm text-black pb-1 sm:pb-3">
+                md:h-[275px] md:w-[310px] sm:h-[70px] sm:w-[90px] h-[230px]
+                w-full
+                object-cover text-sm text-black pb-1 sm:pb-3 rounded">
             <div class="
                 justify-between">
                 <span class="sm:font-semibold sm:text-sm underline
@@ -42,8 +43,8 @@
                         font-[8px] px-1 h-fit sm:font-[7px]
                         py-0.5 rounded-md mt-2"
                         *ngIf="product.available">Available</span>
-                    <span class="bg-red-600 text-white text-[5px] sm:text-[10px]
-                        font-[6px] h-fit mt-2
+                    <span class="bg-red-600 text-white text-[9px] sm:text-[10px]
+                        font-[5px] h-fit mt-2
                         sm:font-thin px-1
                         py-0.5 rounded-md"
                         *ngIf="!product.available"> Not Available</span>
@@ -51,9 +52,9 @@
                 <div class="flex sm:gap-2
                     sm:mt-2 ">
                     <button type="button" class="bg-black hover:bg-green-500
-                        text-[7px]
+                        text-[9px]
                         sm:px-[4px] text-white font-[5px]
-                        px-1 py-0.5 rounded-md
+                        px-1 rounded-md w-fit
                         sm:font-thin sm:text-[8px] md:font-[10px]
                         md:text-[11px]"
                         (click)="viewMore(product.id)">View More</button>

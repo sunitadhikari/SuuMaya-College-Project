@@ -8,6 +8,9 @@ import { JsonResponse } from './app.model';
   providedIn: 'root',
 })
 export class ProductService {
+  navigate(arg0: string[]) {
+    throw new Error('Method not implemented.');
+  }
   create(productAdd: Product) {
     return this.http.post<JsonResponse>(
       `${environment.apiUrl}products`,

@@ -1,69 +1,81 @@
 
 <mat-sidenav-container class="sidenav-container " autosize>
-    <mat-sidenav #drawer fixedInViewport [mode]="(isNotHandSet$ | async)?
-        'side':'over'" [disableClose]="(isHandSet$
-        | async)" class="flex flex-wrap w-fit">
-        <div class="w-fit bg-gradient-to-t from-[#f34c40]
-            to-[#7abcf6] h-full px-6 rounded-r-2xl">
-            <img src="../../assets/logo.png" class="h-20 w-20 mx-auto">
-            <ul class="flex flex-col space-x-4 m-auto justify-center
-                items-center
-                gap-5"
-                id="menu">
-                <li>
-                    <a routerLink="/home" routerLinkActive="active
-                        text-orange-500
-                        p-2 text-lg" [routerLinkActiveOptions]="{exact:
-                        true}"
-                        class=" hover:text-white
-                        text-lg sm:text-2xl font-sans sm:font-semibold ">Home</a>
-                </li>
-                <li>
-                    <a routerLink="/about" class="text-black text-lg
-                        hover:text-white sm:text-2xl font-sans
-                        sm:font-semibold
-                        ">About</a>
-                </li>
-                <li class="items-end my-auto text-lg "><a
-                        routerLink="/login" class="text-black
-                        hover:text-white text-lg sm:text-2xl font-sans
-                        sm:font-semibold
-                        ">Login</a>
-                </li>
-                <li class="items-end my-auto text-lg "><a
-                        routerLink="/signup" class="text-black
-                        hover:text-white text-lg sm:text-2xl font-sans
-                        sm:font-semibold
-                        ">Sign Up</a>
-                </li>
-            </ul>
-        </div>
-    </mat-sidenav>
-    <mat-sidenav-content class="m-0 p-0">
-        <div class="flex flex-col md:mx-6 sm:mx-4 mx-2 bg-blue-400">
-            <mat-toolbar class="">
-                <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-                <div class="m-auto flex gap-2 sm:gap-2 h-fit">
-                    <span class=" sm:font-bold font-medium md:text-5xl
-                        sm:text-3xl
-                        text-lg my-auto text-[#e83e85]">SuuMaya
-                    </span>
-                    <p class="italic font-medium pt-9 text-xs sm:text-sm">
-                        Rental Attire
-                    </p>
-                </div>
+  <mat-sidenav #drawer fixedInViewport [mode]="(isNotHandSet$ | async)?
+    'side':'over'" [disableClose]="(isHandSet$
+    | async)" class="flex flex-wrap w-fit">
+    <div class="w-fit bg-gradient-to-t from-[#f34c40]
+      to-[#7abcf6] h-full px-6 rounded-r-2xl">
+      <img src="../../assets/logo.png" class="h-16 w-16 mx-auto ">
+      <ul class="flex flex-col space-x-4 m-auto justify-center
+        items-center
+        gap-4"
+        id="menu">
+        <li>
+          <a routerLink="/home" routerLinkActive="active
+            text-orange-500
+            p-2 text-lg" [routerLinkActiveOptions]="{exact:
+            true}"
+            class=" hover:text-white
+            text-lg sm:text-2xl font-sans sm:font-semibold ">Home</a>
+        </li>
+        <li>
+          <a routerLink="/about" class="text-black text-lg
+            hover:text-white sm:text-2xl font-sans
+            sm:font-semibold
+            ">About</a>
+        </li>
+        <li (ngSubmit)="submit()" class="items-end my-auto text-lg "><a
+            routerLink="/login" class="text-black
+            hover:text-white text-lg sm:text-2xl font-sans
+            sm:font-semibold
+            ">Login</a>
+        </li>
+        <li (ngSubmit)="submit()" class="items-end my-auto text-lg "><a
+            routerLink="/signup" class="text-black
+            hover:text-white text-lg sm:text-2xl font-sans
+            sm:font-semibold
+            ">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="">
+    <div class="flex flex-col md:mx-6 sm:mx-4 mx-2 bg-blue-400">
+      <mat-toolbar class="overflow-hidden py-5" style="background-color:
+        rgb(148,
+        145, 145);">
+        <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+        <div class="mx-auto flex gap-1 sm:gap-2 h-fit">
+          <div class="m-auto">
+            <span class=" sm:font-bold md:text-5xl
+              sm:text-3xl font-semibold
+              text-xl text-center text-pink-200">Suu</span>
 
-                <button
-                    type="button"
-                    aria-label="Toggle nav"
-                    mat-icon-button
-                    (click)="drawer.toggle()"
-                    *ngIf="!(isNotHandSet$ | async)
-                    ">
-                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-                </button>
-            </mat-toolbar>
-            <router-outlet></router-outlet>
+            <span class=" sm:font-bold font-medium md:text-5xl
+              sm:text-3xl
+              text-xl text-white opacity-70">Maya
+            </span>
+          </div>
+          <p class="italic font-medium pt-6 sm:pt-11 text-[8px] sm:text-sm">
+            Rental Attire
+          </p>
         </div>
-    </mat-sidenav-content>
+        <div class="self-end my-auto">
+          <a routerLink="/dashboard/order">
+            <i class="material-icons h-16 w-16 mt-[20px] text-right">person</i>
+          </a>
+        </div>
+        <button
+          type="button"
+          aria-label="Toggle nav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="!(isNotHandSet$ | async)
+          ">
+
+        </button>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

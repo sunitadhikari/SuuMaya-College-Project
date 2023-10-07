@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     accepted: new FormControl('false'),
   });
   submit() {
-    const signupValue = this.newUserForm.value;
+    const signupValue = this.newUserForm.value; // const le variable baanuchha
     const userSignup: User = {
       username: signupValue.username ?? '',
       email: signupValue.email ?? '',

@@ -45,6 +45,7 @@ export class LoginComponent {
   });
 
   submit() {
+    // const le chhai variable loginValue  userForm value
     const loginValue = this.userForm.value;
     const user = {
       username: loginValue.username ?? '',
@@ -53,7 +54,7 @@ export class LoginComponent {
     this.authService.login(user.username, user.password).subscribe((res) => {
       console.log(res);
       localStorage.setItem('user', JSON.stringify(res.user ?? ''));
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
     });
   }
   toggleImage() {

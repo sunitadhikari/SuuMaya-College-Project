@@ -1,92 +1,96 @@
 <app-header></app-header>
 <div *ngIf="productDetails$ | async as product" class="flex flex-col
-    flex-wrap mx-auto sm:flex w-full sm:py-10 sm:px-7 px-3
+    flex-wrap sm:mx-auto sm:flex w-full sm:py-10 sm:px-7 px-2
     py-5">
-    <div class="bg-[#e8474a] w-[75%] sm:py-7 sm:px-4 px-1
-        py-2 rounded-md mx-auto h-full">
+    <div class="bg-gray-200 sm:w-[75%] sm:py-7 sm:px-4 px-1
+        rounded-md sm:mx-auto h-full">
 
         <div class=" flex sm:flex-row flex-col md:gap-2 sm:gap-1 gap-0.5
             object-fill w-full h-full">
-            <div class="w-[50%]">
+            <div class="sm:w-[50%] ">
                 <img class="hover:cursor-zoom-out" src="{{ product.image |
                     appendS3 }}"
                     alt="{{
                     product.name
                     }}"
-                    class="md:h-fit md:w-full w-full object-fit h-full
-                    justify-stretch p-1
+                    class="md:w-full w-full object-fit h-full
+                    justify-stretch p-1 rounded-md
                     ">
             </div>
             <form [formGroup]="detailForm"
-                class="w-[50%] h-full">
-
+                class="sm:w-[50%] h-full ">
                 <div class="flex flex-col
-                    bg-blue-200 sm:px-6 sm:py-4 px-2 py-2 sm:gap-5 gap-2
-                    h-full">
+                    bg-gray-200 sm:px-6 sm:py-4 px-2 py-2 sm:gap-5 gap-3
+                    h-full border-4 border-white rounded-lg">
+
                     <div class="flex justify-end">
 
                         <span *ngIf="product.available" class="sm:font-normal
                             font-thin
                             text-[10px] sm:text-xs sm:px-1 px-0.5 sm:py-0.5
-                            rounded-md
+                            rounded-md text-white
                             bg-green-400">Available</span>
 
                         <span *ngIf="!product.available" class="sm:font-normal
                             font-thin
                             text-[10px] sm:text-xs sm:px-1 px-0.5 sm:py-0.5
-                            rounded-md
+                            rounded-md text-white
                             bg-red-500"> Not
                             Available</span>
                     </div>
                     <span class="sm:font-bold font-medium md:text-3xl
                         sm:text-2xl text-lg
-                        text-purple-700 md:mb-3 sm:mb-2 mb-1">{{product.name}}</span>
-                    <div class="flex gap-2">
-                        <h2 class="sm:font-bold font-semibold sm:text-xl text-sm
-                            text-black">Detail:</h2>
-                        <p class="sm:font-light font-[15px] text-base text
-                            my-auto black">{{product.details}}</p>
-                    </div>
-                    <div class="flex text-black text-xs gap-2 ">
-                        <span class="sm:font-bold font-semibold sm:text-xl
-                            text-sm
-                            text-black">Size:</span>
-                        <div *ngFor="let size of size" class="my-auto">
-                            <input name="size" value="{{size}}"
-                                formControlName="size" type="radio" required>
-                            <label for="{{size}}">{{size}}</label><br>
+                        text-black mx-auto md:mb-3 sm:mb-2 mb-1">{{product.name}}</span>
+                    <div class="flex flex-col sm:gap-3 md:gap-6 mx-[20px]
+                        my-auto">
+                        <div class="flex gap-2 place-items-center">
+                            <h2 class="sm:font-bold font-semibold sm:text-xl
+                                text-sm
+                                text-black">Detail:</h2>
+                            <p class=" font-light text-base text-black">{{product.details}}</p>
                         </div>
-                    </div>
-                    <div class="flex gap-2 ">
-                        <span class="sm:font-bold font-semibold sm:text-xl
-                            text-sm
-                            text-black">Quantity: </span>
-                        <mat-form-field class="text-black font-[20px]
-                            my-auto">
+                        <div class="flex text-black gap-2 ">
+                            <span class="sm:font-bold font-semibold sm:text-xl
+                                text-sm
+                                text-black">Size:</span>
+                            <div *ngFor="let size of size" class="my-auto">
+                                <input name="size" value="{{size}}"
+                                    formControlName="size" type="radio"
+                                    required>
+                                <label for="{{size}}">{{size}}</label><br>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 ">
+                            <span class="sm:font-bold font-semibold sm:text-xl
+                                text-sm
+                                text-black">Quantity: </span>
+
                             <input matInput type="number"
-                                class="font-[15px] "
+                                class=" "
                                 placeholder="Min
                                 value"
                                 formControlName="quantity">
-                        </mat-form-field>
 
-                    </div>
-                    <div class="flex gap-2 ">
-                        <span class="sm:font-bold font-semibold sm:text-xl
-                            text-sm
-                            text-black">Price:</span>
-                        <div class="my-auto"> {{
-                            (detailForm.get('quantity')?.value ?? 1) *
-                            (product.price)
-                            }}
+
                         </div>
-                    </div>
-                    <div class="flex gap-2 ">
-                        <span class="sm:font-bold font-semibold sm:text-xl
-                            text-sm
-                            text-black
-                            ">Category:</span>
-                        <div class="my-auto ">{{product.category}}</div>
+                        <div class="flex gap-2 ">
+                            <span class="sm:font-bold font-semibold sm:text-xl
+                                text-sm
+                                text-black">Price:</span>
+                            <div class="my-auto text-red-600 font-extrabold
+                                text-xl"> {{
+                                (detailForm.get('quantity')?.value ?? 1) *
+                                (product.price)
+                                }}
+                            </div>
+                        </div>
+                        <div class="flex gap-2 ">
+                            <span class="sm:font-bold font-semibold sm:text-xl
+                                text-sm
+                                text-black
+                                ">Category:</span>
+                            <div class="my-auto ">{{product.category}}</div>
+                        </div>
                     </div>
                     <div class="flex flex-col justify-end items-end gap-2">
                         <!-- <button class="bg-green-400
