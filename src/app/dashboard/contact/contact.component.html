@@ -3,7 +3,7 @@
     sm:auto ">
     <span class="font-semibold text-2xl ">Give Review</span>
     <form [formGroup]="contactForm" (ngSubmit)="submit()" class="w-full">
-      <div class="flex flex-col mb-4">
+      <!-- <div class="flex flex-col mb-4">
         <label for="name" class="text-xl">Name:</label>
         <input formControlName="username" type="text" class="border
           rounded-lg px-2
@@ -13,7 +13,7 @@
           class="text-red-600">
           Username is required*
         </mat-error>
-      </div>
+      </div> -->
       <div class="flex flex-col mb-4">
         <label for="message" class="text-xl">Feedback/Suggestion:</label>
         <textarea formControlName="message" id="message" class="border

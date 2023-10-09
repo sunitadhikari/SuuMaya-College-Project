@@ -102,8 +102,9 @@
                         <button
                             (click)="makePayment()"[disabled]="!product.available
                             ||
-                            !detailForm.valid"
-                            [class]="!product.available||!detailForm.valid?
+                            !detailForm.valid|| !userExistsInLocalStorage()"
+                            [class]="!product.available||!detailForm.valid ||
+                            !userExistsInLocalStorage()?
                             'bg-gray-400 text-black' : 'bg-[#f65f5f]
                             text-white'" class="sm:font-extrabold text-black
                             w-fit

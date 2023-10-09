@@ -144,4 +144,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     const quantity = this.detailForm.get('quantity')?.value ?? 1;
     checkout.show({ amount: this.product.price * quantity * 100 });
   }
+  userExistsInLocalStorage(): boolean {
+    const userId = localStorage.getItem('user');
+    return !!userId;
+  }
 }

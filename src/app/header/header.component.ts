@@ -109,4 +109,8 @@ export class HeaderComponent implements OnInit {
   submit() {
     this.productService.navigate(['/dashboard/order']);
   }
+  userExistsInLocalStorage(): boolean {
+    const userId = localStorage.getItem('user');
+    return !!userId;
+  }
 }

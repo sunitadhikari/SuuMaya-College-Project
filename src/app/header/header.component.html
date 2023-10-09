@@ -4,35 +4,37 @@
     'side':'over'" [disableClose]="(isHandSet$
     | async)" class="flex flex-wrap w-fit">
     <div class="w-fit bg-gradient-to-t from-[#f34c40]
-      to-[#7abcf6] h-full px-6 rounded-r-2xl">
+      to-[#7abcf6] h-full px-6 rounded-r-2xl text-center ">
       <img src="../../assets/logo.png" class="h-16 w-16 mx-auto ">
-      <ul class="flex flex-col space-x-4 m-auto justify-center
-        items-center
+      <ul class="flex flex-col m-auto justify-center
+        items-center text-center
         gap-4"
         id="menu">
         <li>
           <a routerLink="/home" routerLinkActive="active
             text-orange-500
-            p-2 text-lg" [routerLinkActiveOptions]="{exact:
+            text-lg" [routerLinkActiveOptions]="{exact:
             true}"
             class=" hover:text-white
-            text-lg sm:text-2xl font-sans sm:font-semibold ">Home</a>
+            text-lg sm:text-2xl font-sans sm:font-semibold text-center">Home</a>
         </li>
         <li>
           <a routerLink="/about" class="text-black text-lg
             hover:text-white sm:text-2xl font-sans
-            sm:font-semibold
+            sm:font-semibold text-center
             ">About</a>
         </li>
-        <li (ngSubmit)="submit()" class="items-end my-auto text-lg "><a
-            routerLink="/login" class="text-black
+        <li (ngSubmit)="submit()" *ngIf="!userExistsInLocalStorage()"
+          class="items-end my-auto text-lg "><a
+            routerLink="/login" class="text-black text-center
             hover:text-white text-lg sm:text-2xl font-sans
             sm:font-semibold
             ">Login</a>
         </li>
-        <li (ngSubmit)="submit()" class="items-end my-auto text-lg "><a
+        <li (ngSubmit)="submit()" *ngIf="!userExistsInLocalStorage()"
+          class="items-end my-auto text-lg "><a
             routerLink="/signup" class="text-black
-            hover:text-white text-lg sm:text-2xl font-sans
+            hover:text-white text-lg sm:text-2xl font-sans text-center
             sm:font-semibold
             ">Sign Up</a>
         </li>
@@ -45,7 +47,7 @@
         rgb(148,
         145, 145);">
         <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-        <div class="mx-auto flex gap-1 sm:gap-2 h-fit">
+        <div class="mx-auto flex gap-1 sm: h-fit">
           <div class="m-auto">
             <span class=" sm:font-bold md:text-5xl
               sm:text-3xl font-semibold

@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import {
   ActivatedRoute,
+  Router,
   RouterLinkActive,
   RouterLinkWithHref,
 } from '@angular/router';
@@ -35,7 +36,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   newUserForm = new FormGroup({
@@ -63,7 +65,10 @@ export class SignupComponent implements OnInit, OnDestroy {
       enabled: false,
       isAdmin: false,
     };
-    this.authService.signup(userSignup).subscribe((res) => alert(res.message));
+    this.authService.signup(userSignup).subscribe((res) => {
+      alert(res.message);
+      this.router.navigate(['/home']);
+    });
   }
   ngOnInit(): void {}
   ngOnDestroy(): void {}
